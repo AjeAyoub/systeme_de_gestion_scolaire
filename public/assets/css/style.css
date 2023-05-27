@@ -1,0 +1,13 @@
+#scrollbar_list {
+   /* max-height: 200px;  Set the maximum height of the scrollable area */
+    overflow-y: auto; /* Enable vertical scrolling */
+
+  }
+
+  #scrollbar_list::-webkit-scrollbar {
+    width: 0.4em; /* Width of the scrollbar */
+  }
+  
+  #scrollbar_list::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.5); /* Color of the scrollbar thumb */
+  }
