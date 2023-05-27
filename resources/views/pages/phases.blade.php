@@ -37,6 +37,46 @@
 
 
         <table class="table table-bordered table-striped">
+          <!--message error-->
+          @if ($errors->any())
+          <div class="d-flex justify-content-center">
+              <div class="alert alert-danger">
+                  <ul>
+                      @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                      @endforeach
+                  </ul>
+              </div>
+            </div>
+          @endif
+          <!--end message error-->
+          <!--message success-->
+          @if(session('success'))
+          <div class="d-flex justify-content-center">
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+          </div>
+          @endif
+          <!--end message success-->
+          <!--message success-->
+          @if(session('update'))
+          <div class="d-flex justify-content-center">
+              <div class="alert alert-warning">
+                {{ session('update') }}
+              </div>
+          </div>
+              @endif
+          <!--end message success-->
+          <!--message delete-->
+          @if(session('delete'))
+          <div class="d-flex justify-content-center">
+            <div class="alert alert-danger">
+                {{ session('delete') }}
+            </div>
+          </div>
+          @endif
+          <!--end message delete-->
           <div class="d-flex">
             <button id="openFormButton" class="btn btn-primary ml-2">Ajouter Phase</button>
 
@@ -57,32 +97,31 @@
           <!-- start modal form -->
           <div id="formModal" class="modal fade">
               <div class="modal-dialog">
-              <div class="modal-content">
-              <div class="modal-header">
-              <h5 class="modal-title">Ajouter Phase</h5>
-              <button type="button" class="close" data-dismiss="modal">
-                <span>&times;</span>
-              </button>
-              </div>
-              <div class="modal-body">
-              <form action="{{ route('phase.store') }}" method="POST">
-                @csrf
-                <div class="form-group">
-                    <label for="inputName">Nom de Phase</label>
-                    <input name="nom" type="text" class="form-control" id="name">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Ajouter Phase</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                      <span>&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form action="{{ route('phase.store') }}" method="POST">
+                      @csrf
+                      <div class="form-group">
+                          <label for="inputName">Nom de Phase</label>
+                          <input name="nom" type="text" class="form-control" id="name">
+                      </div>
+                      <div class="form-group">
+                          <label for="inputNotes">Remarques</label> 
+                          <textarea name="remarque" type="text" class="form-control" id="inputNotes"></textarea>
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                          <button type="submit" class="btn btn-primary">Ajouter Phase</button>
+                      </div>
+                    </form>
+                  </div>
                 </div>
-                <div class="form-group">
-                    <label for="inputNotes">Remarques</label>
-                    <textarea name="remarque" type="text" class="form-control" id="inputNotes"></textarea>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                    <button type="submit" class="btn btn-primary">Ajouter Phase</button>
-                </div>
-              </form>
-              </div>
-
-              </div>
               </div>
           </div>
           <script>

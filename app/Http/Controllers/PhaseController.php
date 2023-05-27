@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePhaseRequest;
+use App\Http\Requests\UpdatePhaseRequest;
 use App\Models\Phase;
 use Illuminate\Http\Request;
 
@@ -27,15 +29,14 @@ class PhaseController extends Controller
         //
     }
 
-    public function store(Request $request)
+    public function store(StorePhaseRequest $request)
     {
+        
         Phase::create($request->all());
-        return to_route('phase.index')->with('success', 'Phase added successfully');
+        return to_route('phase.index')->with('success', 'Phase phase ajoutée avec succès');
     }
 
-    /**
-     * Display the specified resource.
-     */
+
     public function show(Phase $phase)
     {
         //
@@ -46,17 +47,17 @@ class PhaseController extends Controller
     
     }
 
-    public function update(Request $request, Phase $phase)
+    public function update(UpdatePhaseRequest $request, Phase $phase)
     {
         $phase->update($request->all());
-        return to_route('phase.index')->with('success', 'Phase updated successfully');
+        return to_route('phase.index')->with('update', 'Phase mise à jour avec succès');
 
     }
 
     public function destroy(Phase $phase)
     {
         $phase->delete();
-        return to_route('phase.index')->with('success', 'Phase deleted successfully');
+        return to_route('phase.index')->with('delete', 'Phase supprimée avec succès');
 
     }
 }
