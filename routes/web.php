@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PhaseController;
+use App\Http\Controllers\ClasseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,8 @@ use App\Http\Controllers\PhaseController;
 
 // Phases
 Route::resource('phase', PhaseController::class);
+// Classes
+Route::resource('classe', ClasseController::class);
 
 
 

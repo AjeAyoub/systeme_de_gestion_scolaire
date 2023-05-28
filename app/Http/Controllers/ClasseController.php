@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Classe;
+use App\Models\Phase;
 use Illuminate\Http\Request;
 
 class ClasseController extends Controller
@@ -10,9 +11,21 @@ class ClasseController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $classes = Classe::all();
+        //------------searsh code--------------
+        $search = $request->query('search');
+        $classes = Classe::when($search, function ($query) use ($search) {
+            $query->where('nom', 'like', "%$search%")
+                ->orWhere('phase_id', 'like', "%$search%");
+        })->paginate(6);
+        //-----------end searsh code------------
+        $phases = Phase::all();
+
+        return view('pages.classes', compact('classes', 'phases'));
+
+
     }
 
     /**
@@ -28,7 +41,8 @@ class ClasseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Classe::create($request->all());
+        return to_route('classe.index')->with('succss', 'Classe ajoutée avec succès');
     }
 
     /**

@@ -35,7 +35,7 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="classes-menu" class="collapse" data-parent="#sidebarnav">
-                            <li><a href="#">Liste des classes</a></li>
+                            <li><a href="{{ route('classe.index') }}">Liste des classes</a></li>
                         </ul>
                     </li>
 
