@@ -33,7 +33,7 @@ class PhaseController extends Controller
     {
         
         Phase::create($request->all());
-        return to_route('phase.index')->with('success', 'Phase phase ajoutée avec succès');
+        return to_route('phase.index')->with('success', 'Phase ajoutée avec succès');
     }
 
 

@@ -13,8 +13,6 @@
 <link href="{{ URL::asset('assets/css/style.css') }}" rel="stylesheet">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/css/bootstrap.min.css">
 
-<!--pagination colors-->
-
 <!--- Style css -->
 @if (App::getLocale() == 'en')
     <link href="{{ URL::asset('assets/css/ltr.css') }}" rel="stylesheet">

@@ -59,7 +59,7 @@
           </div>
           @endif
           <!--end message success-->
-          <!--message success-->
+          <!--message update-->
           @if(session('update'))
           <div class="d-flex justify-content-center">
               <div class="alert alert-warning">
