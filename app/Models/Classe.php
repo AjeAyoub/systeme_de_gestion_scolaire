@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Classe extends Model
 {
     use HasFactory;
-    protected $fillable = ['nom', 'phase_id'];
+    protected $fillable = ['nom', 'niveau_id'];
 
-    public function phase(){
+    public function niveau(){
 
-        return $this->belongsTo(Phase::class);
+        return $this->belongsTo(Niveau::class);
     }
 }

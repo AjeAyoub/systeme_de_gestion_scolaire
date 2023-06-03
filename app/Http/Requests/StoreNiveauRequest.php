@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StorePhaseRequest extends FormRequest
+class StoreNiveauRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,7 +22,7 @@ class StorePhaseRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nom' => 'required|unique:phases|max:70',
+            'nom' => 'required|unique:niveaux|max:70',
             'remarque' => 'required',
         ];
     }

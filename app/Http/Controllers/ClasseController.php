@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Classe;
-use App\Models\Phase;
+use App\Models\Niveau;
 use Illuminate\Http\Request;
 
 class ClasseController extends Controller
@@ -18,12 +18,12 @@ class ClasseController extends Controller
         $search = $request->query('search');
         $classes = Classe::when($search, function ($query) use ($search) {
             $query->where('nom', 'like', "%$search%")
-                ->orWhere('phase_id', 'like', "%$search%");
+                ->orWhere('niveau_id', 'like', "%$search%");
         })->paginate(6);
         //-----------end searsh code------------
-        $phases = Phase::all();
+        $niveaux = Niveau::all();
 
-        return view('pages.classes', compact('classes', 'phases'));
+        return view('pages.classes', compact('classes', 'niveaux'));
 
 
     }

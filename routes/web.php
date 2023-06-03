@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PhaseController;
+use App\Http\Controllers\NiveauController;
 use App\Http\Controllers\ClasseController;
 
 /*
@@ -15,8 +15,8 @@ use App\Http\Controllers\ClasseController;
 |
 */
 
-// Phases
-Route::resource('phase', PhaseController::class);
+// Niveaux
+Route::resource('niveau', NiveauController::class);
 // Classes
 Route::resource('classe', ClasseController::class);
 

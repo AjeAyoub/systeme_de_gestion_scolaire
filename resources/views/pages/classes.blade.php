@@ -111,11 +111,11 @@
                           <input name="nom" type="text" class="form-control" id="name">
                       </div>
                       <div class="form-group">
-                          <label for="inputName">Nom de Phase</label>
-                          <select class="fancyselect form-control" name="phase_id">
-                            <option selected>Sélectionnez une Phase</option>
-                            @foreach ($phases as $phase)
-                                <option value="{{ $phase->id }}">{{ $phase->nom }}</option>
+                          <label for="inputName">Nom de Niveau</label>
+                          <select class="fancyselect form-control" name="niveau_id">
+                            <option selected>Sélectionnez une Niveau</option>
+                            @foreach ($niveaux as $niveau)
+                                <option value="{{ $niveau->id }}">{{ $niveau->nom }}</option>
                             @endforeach
                           </select>
                       </div>  
@@ -141,7 +141,7 @@
             <tr class="text-center">
               <th scope="col">id</th>
               <th scope="col">Nom de classe</th>
-              <th scope="col">Nom de Phase</th>
+              <th scope="col">Nom de Niveau</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
@@ -152,7 +152,7 @@
             <tr class="text-center">
               <td>{{ $i }}</td>
               <td>{{ $classe->nom }}</td>
-              <td>{{ $classe->phase->nom }}</td>
+              <td>{{ $classe->niveau->nom }}</td>
               <td>
 
                 <!-- start modal edit form -->
@@ -174,11 +174,11 @@
                             <input name="nom" type="text" class="form-control" id="name{{ $classe->id }}" value="{{ $classe->nom ?? '' }}">
                           </div>
                           <div class="form-group">
-                            <label for="inputName">Nom de Phase</label>
-                            <select class="fancyselect form-control" name="phase_id">
-                              @foreach ($phases as $phase)
-                                <option value="{{ $phase->id }}" {{ $phase->id == $classe->phase_id ? 'selected' : '' }}>
-                                  {{ $phase->nom }}
+                            <label for="inputName">Nom de Niveau</label>
+                            <select class="fancyselect form-control" name="niveau_id">
+                              @foreach ($niveaux as $niveau)
+                                <option value="{{ $niveau->id }}" {{ $niveau->id == $classe->niveau_id ? 'selected' : '' }}>
+                                  {{ $niveau->nom }}
                                 </option>                             
                               @endforeach
                             </select>

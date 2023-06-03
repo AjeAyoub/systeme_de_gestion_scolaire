@@ -2,7 +2,7 @@
 @section('css')
 
 @section('title')
-    Phases
+  Niveaux
 @stop
 @endsection
 @section('page-header')
@@ -14,7 +14,7 @@
         <div class="col-sm-6 text-right">
             <ol class="breadcrumb pt-0 pr-0 float-right float-sm-right ">
                 <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="default-color">Accueil</a></li>
-                <li class="breadcrumb-item active">Lisee des phases</li>
+                <li class="breadcrumb-item active">Lisee des niveaux</li>
             </ol>
         </div>
     </div>
@@ -78,10 +78,10 @@
           @endif
           <!--end message delete-->
           <div class="d-flex">
-            <button id="openFormButton" class="btn btn-primary ml-2">Ajouter Phase</button>
+            <button id="openFormButton" class="btn btn-primary ml-2">Ajouter Niveau</button>
 
             <!-- search form -->
-            <form action="{{ route('phase.index') }}" method="GET" class="mb-3">
+            <form action="{{ route('niveau.index') }}" method="GET" class="mb-3">
               <div class="input-group input-group-sm">
                 <input type="text" class="form-control col-3 ml-auto" placeholder="Recherche..." name="search" value="{{ request('search') }}">
                 <div class="input-group-append">
@@ -99,16 +99,16 @@
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title">Ajouter Phase</h5>
+                    <h5 class="modal-title">Ajouter Niveau</h5>
                     <button type="button" class="close" data-dismiss="modal">
                       <span>&times;</span>
                     </button>
                   </div>
                   <div class="modal-body">
-                    <form action="{{ route('phase.store') }}" method="POST">
+                    <form action="{{ route('niveau.store') }}" method="POST">
                       @csrf
                       <div class="form-group">
-                          <label for="inputName">Nom de Phase</label>
+                          <label for="inputName">Nom de Niveau</label>
                           <input name="nom" type="text" class="form-control" id="name">
                       </div>
                       <div class="form-group">
@@ -117,7 +117,7 @@
                       </div>
                       <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                          <button type="submit" class="btn btn-primary">Ajouter Phase</button>
+                          <button type="submit" class="btn btn-primary">Ajouter Niveau</button>
                       </div>
                     </form>
                   </div>
@@ -142,40 +142,40 @@
             </tr>
           </thead>
           <tbody>
-            @foreach ($phases as $phase)
+            @foreach ($niveaux as $niveau)
             <?php $i++; ?>
 
             <tr class="text-center">
               <td>{{ $i }}</td>
-              <td>{{ $phase->nom }}</td>
-              <td>{{ $phase->remarque }}</td>
+              <td>{{ $niveau->nom }}</td>
+              <td>{{ $niveau->remarque }}</td>
               <td>
 
                 <!-- start modal edit form -->
-                <div id="editformModal{{ $phase->id }}" class="modal fade">
+                <div id="editformModal{{ $niveau->id }}" class="modal fade">
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title">Modifier phase</h5>
+                        <h5 class="modal-title">Modifier niveau</h5>
                         <button type="button" class="close" data-dismiss="modal">
                           <span>&times;</span>
                         </button>
                       </div>
                       <div class="modal-body">
-                        <form action="{{ route('phase.update', $phase->id) }}" method="POST">
+                        <form action="{{ route('niveau.update', $niveau->id) }}" method="POST">
                           @csrf
                           @method('PUT')
                           <div class="form-group">
-                            <label for="inputName">Nom de Phase</label>
-                            <input name="nom" type="text" class="form-control" id="name{{ $phase->id }}" value="{{ $phase->nom ?? '' }}">
+                            <label for="inputName">Nom de Niveau</label>
+                            <input name="nom" type="text" class="form-control" id="name{{ $niveau->id }}" value="{{ $niveau->nom ?? '' }}">
                           </div>
                           <div class="form-group">
                             <label for="inputNotes">Remarques</label>
-                            <textarea name="remarque" class="form-control" id="inputNotes{{ $phase->id }}">{{ $phase->remarque ?? '' }}</textarea>
+                            <textarea name="remarque" class="form-control" id="inputNotes{{ $niveau->id }}">{{ $niveau->remarque ?? '' }}</textarea>
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                            <button type="submit" class="btn btn-primary">Modifier phase</button>
+                            <button type="submit" class="btn btn-primary">Modifier niveau</button>
                           </div>
                         </form>
                       </div>
@@ -186,11 +186,11 @@
 
 
                 <div style="display: inline;">
-                  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#editformModal{{ $phase->id }}" title="Edit">
+                  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#editformModal{{ $niveau->id }}" title="Edit">
                     <i class="fa fa-edit"></i>
                   </button>
                 
-                  <form style="display: inline;" action="{{ route('phase.destroy', $phase->id) }}" method="POST">
+                  <form style="display: inline;" action="{{ route('niveau.destroy', $niveau->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger btn-lg">
@@ -207,7 +207,7 @@
 
         <!-- pagination -->
 <div class="pagination justify-content-center">
-  {!! $phases->appends(['search' => request('search')])->links() !!}
+  {!! $niveaux->appends(['search' => request('search')])->links() !!}
 </div>
 <!-- end pagination -->
 

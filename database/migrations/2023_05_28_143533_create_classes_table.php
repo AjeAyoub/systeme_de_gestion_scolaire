@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('classes', function (Blueprint $table) {
             $table->id();
             $table->string('nom');
-            $table->integer('phase_id');
+            $table->integer('niveau_id');
             $table->timestamps();
         });
     }

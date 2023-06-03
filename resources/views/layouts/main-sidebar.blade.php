@@ -13,16 +13,16 @@
                         </a>
                     </li>
                     
-                    <!-- Phases-->
+                    <!-- niveaux-->
                     <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#phases-menu">
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#niveaux-menu">
                             <div class="pull-left"><i class="fas fa-school"></i><span
-                                    class="right-nav-text">Phases</span></div>
+                                    class="right-nav-text">Niveaux</span></div>
                             <div class="pull-right"><i class="ti-angle-down"></i></div>
                             <div class="clearfix"></div>
                         </a>
-                        <ul id="phases-menu" class="collapse" data-parent="#sidebarnav">
-                            <li><a href="{{ route('phase.index') }}">Liste des phases</a></li>
+                        <ul id="niveaux-menu" class="collapse" data-parent="#sidebarnav">
+                            <li><a href="{{ route('niveau.index') }}">Liste des niveaux</a></li>
 
                         </ul>
                     </li>
