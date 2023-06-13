@@ -49,7 +49,7 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="sections-menu" class="collapse" data-parent="#sidebarnav">
-                            <li><a href="#">Liste des sections</a></li>
+                            <li><a href="{{ route('section.index') }}">Liste des sections</a></li>
                         </ul>
                     </li>
 

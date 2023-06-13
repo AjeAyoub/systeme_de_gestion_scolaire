@@ -14,7 +14,7 @@
         <div class="col-sm-6 text-right">
             <ol class="breadcrumb pt-0 pr-0 float-right float-sm-right ">
                 <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="default-color">Accueil</a></li>
-                <li class="breadcrumb-item active">Lisee des niveaux</li>
+                <li class="breadcrumb-item active">Liste des niveaux</li>
             </ol>
         </div>
     </div>

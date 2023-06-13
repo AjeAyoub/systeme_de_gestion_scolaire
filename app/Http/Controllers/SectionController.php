@@ -2,30 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Section;
 use App\Models\Classe;
 use App\Models\Niveau;
 use Illuminate\Http\Request;
 
-class ClasseController extends Controller
+class SectionController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request)
     {
+        $sections = Section::all();
         $classes = Classe::all();
-        //------------searsh code--------------
-        $search = $request->query('search');
-        $classes = Classe::when($search, function ($query) use ($search) {
-            $query->where('nom', 'like', "%$search%")
-                ->orWhere('niveau_id', 'like', "%$search%");
-        })->paginate(6);
-        //-----------end searsh code------------
         $niveaux = Niveau::all();
 
-        return view('pages.classes', compact('classes', 'niveaux'));
+        //------------searsh code--------------
+        $search = $request->query('search');
+        $sections = Section::when($search, function ($query) use ($search) {
+            $query->where('nom', 'like', "%$search%")
+                ->orWhere('niveau_id', 'like', "%$search%")
+                ->orWhere('classe_id', 'like', "%$search%");
+        })->paginate(6);
+        //-----------end searsh code------------
 
-
+        return view('pages.sections', compact('sections', 'niveaux', 'classes'));
     }
 
     /**
@@ -41,14 +43,15 @@ class ClasseController extends Controller
      */
     public function store(Request $request)
     {
-        Classe::create($request->all());
-        return to_route('classe.index')->with('succss', 'Classe ajoutée avec succès');
+
+        Section::create($request->all());
+        return to_route('section.index')->with('succss', 'Section ajoutée avec succès');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Classe $classe)
+    public function show(Section $section)
     {
         //
     }
@@ -56,7 +59,7 @@ class ClasseController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Classe $classe)
+    public function edit(Section $section)
     {
         //
     }
@@ -64,18 +67,16 @@ class ClasseController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Classe $classe)
+    public function update(Request $request, Section $section)
     {
-        $classe->update($request->all());
-        return to_route('classe.index')->with('update', 'Classe mise à jour avec succès');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Classe $classe)
+    public function destroy(Section $section)
     {
-        $classe->delete();
-        return to_route('classe.index')->with('delete', 'Classe supprimée avec succès');
+        //
     }
 }
