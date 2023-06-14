@@ -143,14 +143,12 @@
                     <!-- library-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#library-icon">
-                            <div class="pull-left"><i class="fas fa-book"></i><span class="right-nav-text">bibliothèque</span></div>
+                            <div class="pull-left"><i class="fas fa-book"></i><span class="right-nav-text">Département</span></div>
                             <div class="pull-right"><i class="ti-angle-down"></i></i></div>
                             <div class="clearfix"></div>
                         </a>
                         <ul id="library-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="fontawesome-icon.html">font Awesome</a> </li>
-                            <li> <a href="themify-icons.html">Themify icons</a> </li>
-                            <li> <a href="weather-icon.html">Weather icons</a> </li>
+                            <li> <a href="{{ route('departement.index') }}">Liste des Départements</a> </li>
                         </ul>
                     </li>
 

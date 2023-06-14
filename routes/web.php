@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NiveauController;
 use App\Http\Controllers\ClasseController;
 use App\Http\Controllers\SectionController;
+use App\Http\Controllers\DepartementController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,8 @@ Route::resource('niveau', NiveauController::class);
 Route::resource('classe', ClasseController::class);
 // Sections
 Route::resource('section', SectionController::class);
+// Département
+Route::resource('departement', DepartementController::class);
 
 
 

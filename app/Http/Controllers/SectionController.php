@@ -69,7 +69,8 @@ class SectionController extends Controller
      */
     public function update(Request $request, Section $section)
     {
-        //
+        $section->update($request->all());
+        return to_route('section.index')->with('update', 'Section mise à jour avec succès');
     }
 
     /**
@@ -77,6 +78,7 @@ class SectionController extends Controller
      */
     public function destroy(Section $section)
     {
-        //
+        $section->delete();
+        return to_route('section.index')->with('delete', 'Section supprimée avec succès');
     }
 }

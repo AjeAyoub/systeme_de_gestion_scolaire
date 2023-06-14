@@ -29,7 +29,7 @@ class NiveauController extends Controller
         //
     }
 
-    public function store(StoreNiveauRequest $request)
+    public function store(Request $request)
     {
         
         Niveau::create($request->all());
@@ -47,7 +47,7 @@ class NiveauController extends Controller
     
     }
 
-    public function update(UpdateNiveauRequest $request, Niveau $niveau)
+    public function update(Request $request, Niveau $niveau)
     {
         $niveau->update($request->all());
         return to_route('niveau.index')->with('update', 'Niveau mise à jour avec succès');
