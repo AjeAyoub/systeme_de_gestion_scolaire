@@ -3,25 +3,28 @@
 namespace App\Http\Controllers;
 
 use App\Models\Departement;
+use App\Models\Salle;
 use Illuminate\Http\Request;
 
-class DepartementController extends Controller
+class SalleController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request)
     {
+        $salles = Salle::all();
         $departements = Departement::all();
 
         //------------searsh code--------------
         $search = $request->query('search');
-        $departements = Departement::when($search, function ($query) use ($search) {
-            $query->where('nom', 'like', "%$search%");
+        $salles = Salle::when($search, function ($query) use ($search) {
+            $query->where('numero', 'like', "%$search%")
+                ->orWhere('departement_id', 'like', "%$search%");
         })->paginate(6);
         //-----------end searsh code------------
 
-        return view('pages.departements', compact('departements'));
+        return view('pages.salles', compact('salles', 'departements'));
     }
 
     /**
@@ -37,15 +40,15 @@ class DepartementController extends Controller
      */
     public function store(Request $request)
     {
-        Departement::create($request->all());
-        return to_route('departement.index')->with('success', 'Departement ajoutée avec succès');
+        Salle::create($request->all());
+        return to_route('salle.index')->with('succes', 'Salle Ajoutée avec succès');
 
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Departement $departement)
+    public function show(Salle $salle)
     {
         //
     }
@@ -53,7 +56,7 @@ class DepartementController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Departement $departement)
+    public function edit(Salle $salle)
     {
         //
     }
@@ -61,18 +64,19 @@ class DepartementController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Departement $departement)
+    public function update(Request $request, Salle $salle)
     {
-        $departement->update($request->all());
-        return to_route('departement.index')->with('update', 'Département mise a jour avec Succes');
+        $salle->update($request->all());
+        return to_route('salle.index')->with('update', 'Salle mise a jour avec succes');
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Departement $departement)
+    public function destroy(Salle $salle)
     {
-        $departement->delete();
-        return to_route('departement.index')->with('delete', 'Départemet supprimée avec succes');
+        $salle->delete();
+        return to_route('salle.index')->with('delete', 'Salle supprimée avec succes');
     }
 }

@@ -2,18 +2,19 @@
 @section('css')
 
 @section('title')
-    Salles
+  Matieres
 @stop
 @endsection
 @section('page-header')
 <!-- breadcrumb -->
+
 
 <div class="page-title">
     <div class="row">
         <div class="col-sm-6 text-right">
             <ol class="breadcrumb pt-0 pr-0 float-right float-sm-right ">
                 <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="default-color">Accueil</a></li>
-                <li class="breadcrumb-item active">Liste des Salles</li>
+                <li class="breadcrumb-item active">Liste des matieres</li>
             </ol>
         </div>
     </div>
@@ -65,7 +66,7 @@
                 {{ session('update') }}
               </div>
           </div>
-          @endif
+              @endif
           <!--end message success-->
           <!--message delete-->
           @if(session('delete'))
@@ -77,10 +78,10 @@
           @endif
           <!--end message delete-->
           <div class="d-flex">
-            <button id="openFormButton" class="btn btn-primary ml-2">Ajouter Salle</button>
+            <button id="openFormButton" class="btn btn-primary ml-2">Ajouter Matiere</button>
 
             <!-- search form -->
-            <form action="{{ route('salle.index') }}" method="GET" class="mb-3">
+            <form action="{{ route('matiere.index') }}" method="GET" class="mb-3">
               <div class="input-group input-group-sm">
                 <input type="text" class="form-control col-3 ml-auto" placeholder="Recherche..." name="search" value="{{ request('search') }}">
                 <div class="input-group-append">
@@ -98,30 +99,25 @@
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title">Ajouter Salle</h5>
+                    <h5 class="modal-title">Ajouter Matiere</h5>
                     <button type="button" class="close" data-dismiss="modal">
                       <span>&times;</span>
                     </button>
                   </div>
                   <div class="modal-body">
-                    <form action="{{ route('salle.store') }}" method="POST">
+                    <form action="{{ route('matiere.store') }}" method="POST">
                       @csrf
                       <div class="form-group">
-                        <label for="inputName">Numéro de Salle</label>
-                        <input name="numero" type="number" class="form-control" id="inputName">
-                      </div>                      
+                          <label for="inputName">Nom de Matiere</label>
+                          <input name="nom" type="text" class="form-control" id="name">
+                      </div>
                       <div class="form-group">
-                          <label for="inputName">Nom de Département</label>
-                          <select class="fancyselect form-control" name="departement_id">
-                            <option selected>Sélectionnez une Département</option>
-                            @foreach ($departements as $departement)
-                                <option value="{{ $departement->id }}">{{ $departement->nom }}</option>
-                            @endforeach
-                          </select>
-                      </div>  
+                          <label for="inputNotes">Descriptions</label> 
+                          <textarea name="description" type="text" class="form-control" id="inputNotes"></textarea>
+                      </div>
                       <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                          <button type="submit" class="btn btn-primary">Ajouter Salle</button>
+                          <button type="submit" class="btn btn-primary">Ajouter Matiere</button>
                       </div>
                     </form>
                   </div>
@@ -140,52 +136,46 @@
           <thead class="thead-light">
             <tr class="text-center">
               <th scope="col">id</th>
-              <th scope="col">Numéro de Salle</th>
-              <th scope="col">Nom de Département</th>
+              <th scope="col">Nom</th>
+              <th scope="col">Description</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
-            @foreach ($salles as $salle)
+            @foreach ($matieres as $matiere)
             <?php $i++; ?>
 
             <tr class="text-center">
               <td>{{ $i }}</td>
-              <td>{{ $salle->numero }}</td>
-              <td>{{ $salle->departement->nom }}</td>
+              <td>{{ $matiere->nom }}</td>
+              <td>{{ $matiere->description }}</td>
               <td>
 
                 <!-- start modal edit form -->
-                <div id="editformModal{{ $salle->id }}" class="modal fade">
+                <div id="editformModal{{ $matiere->id }}" class="modal fade">
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title">Modifier Salle</h5>
+                        <h5 class="modal-title">Modifier matiere</h5>
                         <button type="button" class="close" data-dismiss="modal">
                           <span>&times;</span>
                         </button>
                       </div>
                       <div class="modal-body">
-                        <form action="{{ route('salle.update', $salle->id) }}" method="POST">
+                        <form action="{{ route('matiere.update', $matiere->id) }}" method="POST">
                           @csrf
                           @method('PUT')
                           <div class="form-group">
-                            <label for="inputName">Numéro de Salle</label>
-                            <input name="numero" type="number" class="form-control" id="name{{ $salle->id }}" value="{{ $salle->numero ?? '' }}">
+                            <label for="inputName">Nom de Matiere</label>
+                            <input name="nom" type="text" class="form-control" id="name{{ $matiere->id }}" value="{{ $matiere->nom ?? '' }}">
                           </div>
                           <div class="form-group">
-                            <label for="inputName">Nom de Département</label>
-                            <select class="fancyselect form-control" name="departement_id">
-                              @foreach ($departements as $departement)
-                                <option value="{{ $departement->id }}" {{ $departement->id == $salle->departement_id ? 'selected' : '' }}>
-                                  {{ $departement->nom }}
-                                </option>                             
-                              @endforeach
-                            </select>
-                          </div> 
+                            <label for="inputNotes">Descriptions</label>
+                            <textarea name="description" class="form-control" id="inputNotes{{ $matiere->id }}">{{ $matiere->description ?? '' }}</textarea>
+                          </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                            <button type="submit" class="btn btn-primary">Modifier Salle</button>
+                            <button type="submit" class="btn btn-primary">Modifier matiere</button>
                           </div>
                         </form>
                       </div>
@@ -196,11 +186,11 @@
 
 
                 <div style="display: inline;">
-                  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#editformModal{{ $salle->id }}" title="Edit">
+                  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#editformModal{{ $matiere->id }}" title="Edit">
                     <i class="fa fa-edit"></i>
                   </button>
                 
-                  <form style="display: inline;" action="{{ route('salle.destroy', $salle->id) }}" method="POST">
+                  <form style="display: inline;" action="{{ route('matiere.destroy', $matiere->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger btn-lg">
@@ -216,10 +206,10 @@
         </table>
 
         <!-- pagination -->
-<div class="pagination justify-content-center">
-  {!! $salles->appends(['search' => request('search')])->links() !!}
-</div>
-<!-- end pagination -->
+        <div class="pagination justify-content-center">
+        {!! $matieres->appends(['search' => request('search')])->links() !!}
+        </div>
+        <!-- end pagination -->
 
 
       </div>
@@ -230,5 +220,9 @@
 @endsection
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
 @section('js')
+
+
+
 @endsection

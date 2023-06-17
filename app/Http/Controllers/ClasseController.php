@@ -42,7 +42,7 @@ class ClasseController extends Controller
     public function store(Request $request)
     {
         Classe::create($request->all());
-        return to_route('classe.index')->with('succss', 'Classe ajoutée avec succès');
+        return to_route('classe.index')->with('success', 'Classe ajoutée avec succès');
     }
 
     /**

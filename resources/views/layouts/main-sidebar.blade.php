@@ -140,7 +140,7 @@
                     </li>
 
 
-                    <!-- library-->
+                    <!-- departement-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#library-icon">
                             <div class="pull-left"><i class="fas fa-book"></i><span class="right-nav-text">Département</span></div>
@@ -149,6 +149,30 @@
                         </a>
                         <ul id="library-icon" class="collapse" data-parent="#sidebarnav">
                             <li> <a href="{{ route('departement.index') }}">Liste des Départements</a> </li>
+                        </ul>
+                    </li>
+
+                     <!-- salle-->
+                     <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#salle-icon">
+                            <div class="pull-left"><i class="fas fa-book"></i><span class="right-nav-text">Salles</span></div>
+                            <div class="pull-right"><i class="ti-angle-down"></i></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="salle-icon" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="{{ route('salle.index') }}">Liste des Salles</a> </li>
+                        </ul>
+                    </li>
+
+                    <!-- matiere-->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#matiere-icon">
+                            <div class="pull-left"><i class="fas fa-book"></i><span class="right-nav-text">Matieres</span></div>
+                            <div class="pull-right"><i class="ti-angle-down"></i></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="matiere-icon" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="{{ route('matiere.index') }}">Liste des Matieres</a> </li>
                         </ul>
                     </li>
 

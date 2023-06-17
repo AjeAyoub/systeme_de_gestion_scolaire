@@ -5,6 +5,9 @@ use App\Http\Controllers\NiveauController;
 use App\Http\Controllers\ClasseController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\DepartementController;
+use App\Http\Controllers\SalleController;
+use App\Http\Controllers\MatiereController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +28,10 @@ Route::resource('classe', ClasseController::class);
 Route::resource('section', SectionController::class);
 // Département
 Route::resource('departement', DepartementController::class);
+// Salles
+Route::resource('salle', SalleController::class);
+// Matiere
+Route::resource('matiere', MatiereController::class);
 
 
 
