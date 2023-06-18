@@ -7,6 +7,11 @@ use App\Http\Controllers\SectionController;
 use App\Http\Controllers\DepartementController;
 use App\Http\Controllers\SalleController;
 use App\Http\Controllers\MatiereController;
+use App\Http\Controllers\ParenttController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ComptableController;
+use App\Http\Controllers\FraisController;
+use App\Http\Controllers\EtudiantController;
 
 
 /*
@@ -32,6 +37,16 @@ Route::resource('departement', DepartementController::class);
 Route::resource('salle', SalleController::class);
 // Matiere
 Route::resource('matiere', MatiereController::class);
+// Parent
+Route::resource('parentt', ParenttController::class);
+// Admin
+Route::resource('admin', AdminController::class);
+// Comptable
+Route::resource('comptable', ComptableController::class);
+// Frais
+Route::resource('frais', FraisController::class);
+// Etudiant
+Route::resource('etudiant', EtudiantController::class);
 
 
 

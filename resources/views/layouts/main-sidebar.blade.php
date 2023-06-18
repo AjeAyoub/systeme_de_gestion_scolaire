@@ -53,18 +53,43 @@
                         </ul>
                     </li>
 
+                    <!-- admins-->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#admins-menu">
+                            <div class="pull-left"><i class="fas fa-user-graduate"></i></i></i><span
+                                    class="right-nav-text">Admins</span></div>
+                            <div class="pull-right"><i class="ti-angle-down"></i></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="admins-menu" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="{{ route('admin.index') }}">Liste des admins</a> </li>
+                        </ul>
+                    </li>
 
-                    <!-- students-->
+                    <!-- comptable-->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#comptables-menu">
+                            <div class="pull-left"><i class="fas fa-user-graduate"></i></i></i><span
+                                    class="right-nav-text">Comptables</span></div>
+                            <div class="pull-right"><i class="ti-angle-down"></i></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="comptables-menu" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="{{ route('comptable.index') }}">Liste des Comptables</a> </li>
+                        </ul>
+                    </li>
+
+
+                    <!-- Etudiant-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#students-menu">
                             <div class="pull-left"><i class="fas fa-user-graduate"></i></i></i><span
-                                    class="right-nav-text">étudiants</span></div>
+                                    class="right-nav-text">Etudiants</span></div>
                             <div class="pull-right"><i class="ti-angle-down"></i></i></div>
                             <div class="clearfix"></div>
                         </a>
                         <ul id="students-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="#">ajouter étudiant(e)</a> </li>
-                            <li> <a href="calendar-list.html">Liste des Calendrier</a> </li>
+                            <li> <a href="{{ route('etudiant.index') }}">Liste des Etudiants</a> </li>
                         </ul>
                     </li>
 
@@ -93,7 +118,20 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="Parents-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="#">Liste des Parents</a> </li>
+                            <li> <a href="{{ route('parentt.index') }}">Liste des Parents</a> </li>
+                        </ul>
+                    </li>
+
+                    <!-- Frais-->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Frais-menu">
+                            <div class="pull-left"><i class="fas fa-money"></i><span
+                                    class="right-nav-text">Frais</span></div>
+                            <div class="pull-right"><i class="ti-angle-down"></i></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="Frais-menu" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="{{ route('frais.index') }}">Liste des Frais</a> </li>
                         </ul>
                     </li>
 

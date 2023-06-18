@@ -2,7 +2,7 @@
 @section('css')
 
 @section('title')
-  Niveaux
+  Admins
 @stop
 @endsection
 @section('page-header')
@@ -14,7 +14,7 @@
         <div class="col-sm-6 text-right">
             <ol class="breadcrumb pt-0 pr-0 float-right float-sm-right ">
                 <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="default-color">Accueil</a></li>
-                <li class="breadcrumb-item active">Liste des niveaux</li>
+                <li class="breadcrumb-item active">Liste des Admins</li>
             </ol>
         </div>
     </div>
@@ -78,10 +78,10 @@
           @endif
           <!--end message delete-->
           <div class="d-flex">
-            <button id="openFormButton" class="btn btn-primary ml-2">Ajouter Niveau</button>
+            <button id="openFormButton" class="btn btn-primary ml-2">Ajouter Admin</button>
 
             <!-- search form -->
-            <form action="{{ route('niveau.index') }}" method="GET" class="mb-3">
+            <form action="{{ route('admin.index') }}" method="GET" class="mb-3">
               <div class="input-group input-group-sm">
                 <input type="text" class="form-control col-3 ml-auto" placeholder="Recherche..." name="search" value="{{ request('search') }}">
                 <div class="input-group-append">
@@ -99,25 +99,29 @@
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title">Ajouter Niveau</h5>
+                    <h5 class="modal-title">Ajouter Admin</h5>
                     <button type="button" class="close" data-dismiss="modal">
                       <span>&times;</span>
                     </button>
                   </div>
                   <div class="modal-body">
-                    <form action="{{ route('niveau.store') }}" method="POST">
+                    <form action="{{ route('admin.store') }}" method="POST">
                       @csrf
                       <div class="form-group">
-                          <label for="inputName">Nom de Niveau</label>
+                          <label for="inputName">Nom</label>
                           <input name="nom" type="text" class="form-control" id="name">
                       </div>
                       <div class="form-group">
-                          <label for="inputNotes">Remarques</label> 
-                          <textarea name="remarque" type="text" class="form-control" id="inputNotes"></textarea>
+                          <label for="inputName">Prénom</label>
+                          <input name="prenom" type="text" class="form-control" id="prenom">
+                      </div>
+                      <div class="form-group">
+                          <label for="inputPhone">Téléphone</label>
+                          <input name="telephone" type="phone" class="form-control" id="telephone">
                       </div>
                       <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                          <button type="submit" class="btn btn-primary">Ajouter Niveau</button>
+                          <button type="submit" class="btn btn-primary">Ajouter Admin</button>
                       </div>
                     </form>
                   </div>
@@ -137,45 +141,52 @@
             <tr class="text-center">
               <th scope="col">id</th>
               <th scope="col">Nom</th>
-              <th scope="col">Remarque</th>
+              <th scope="col">Prénom</th>
+              <th scope="col">Téléphone</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
-            @foreach ($niveaux as $niveau)
+            @foreach ($admins as $admin)
             <?php $i++; ?>
 
             <tr class="text-center">
               <td>{{ $i }}</td>
-              <td>{{ $niveau->nom }}</td>
-              <td>{{ $niveau->remarque }}</td>
+              <td>{{ $admin->nom }}</td>
+              <td>{{ $admin->prenom }}</td>
+              <td>{{ $admin->telephone }}</td>
               <td>
 
                 <!-- start modal edit form -->
-                <div id="editformModal{{ $niveau->id }}" class="modal fade">
+                <div id="editformModal{{ $admin->id }}" class="modal fade">
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title">Modifier niveau</h5>
+                        <h5 class="modal-title">Modifier Admin</h5>
                         <button type="button" class="close" data-dismiss="modal">
                           <span>&times;</span>
                         </button>
                       </div>
                       <div class="modal-body">
-                        <form action="{{ route('niveau.update', $niveau->id) }}" method="POST">
+                        <form action="{{ route('admin.update', $admin->id) }}" method="POST">
                           @csrf
                           @method('PUT')
                           <div class="form-group">
-                            <label for="inputNom">Nom de Niveau</label>
-                            <input name="nom" type="text" class="form-control" id="inputNom{{ $niveau->id }}" value="{{ $niveau->nom ?? '' }}">
+                            <label for="inputName">Nom</label>
+                            <input name="nom" type="text" class="form-control" id="name{{ $admin->id }}" value="{{ $admin->nom ?? '' }}">
                           </div>
                           <div class="form-group">
-                            <label for="inputNotes">Remarques</label>
-                            <textarea name="remarque" class="form-control" id="inputNotes{{ $niveau->id }}">{{ $niveau->remarque ?? '' }}</textarea>
+                            <label for="inputName">Prénom</label>
+                            <input name="prenom" type="text" class="form-control" id="prenomname{{ $admin->id }}" value="{{ $admin->prenom ?? '' }}">
                           </div>
+                          <div class="form-group">
+                            <label for="inputPhone">Télephone</label>
+                            <input name="telephone" type="phone" class="form-control" id="telephone{{ $admin->id }}" value="{{ $admin->telephone ?? '' }}">
+                          </div>
+                          
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                            <button type="submit" class="btn btn-primary">Modifier niveau</button>
+                            <button type="submit" class="btn btn-primary">Modifier admin</button>
                           </div>
                         </form>
                       </div>
@@ -186,11 +197,11 @@
 
 
                 <div style="display: inline;">
-                  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#editformModal{{ $niveau->id }}" title="Edit">
+                  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#editformModal{{ $admin->id }}" title="Edit">
                     <i class="fa fa-edit"></i>
                   </button>
                 
-                  <form style="display: inline;" action="{{ route('niveau.destroy', $niveau->id) }}" method="POST">
+                  <form style="display: inline;" action="{{ route('admin.destroy', $admin->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger btn-lg">
@@ -207,7 +218,7 @@
 
         <!-- pagination -->
 <div class="pagination justify-content-center">
-  {!! $niveaux->appends(['search' => request('search')])->links() !!}
+  {!! $admins->appends(['search' => request('search')])->links() !!}
 </div>
 <!-- end pagination -->
 
