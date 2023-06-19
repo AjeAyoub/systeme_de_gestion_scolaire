@@ -2,12 +2,11 @@
 @section('css')
 
 @section('title')
-  Frais
+    Frais
 @stop
 @endsection
 @section('page-header')
 <!-- breadcrumb -->
-
 
 <div class="page-title">
     <div class="row">
@@ -33,7 +32,8 @@
         <?php $i = 0; ?>
        
 
-        <!-- table code... -->
+<!-- table code... -->
+
 
         <table class="table table-bordered table-striped">
           <!--message error-->
@@ -65,7 +65,7 @@
                 {{ session('update') }}
               </div>
           </div>
-              @endif
+          @endif
           <!--end message success-->
           <!--message delete-->
           @if(session('delete'))
@@ -107,21 +107,21 @@
                     <form action="{{ route('frais.store') }}" method="POST">
                       @csrf
                       <div class="form-group">
-                          <label for="inputNom">Nom</label>
-                          <input name="nom" type="text" class="form-control" id="inputNom">
-                      </div>
+                        <label for="inputName">Nom</label>
+                        <input name="nom" type="text" class="form-control" id="inputName">
+                      </div>                        
                       <div class="form-group">
-                        <label for="inputMontant">Montant</label>
-                        <input name="montant" type="number" step="0.01" class="form-control" id="inputMontant">
-                       </div>
-                       <div class="form-group">
-                        <label for="inputDate">Date</label>
-                        <input name="date" type="date" class="form-control" id="inputDate">
-                       </div>
-                       <div class="form-group">
-                        <label for="inputDescription">Description</label> 
-                        <textarea name="description" type="text" class="form-control" id="inputDescription"></textarea>
-                       </div>
+                        <label for="inputName">Montant</label>
+                        <input name="montant" type="decimal" class="form-control" id="inputName">
+                      </div>                        
+                      <div class="form-group">
+                        <label for="inputName">Date</label>
+                        <input name="date" type="date" class="form-control" id="inputName">
+                      </div>                        
+                      <div class="form-group">
+                        <label for="inputName">Description</label>
+                        <input name="description" type="text" class="form-control" id="inputName">
+                      </div>                        
                       <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
                           <button type="submit" class="btn btn-primary">Ajouter Frais</button>
@@ -152,84 +152,83 @@
           </thead>
           <tbody>
             @foreach ($fraiss as $frais)
-              <?php $i++; ?>
+            <?php $i++; ?>
 
-              <tr class="text-center">
-                <td>{{ $i }}</td>
-                <td>{{ $frais->nom }}</td>
-                <td>{{ $frais->montant }}</td>
-                <td>{{ $frais->date }}</td>
-                <td>{{ $frais->description }}</td>
-                <td>
+            <tr class="text-center">
+              <td>{{ $i }}</td>
+              <td>{{ $frais->nom }}</td>
+              <td>{{ $frais->montant }}</td>
+              <td>{{ $frais->date }}</td>
+              <td>{{ $frais->description }}</td>
+              <td>
 
-                  <!-- start modal edit form -->
-                  <div id="editformModal{{ $frais->id }}" class="modal fade">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title">Modifier Frais</h5>
-                          <button type="button" class="close" data-dismiss="modal">
-                            <span>&times;</span>
-                          </button>
-                        </div>
-                        <div class="modal-body">
-                          <form action="{{ route('frais.update', $frais->id) }}" method="POST">
-                            @csrf
-                            @method('PUT')
-                            <div class="form-group">
-                                <label for="inputName">Nom</label>
-                                <input name="nom" type="text" class="form-control" id="inputName{{ $frais->id }}" value="{{ $frais->nom ?? '' }}">
-                            </div>
-                            <div class="form-group">
-                                <label for="inputMontant">Montant</label>
-                                <input name="montant" type="number" step="0.01" class="form-control" id="inputMontant{{ $frais->id }}" value="{{ $frais->montant ?? '' }}">
-                            </div>
-                            <div class="form-group">
-                                <label for="inputDate">Date</label>
-                                <input name="date" type="date" class="form-control" id="inputDate{{ $frais->id }}" value="{{ $frais->date ?? '' }}">
-                            </div>
-                            <div class="form-group">
-                              <label for="inputDescription">Description</label>
-                              <textarea name="description" class="form-control" id="inputDescription{{ $frais->id }}">{{ $frais->description ?? '' }}</textarea>
-                            </div>
-
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                              <button type="submit" class="btn btn-primary">Modifier frais</button>
-                            </div>
-                          </form>
-                        </div>
+                <!-- start modal edit form -->
+                <div id="editformModal{{ $frais->id }}" class="modal fade">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title">Modifier Frais</h5>
+                        <button type="button" class="close" data-dismiss="modal">
+                          <span>&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form action="{{ route('frais.update', $frais->id) }}" method="POST">
+                          @csrf
+                          @method('PUT')
+                          <div class="form-group">
+                            <label for="inputName">Nom</label>
+                            <input name="nom" type="text" class="form-control" id="name{{ $frais->id }}" value="{{ $frais->nom ?? '' }}">
+                          </div>
+                          <div class="form-group">
+                            <label for="inputName">Montant</label>
+                            <input name="montant" type="decimal" class="form-control" id="name{{ $frais->id }}" value="{{ $frais->montant ?? '' }}">
+                          </div>
+                          <div class="form-group">
+                            <label for="inputName">Date</label>
+                            <input name="date" type="date" class="form-control" id="name{{ $frais->id }}" value="{{ $frais->date ?? '' }}">
+                          </div>
+                          <div class="form-group">
+                            <label for="inputName">Description</label>
+                            <input name="description" type="text" class="form-control" id="name{{ $frais->id }}" value="{{ $frais->description ?? '' }}">
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                            <button type="submit" class="btn btn-primary">Modifier Frais</button>
+                          </div>
+                        </form>
                       </div>
                     </div>
                   </div>
-                  <!-- end modal edit form -->
+                </div>
+                <!-- end modal edit form -->
 
 
-                  <div style="display: inline;">
-                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#editformModal{{ $frais->id }}" title="Edit">
-                      <i class="fa fa-edit"></i>
+                <div style="display: inline;">
+                  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#editformModal{{ $frais->id }}" title="Edit">
+                    <i class="fa fa-edit"></i>
+                  </button>
+                
+                  <form style="display: inline;" action="{{ route('frais.destroy', $frais->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger btn-lg">
+                      <i class="fa fa-trash"></i>
                     </button>
-                  
-                    <form style="display: inline;" action="{{ route('frais.destroy', $frais->id) }}" method="POST">
-                      @csrf
-                      @method('DELETE')
-                      <button type="submit" class="btn btn-danger btn-lg">
-                        <i class="fa fa-trash"></i>
-                      </button>
-                    </form>
-                  </div>
-                  
-                </td>
-              </tr>
+                  </form>
+                </div>
+                
+              </td>
+            </tr>
             @endforeach
           </tbody>
         </table>
 
         <!-- pagination -->
-        <div class="pagination justify-content-center">
-          {!! $fraiss->appends(['search' => request('search')])->links() !!}
-        </div>
-        <!-- end pagination -->
+<div class="pagination justify-content-center">
+  {!! $fraiss->appends(['search' => request('search')])->links() !!}
+</div>
+<!-- end pagination -->
 
 
       </div>
@@ -240,9 +239,5 @@
 @endsection
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-
 @section('js')
-
-
-
 @endsection

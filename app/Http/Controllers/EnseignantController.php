@@ -2,24 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Etudiant;
-use App\Models\Parentt;
+use App\Models\Enseignant;
+use App\Models\Matiere;
 use App\Models\Niveau;
 use App\Models\Classe;
 use App\Models\Section;
 use Illuminate\Http\Request;
 
-class EtudiantController extends Controller
+class EnseignantController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-
     public function index(Request $request)
     {
 
-        $etudiants = Etudiant::all();
-        $parentts = Parentt::all();
+        $enseignants = Enseignant::all();
+        $matieres = Matiere::all();
         $sections = Section::all();
         $classes = Classe::all();
         $niveaux = Niveau::all();
@@ -27,21 +26,18 @@ class EtudiantController extends Controller
 
         //------------searsh code--------------
         $search = $request->query('search');
-        $etudiants = Etudiant::when($search, function ($query) use ($search) {
+        $enseignants = Enseignant::when($search, function ($query) use ($search) {
             $query->where('nom', 'like', "%$search%")
                 ->orWhere('prenom', 'like', "%$search%")
-                ->orWhere('datenaissance', 'like', "%$search%")
-                ->orWhere('adresse', 'like', "%$search%")
-                ->orWhere('genre', 'like', "%$search%")
-                ->orWhere('nationalite', 'like', "%$search%")
-                ->orWhere('parentt_id', 'like', "%$search%")
+                ->orWhere('telephone', 'like', "%$search%")
+                ->orWhere('matiere_id', 'like', "%$search%")
                 ->orWhere('niveau_id', 'like', "%$search%")
                 ->orWhere('classe_id', 'like', "%$search%")
                 ->orWhere('section_id', 'like', "%$search%");
         })->paginate(6);
         //-----------end searsh code------------
 
-        return view('pages.etudiants', compact('etudiants', 'parentts', 'niveaux', 'classes', 'sections'));
+        return view('pages.enseignants', compact('enseignants', 'matieres', 'niveaux', 'classes', 'sections'));
     }
 
     /**
@@ -58,14 +54,14 @@ class EtudiantController extends Controller
     public function store(Request $request)
     {
 
-        Etudiant::create($request->all());
-        return to_route('etudiant.index')->with('succss', 'Etudiant ajoutée avec succès');
+        Enseignant::create($request->all());
+        return to_route('enseignant.index')->with('succss', 'Enseignant ajoutée avec succès');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Etudiant $etudiant)
+    public function show(Enseignant $enseignant)
     {
         //
     }
@@ -73,7 +69,7 @@ class EtudiantController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Etudiant $etudiant)
+    public function edit(Enseignant $enseignant)
     {
         //
     }
@@ -81,18 +77,18 @@ class EtudiantController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Etudiant $etudiant)
+    public function update(Request $request, Enseignant $enseignant)
     {
-        $etudiant->update($request->all());
-        return to_route('etudiant.index')->with('update', 'Etudiant mise à jour avec succès');
+        $enseignant->update($request->all());
+        return to_route('enseignant.index')->with('update', 'Enseignant mise à jour avec succès');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Etudiant $etudiant)
+    public function destroy(Enseignant $enseignant)
     {
-        $etudiant->delete();
-        return to_route('etudiant.index')->with('delete', 'Etudiant supprimée avec succès');
+        $enseignant->delete();
+        return to_route('enseignant.index')->with('delete', 'Enseignant supprimée avec succès');
     }
 }

@@ -3,7 +3,7 @@
 
 @section('title')
     Etudiants
-    etudiant
+
 @stop
 @endsection
 @section('page-header')
@@ -330,7 +330,7 @@
                 <!-- end modal edit form -->
 
 
-                        <div style="display: inline;">
+                    <div style="display: inline;">
                         <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#editformModal{{ $etudiant->id }}" title="Edit">
                             <i class="fa fa-edit"></i>
                         </button>
@@ -341,8 +341,8 @@
                             <button type="submit" class="btn btn-danger btn-lg">
                             <i class="fa fa-trash"></i>
                             </button>
-                  </form>
-                </div>
+                        </form>
+                    </div>
                 
               </td>
             </tr>

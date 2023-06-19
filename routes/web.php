@@ -12,6 +12,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ComptableController;
 use App\Http\Controllers\FraisController;
 use App\Http\Controllers\EtudiantController;
+use App\Http\Controllers\EnseignantController;
 
 
 /*
@@ -47,6 +48,8 @@ Route::resource('comptable', ComptableController::class);
 Route::resource('frais', FraisController::class);
 // Etudiant
 Route::resource('etudiant', EtudiantController::class);
+// Enseignant
+Route::resource('enseignant', EnseignantController::class);
 
 
 
