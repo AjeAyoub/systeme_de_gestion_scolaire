@@ -171,7 +171,7 @@
                           @method('PUT')
                           <div class="form-group">
                             <label for="inputName">Nom d'Etudiant(e)</label>
-                            <select class="fancyselect form-control" name="niveau_id">
+                            <select class="fancyselect form-control" name="etudiant_id">
                               @foreach ($etudiants as $etudiants)
                                 <option value="{{ $etudiant->id }}" {{ $etudiant->id == $presence->etudiant_id ? 'selected' : '' }}>
                                   {{ $etudiant->nom." ".$etudiant->prenom }}
