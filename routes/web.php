@@ -11,6 +11,7 @@ use App\Http\Controllers\ParenttController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ComptableController;
 use App\Http\Controllers\FraisController;
+use App\Http\Controllers\CoutController;
 use App\Http\Controllers\EtudiantController;
 use App\Http\Controllers\EnseignantController;
 
@@ -46,6 +47,8 @@ Route::resource('admin', AdminController::class);
 Route::resource('comptable', ComptableController::class);
 // Frais
 Route::resource('frais', FraisController::class);
+// couts
+Route::resource('cout', CoutController::class);
 // Etudiant
 Route::resource('etudiant', EtudiantController::class);
 // Enseignant

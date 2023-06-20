@@ -122,16 +122,16 @@
                         </ul>
                     </li>
 
-                    <!-- Frais-->
+                    <!-- Couts-->
                     <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Frais-menu">
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Cout-menu">
                             <div class="pull-left"><i class="fas fa-money"></i><span
-                                    class="right-nav-text">Frais</span></div>
+                                    class="right-nav-text">Couts</span></div>
                             <div class="pull-right"><i class="ti-angle-down"></i></i></div>
                             <div class="clearfix"></div>
                         </a>
-                        <ul id="Frais-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{ route('frais.index') }}">Liste des Frais</a> </li>
+                        <ul id="Cout-menu" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="{{ route('cout.index') }}">Liste des Couts</a> </li>
                         </ul>
                     </li>
 
