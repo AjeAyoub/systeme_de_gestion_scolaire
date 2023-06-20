@@ -134,6 +134,30 @@
                             <li> <a href="{{ route('cout.index') }}">Liste des Couts</a> </li>
                         </ul>
                     </li>
+                    <!-- Evénement-->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#evenement-menu">
+                            <div class="pull-left"><i class="fas fa-money"></i><span
+                                    class="right-nav-text">Evénement</span></div>
+                            <div class="pull-right"><i class="ti-angle-down"></i></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="evenement-menu" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="{{ route('evenement.index') }}">Liste des Evénements</a> </li>
+                        </ul>
+                    </li>
+                    <!-- Présence-->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#presence-menu">
+                            <div class="pull-left"><i class="fas fa-money"></i><span
+                                    class="right-nav-text">Présence</span></div>
+                            <div class="pull-right"><i class="ti-angle-down"></i></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="presence-menu" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="{{ route('presence.index') }}">Liste des Présence</a> </li>
+                        </ul>
+                    </li>
 
                     <!-- Accounts-->
                     <li>

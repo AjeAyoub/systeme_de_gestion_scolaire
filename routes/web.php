@@ -15,6 +15,7 @@ use App\Http\Controllers\CoutController;
 use App\Http\Controllers\EtudiantController;
 use App\Http\Controllers\EnseignantController;
 use App\Http\Controllers\EvenementController;
+use App\Http\Controllers\PresenceController;
 use App\Http\Controllers\PromotionController;
 
 
@@ -57,6 +58,8 @@ Route::resource('etudiant', EtudiantController::class);
 Route::resource('enseignant', EnseignantController::class);
 // Evenement
 Route::resource('evenement', EvenementController::class);
+// Presence
+Route::resource('presence', PresenceController::class);
 // Promotion
 Route::resource('promotion', PromotionController::class);
 
