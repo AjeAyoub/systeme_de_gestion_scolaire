@@ -14,6 +14,8 @@ use App\Http\Controllers\FraisController;
 use App\Http\Controllers\CoutController;
 use App\Http\Controllers\EtudiantController;
 use App\Http\Controllers\EnseignantController;
+use App\Http\Controllers\EvenementController;
+use App\Http\Controllers\PromotionController;
 
 
 /*
@@ -53,6 +55,10 @@ Route::resource('cout', CoutController::class);
 Route::resource('etudiant', EtudiantController::class);
 // Enseignant
 Route::resource('enseignant', EnseignantController::class);
+// Evenement
+Route::resource('evenement', EvenementController::class);
+// Promotion
+Route::resource('promotion', PromotionController::class);
 
 
 
