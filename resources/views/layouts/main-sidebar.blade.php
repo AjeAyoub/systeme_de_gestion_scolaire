@@ -146,6 +146,42 @@
                             <li> <a href="{{ route('evenement.index') }}">Liste des Evénements</a> </li>
                         </ul>
                     </li>
+                    <!-- Facture-->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#facture-menu">
+                            <div class="pull-left"><i class="fas fa-money"></i><span
+                                    class="right-nav-text">Facture</span></div>
+                            <div class="pull-right"><i class="ti-angle-down"></i></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="facture-menu" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="{{ route('facture.index') }}">Liste des Factures</a> </li>
+                        </ul>
+                    </li>
+                    <!-- Cantine-->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#cantine-menu">
+                            <div class="pull-left"><i class="fas fa-money"></i><span
+                                    class="right-nav-text">Cantine</span></div>
+                            <div class="pull-right"><i class="ti-angle-down"></i></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="cantine-menu" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="{{ route('cantine.index') }}">Liste des Factures</a> </li>
+                        </ul>
+                    </li>
+                    <!-- Repas-->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#repa-menu">
+                            <div class="pull-left"><i class="fas fa-money"></i><span
+                                    class="right-nav-text">Facture</span></div>
+                            <div class="pull-right"><i class="ti-angle-down"></i></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="repa-menu" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="{{ route('repa.index') }}">Liste des Repas</a> </li>
+                        </ul>
+                    </li>
                     <!-- Présence-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#presence-menu">
@@ -239,7 +275,7 @@
                     </li>
 
 
-                    <!-- Onlinec lasses-->
+                    <!-- Onlineclasses-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#Onlineclasses-icon">
                             <div class="pull-left"><i class="fas fa-video"></i><span class="right-nav-text">Classes en ligne</span></div>
