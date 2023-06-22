@@ -273,6 +273,28 @@
                             <li> <a href="{{ route('matiere.index') }}">Liste des Matieres</a> </li>
                         </ul>
                     </li>
+                    <!-- Transports-->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#transport-icon">
+                            <div class="pull-left"><i class="fas fa-bus"></i><span class="right-nav-text">Transports</span></div>
+                            <div class="pull-right"><i class="ti-angle-down"></i></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="transport-icon" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="{{ route('transport.index') }}">Liste des Transports</a> </li>
+                        </ul>
+                    </li>
+                    <!-- Paiement_etudiant-->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#paiement_etudiant-icon">
+                            <div class="pull-left"><i class="fas fa-dollar-sign"></i><span class="right-nav-text">Paiement Etudiants</span></div>
+                            <div class="pull-right"><i class="ti-angle-down"></i></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="paiement_etudiant-icon" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="{{ route('paiement_etudiant.index') }}">Liste des Paiements</a> </li>
+                        </ul>
+                    </li>
 
 
                     <!-- Onlineclasses-->

@@ -19,6 +19,8 @@ use App\Http\Controllers\PresenceController;
 use App\Http\Controllers\FactureController;
 use App\Http\Controllers\CantineController;
 use App\Http\Controllers\RepaController;
+use App\Http\Controllers\TransportController;
+use App\Http\Controllers\PaiementetudiantController;
 use App\Http\Controllers\PromotionController;
 
 
@@ -69,6 +71,10 @@ Route::resource('facture', FactureController::class);
 Route::resource('cantine', CantineController::class);
 // Repas
 Route::resource('repa', RepaController::class);
+// Transport
+Route::resource('transport', TransportController::class);
+// Promotion
+Route::resource('paiement_etudiant', PaiementetudiantController::class);
 // Promotion
 Route::resource('promotion', PromotionController::class);
 
