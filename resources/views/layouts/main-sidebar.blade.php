@@ -104,7 +104,7 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="Teachers-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="#">Liste des Enseignants</a> </li>
+                            <li> <a href="{{ route('enseignant.index') }}">Liste des Enseignants</a> </li>
                         </ul>
                     </li>
 
@@ -259,6 +259,17 @@
                         </a>
                         <ul id="salle-icon" class="collapse" data-parent="#sidebarnav">
                             <li> <a href="{{ route('salle.index') }}">Liste des Salles</a> </li>
+                        </ul>
+                    </li>
+                     <!-- Seance-->
+                     <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#seance-icon">
+                            <div class="pull-left"><i class="fas fa-chalkboard"></i><span class="right-nav-text">Seances</span></div>
+                            <div class="pull-right"><i class="ti-angle-down"></i></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="seance-icon" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="{{ route('seance.index') }}">Liste des Seances</a> </li>
                         </ul>
                     </li>
 

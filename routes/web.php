@@ -21,6 +21,7 @@ use App\Http\Controllers\CantineController;
 use App\Http\Controllers\RepaController;
 use App\Http\Controllers\TransportController;
 use App\Http\Controllers\PaiementetudiantController;
+use App\Http\Controllers\SeanceController;
 use App\Http\Controllers\PromotionController;
 
 
@@ -73,8 +74,10 @@ Route::resource('cantine', CantineController::class);
 Route::resource('repa', RepaController::class);
 // Transport
 Route::resource('transport', TransportController::class);
-// Promotion
+// Paiement_etudiant
 Route::resource('paiement_etudiant', PaiementetudiantController::class);
+// Seance
+Route::resource('seance', SeanceController::class);
 // Promotion
 Route::resource('promotion', PromotionController::class);
 
