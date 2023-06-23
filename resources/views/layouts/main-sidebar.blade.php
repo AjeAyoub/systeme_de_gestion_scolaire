@@ -121,6 +121,31 @@
                             <li> <a href="{{ route('parentt.index') }}">Liste des Parents</a> </li>
                         </ul>
                     </li>
+                    
+                    <!-- Examen-->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#examens-menu">
+                            <div class="pull-left"><i class="fas fa-book-open"></i><span
+                                    class="right-nav-text">Examens</span></div>
+                            <div class="pull-right"><i class="ti-angle-down"></i></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="examens-menu" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="#">Liste des Examens</a> </li>
+                        </ul>
+                    </li>
+                    <!-- Controle-->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#controles-menu">
+                            <div class="pull-left"><i class="fas fa-clipboard-check"></i><span
+                                    class="right-nav-text">Controles</span></div>
+                            <div class="pull-right"><i class="ti-angle-down"></i></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="controles-menu" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="{{ route('controle.index') }}">Liste des Controles</a> </li>
+                        </ul>
+                    </li>
 
                     <!-- Couts-->
                     <li>
@@ -222,22 +247,6 @@
                             <li> <a href="weather-icon.html">Icônes météo</a> </li>
                         </ul>
                     </li>
-
-                    <!-- Exams-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Exams-icon">
-                            <div class="pull-left"><i class="fas fa-book-open"></i><span class="right-nav-text">Exams</span></div>
-                            <div class="pull-right"><i class="ti-angle-down"></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="Exams-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="fontawesome-icon.html">font Awesome</a> </li>
-                            <li> <a href="themify-icons.html">Themify icons</a> </li>
-                            <li> <a href="weather-icon.html">Weather icons</a> </li>
-                        </ul>
-                    </li>
-
-
                     <!-- departement-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#library-icon">

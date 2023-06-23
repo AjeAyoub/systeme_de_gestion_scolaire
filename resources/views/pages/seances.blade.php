@@ -193,7 +193,7 @@
               <td>{{ $seance->duree }}</td>
               <td>{{ $seance->enseignant->nom." ".$enseignant->prenom }}</td>
               <td>{{ $seance->matiere->nom }}</td>
-              <td>{{ $seance->salle->nom }}</td>
+              <td>{{ $seance->salle->numero }}</td>
               <td>
 
                 <!-- start modal edit form -->
