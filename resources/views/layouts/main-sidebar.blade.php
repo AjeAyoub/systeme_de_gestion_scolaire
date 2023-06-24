@@ -122,7 +122,7 @@
                         </ul>
                     </li>
                     
-                    <!-- Examen-->
+                    <!-- Exam-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#examens-menu">
                             <div class="pull-left"><i class="fas fa-book-open"></i><span
@@ -131,7 +131,7 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="examens-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="#">Liste des Examens</a> </li>
+                            <li> <a href="{{ route('exam.index') }}">Liste des Examens</a> </li>
                         </ul>
                     </li>
                     <!-- Controle-->
