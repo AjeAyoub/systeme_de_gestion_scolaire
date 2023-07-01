@@ -106,46 +106,68 @@
                   <div class="modal-body">
                     <form action="{{ route('resultat.store') }}" method="POST">
                       @csrf
+                      <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputName">Etudiant(e)</label>
+                                <select class="fancyselect form-control" name="etudiant_id">
+                                <option selected>Sélectionnez Etudiant(e)</option>
+                                @foreach ($etudiants as $etudiant)
+                                    <option value="{{ $etudiant->id }}">{{ $etudiant->prenom." ".$etudiant->nom }}</option>
+                                @endforeach
+                                </select>
+                            </div> 
+                            <div class="form-group">
+                                <label for="inputName">Matière</label>
+                                <select class="fancyselect form-control" name="matiere_id">
+                                    <option selected>Sélectionnez une Matière</option>
+                                    @foreach ($matieres as $matiere)
+                                        <option value="{{ $matiere->id }}">{{ $matiere->nom }}</option>
+                                    @endforeach
+                                </select>
+                            </div>  
+        
+                            <div class="form-group">
+                                <label for="inputName">Note matiere</label>
+                                <input name="note_matiere" type="number" step="0.25" class="form-control" id="note_matiere">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputName">Note Examen</label>
+                                <input name="note_examen" type="number" step="0.25" class="form-control" id="note_examen">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputName">Note Finale</label>
+                                <input name="note_finale" type="number" step="0.25" class="form-control" id="note_finale">
+                            </div>
 
-                      <div class="form-group">
-                        <label for="inputName">Etudiant(e)</label>
-                        <select class="fancyselect form-control" name="etudiant_id">
-                          <option selected>Sélectionnez Etudiant(e)</option>
-                          @foreach ($etudiants as $etudiant)
-                              <option value="{{ $etudiant->id }}">{{ $etudiant->prenom." ".$etudiant->nom }}</option>
-                          @endforeach
-                        </select>
-                    </div> 
-                      <div class="form-group">
-                          <label for="inputName">Matière</label>
-                          <select class="fancyselect form-control" name="matiere_id">
-                            <option selected>Sélectionnez une Matière</option>
-                            @foreach ($matieres as $matiere)
-                                <option value="{{ $matiere->id }}">{{ $matiere->nom }}</option>
-                            @endforeach
-                          </select>
-                      </div>  
- 
-                      <div class="form-group">
-                        <label for="inputName">Note matiere</label>
-                        <input name="note_matiere" type="number" step="0.25" class="form-control" id="note_matiere">
+                            <div class="form-group">
+                                <label for="inputName">Statut</label>
+                                <select name="statut" class="form-control" id="statut">
+                                    <option selected>Séléctionez Statut</option>
+                                    <option value="Réussite">Réussite</option>
+                                    <option value="Non réussite">Non réussite</option>
+                                    <option value="Rattrapage">Rattrapage</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputName">Option</label>
+                                <select name="option" class="form-control" id="option">
+                                    <option selected>Séléctionnez Option</option>
+                                    <option value="Mention très bien">Mention très bien</option>
+                                    <option value="Mention bien">Mention bien</option>
+                                    <option value="Mention assez bien">Mention assez bien</option>
+                                    <option value="Mention passable">Mention passable</option>
+                                    <option value="échoué">échoué</option>
+                                </select>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                <button type="submit" class="btn btn-primary">Ajouter Resultat</button>
+                            </div>
+                        </div>
                     </div>
-                      <div class="form-group">
-                        <label for="inputName">Note Examen</label>
-                        <input name="note_examen" type="number" step="0.25" class="form-control" id="note_examen">
-                    </div>
-                      <div class="form-group">
-                        <label for="inputName">Note Finale</label>
-                        <input name="note_finale" type="number" step="0.25" class="form-control" id="note_finale">
-                    </div>
-                      <div class="form-group">
-                        <label for="inputName">Statut</label>
-                        <input name="statut" type="text" class="form-control" id="statut">
-                    </div>
-                      <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                          <button type="submit" class="btn btn-primary">Ajouter Resultat</button>
-                      </div>
                     </form>
                   </div>
                 </div>
@@ -169,6 +191,7 @@
               <th scope="col">Note Examen</th>
               <th scope="col">Note Finale</th>
               <th scope="col">Statut</th>
+              <th scope="col">option</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
@@ -184,6 +207,7 @@
               <td>{{ $resultat->note_examen }}</td>
               <td>{{ $resultat->note_finale }}</td>
               <td>{{ $resultat->statut }}</td>
+              <td>{{ $resultat->option }}</td>
               <td>
 
                 <!-- start modal edit form -->
@@ -199,47 +223,67 @@
                       <div class="modal-body">
                         <form action="{{ route('resultat.update', $resultat->id) }}" method="POST">
                           @csrf
-                          @method('PUT')
-                          <div class="form-group">
-                            <label for="inputName">etudiant</label>
-                            <select class="fancyselect form-control" name="etudiant_id">
-                              @foreach ($etudiants as $etudiant)
-                                <option value="{{ $etudiant->id }}" {{ $etudiant->id == $etudiant->prenom." ".$etudiant->nom ? 'selected' : '' }}>
-                                  {{ $etudiant->prenom." ".$etudiant->nom }}
-                                </option>                             
-                              @endforeach
-                            </select>
-                          </div> 
-                          <div class="form-group">
-                            <label for="inputName">Matiere</label>
-                            <select class="fancyselect form-control" name="matiere_id">
-                              @foreach ($matieres as $matiere)
-                                <option value="{{ $matiere->id }}" {{ $matiere->id == $resultat->matiere_id ? 'selected' : '' }}>
-                                  {{ $matiere->nom }}
-                                </option>                             
-                              @endforeach
-                            </select>
-                          </div> 
-                          <div class="form-group">
-                            <label>Note Matière</label>
-                            <input name="note_matiere" type="number" step="0.25" class="form-control" id="note_matiere{{ $resultat->id }}" value="{{ $resultat->note_matiere ?? '' }}">
-                          </div>
-                          <div class="form-group">
-                            <label>Note Examen</label>
-                            <input name="note_examen" type="number" step="0.25" class="form-control" id="note_examen{{ $resultat->id }}" value="{{ $resultat->note_examen ?? '' }}">
-                          </div>
-                          <div class="form-group">
-                            <label>Note Finale</label>
-                            <input name="note_finale" type="number" step="0.25" class="form-control" id="note_finale{{ $resultat->id }}" value="{{ $resultat->note_finale ?? '' }}">
-                          </div>
-                          <div class="form-group">
-                            <label>Statut</label>
-                            <input name="statut" type="number" step="0.25" class="form-control" id="statut{{ $resultat->id }}" value="{{ $resultat->statut ?? '' }}">
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                            <button type="submit" class="btn btn-primary">Modifier Resultat</button>
-                          </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                            @method('PUT')
+                                    <div class="form-group">
+                                        <label for="inputName">etudiant</label>
+                                        <select class="fancyselect form-control" name="etudiant_id">
+                                        @foreach ($etudiants as $etudiant)
+                                            <option value="{{ $etudiant->id }}" {{ $etudiant->id == $etudiant->prenom." ".$etudiant->nom ? 'selected' : '' }}>
+                                            {{ $etudiant->prenom." ".$etudiant->nom }}
+                                            </option>                             
+                                        @endforeach
+                                        </select>
+                                    </div> 
+                                    <div class="form-group">
+                                        <label for="inputName">Matiere</label>
+                                        <select class="fancyselect form-control" name="matiere_id">
+                                        @foreach ($matieres as $matiere)
+                                            <option value="{{ $matiere->id }}" {{ $matiere->id == $resultat->matiere_id ? 'selected' : '' }}>
+                                            {{ $matiere->nom }}
+                                            </option>                             
+                                        @endforeach
+                                        </select>
+                                    </div> 
+                                    <div class="form-group">
+                                        <label>Note Matière</label>
+                                        <input name="note_matiere" type="number" step="0.25" class="form-control" id="note_matiere{{ $resultat->id }}" value="{{ $resultat->note_matiere ?? '' }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Note Examen</label>
+                                        <input name="note_examen" type="number" step="0.25" class="form-control" id="note_examen{{ $resultat->id }}" value="{{ $resultat->note_examen ?? '' }}">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Note Finale</label>
+                                        <input name="note_finale" type="number" step="0.25" class="form-control" id="note_finale{{ $resultat->id }}" value="{{ $resultat->note_finale ?? '' }}">
+                                    </div>
+                                        <div class="form-group">
+                                            <label for="inputName">Statut</label>
+                                            <select name="statut" class="form-control" id="statut{{ $resultat->id }}">
+                                                <option value="Réussite" {{ $resultat->statut === 'Réussite' ? 'selected' : '' }}>Réussite</option>
+                                                <option value="Non réussite" {{ $resultat->statut === 'Non réussite' ? 'selected' : '' }}>Non réussite</option>
+                                                <option value="Rattrapage" {{ $resultat->statut === 'Rattrapage' ? 'selected' : '' }}>Rattrapage</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputName">Option</label>
+                                            <select name="option" class="form-control" id="option{{ $resultat->id }}">
+                                                <option value="Mention très bien" {{ $resultat->option === 'Mention très bien' ? 'selected' : '' }}>Mention très bien</option>
+                                                <option value="Mention bien" {{ $resultat->option === 'Mention bien' ? 'selected' : '' }}>Mention bien</option>
+                                                <option value="Mention assez bien" {{ $resultat->option === 'Mention assez bien' ? 'selected' : '' }}>Mention assez bien</option>
+                                                <option value="Mention passable" {{ $resultat->option === 'Mention passable' ? 'selected' : '' }}>Mention passable</option>
+                                                <option value="échoué" {{ $resultat->option === 'échoué' ? 'selected' : '' }}>échoué</option>
+                                            </select>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                            <button type="submit" class="btn btn-primary">Modifier Resultat</button>
+                                        </div>
+                                    </div>
+                                </div>
                         </form>
                       </div>
                     </div>

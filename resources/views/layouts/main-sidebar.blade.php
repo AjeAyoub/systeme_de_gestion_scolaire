@@ -244,6 +244,18 @@
                             <li> <a href="{{ route('note.index')  }}">Liste des Notes</a> </li>
                         </ul>
                     </li>
+                    <!-- Resultats-->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Resultats-menu">
+                            <div class="pull-left"><i class="fas fa-star"></i>                                <span
+                                    class="right-nav-text">Resultats</span></div>
+                            <div class="pull-right"><i class="ti-angle-down"></i></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="Resultats-menu" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="{{ route('resultat.index')  }}">Liste des Resultats</a> </li>
+                        </ul>
+                    </li>
 
                     <!-- Attendance-->
                     <li>
