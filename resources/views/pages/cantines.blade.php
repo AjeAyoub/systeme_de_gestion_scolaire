@@ -119,11 +119,11 @@
 								</div>  
 								<div class="form-group">
 									<label for="inputName">Date</label>
-									<input name="date" type="date" class="form-control" id="name" value="{{ date('Y-m-d') }}">
+									<input name="date" type="date" class="form-control" id="date" value="{{ date('Y-m-d') }}">
 								</div>
 								<div class="form-group">
 									<label for="inputName">Heure</label>
-									<input name="heure" type="time" class="form-control" id="name" value="{{ date('H:i') }}">
+									<input name="heure" type="time" class="form-control" id="heure" value="{{ date('H:i') }}">
 								</div>         
 							</div>
 							<div class="col-md-6">             
@@ -148,7 +148,6 @@
 								<div class="form-group">
 									<label for="inputName">Statut</label>
 									<select name="statut" class="form-control" id="statut">
-										<option selected>Statut</option>
 										<option value="Payé">Payé</option>
 										<option value="Non Payé">Non Payé</option>
 									</select>
@@ -227,11 +226,11 @@
 									</div> 
 									<div class="form-group">
 										<label for="inputName">Date</label>
-										<input name="date" type="date" class="form-control" id="name{{ $cantine->id }}" value="{{ date('Y-m-d') }}">
+										<input name="date" type="date" class="form-control" id="date{{ $cantine->id }}" value="{{ date('Y-m-d') }}">
 									</div>                          
 									<div class="form-group">
 										<label for="inputName">Heure</label>
-										<input name="heure" type="time" class="form-control" id="name{{ $cantine->id }}" value="{{ date('H:i') }}">
+										<input name="heure" type="time" class="form-control" id="heure{{ $cantine->id }}" value="{{ date('H:i') }}">
 									</div> 
 								</div>
 								<div class="col-md-6">                         

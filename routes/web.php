@@ -24,6 +24,8 @@ use App\Http\Controllers\PaiementetudiantController;
 use App\Http\Controllers\SeanceController;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\ControleController;
+use App\Http\Controllers\NoteController;
+use App\Http\Controllers\CompteController;
 use App\Http\Controllers\PromotionController;
 
 
@@ -84,6 +86,10 @@ Route::resource('seance', SeanceController::class);
 Route::resource('exam', ExamController::class);
 // Controle
 Route::resource('controle', ControleController::class);
+// Note
+Route::resource('note', NoteController::class);
+// Compte
+Route::resource('compte', CompteController::class);
 // Promotion
 Route::resource('promotion', PromotionController::class);
 

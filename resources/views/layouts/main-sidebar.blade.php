@@ -229,8 +229,7 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="Accounts-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="calendar.html">Calendrier des événements</a> </li>
-                            <li> <a href="calendar-list.html">Liste des Calendrier</a> </li>
+                            <li> <a href="{{ route('compte.index')  }}">Liste des Comptes</a> </li>
                         </ul>
                     </li>
 
