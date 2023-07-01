@@ -121,6 +121,7 @@
                             <option selected>Role</option>
                             <option value="Super Admin">Super Admin</option>
                             <option value="Admin">Admin</option>
+                            <option value="Enseignant">Enseignant</option>
                             <option value="Comptable">Comptable</option>
                             <option value="Etudiant">Etudiant</option>
                             <option value="Parent">Parent</option>
@@ -191,6 +192,7 @@
                             <select name="role" class="form-control" id="role{{ $compte->id }}">
                                 <option value="Super Admin" {{ $compte->role === 'Super Admin' ? 'selected' : '' }}>Super Admin</option>
                                 <option value="Admin" {{ $compte->role === 'Admin' ? 'selected' : '' }}>Admin</option>
+                                <option value="Enseignant" {{ $compte->role === 'Enseignant' ? 'selected' : '' }}>Enseignant</option>
                                 <option value="Comptable" {{ $compte->role === 'Comptable' ? 'selected' : '' }}>Comptable</option>
                                 <option value="Etudiant" {{ $compte->role === 'Etudiant' ? 'selected' : '' }}>Etudiant</option>
                                 <option value="Parent" {{ $compte->role === 'Parent' ? 'selected' : '' }}>Parent</option>

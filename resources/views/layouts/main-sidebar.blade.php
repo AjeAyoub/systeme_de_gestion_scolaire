@@ -232,6 +232,18 @@
                             <li> <a href="{{ route('compte.index')  }}">Liste des Comptes</a> </li>
                         </ul>
                     </li>
+                    <!-- Notes-->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Notes-menu">
+                            <div class="pull-left"><i class="fas fa-check-circle"></i>                                <span
+                                    class="right-nav-text">Notes</span></div>
+                            <div class="pull-right"><i class="ti-angle-down"></i></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="Notes-menu" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="{{ route('note.index')  }}">Liste des Notes</a> </li>
+                        </ul>
+                    </li>
 
                     <!-- Attendance-->
                     <li>

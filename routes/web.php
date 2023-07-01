@@ -26,6 +26,7 @@ use App\Http\Controllers\ExamController;
 use App\Http\Controllers\ControleController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\CompteController;
+use App\Http\Controllers\ResultatController;
 use App\Http\Controllers\PromotionController;
 
 
@@ -90,6 +91,8 @@ Route::resource('controle', ControleController::class);
 Route::resource('note', NoteController::class);
 // Compte
 Route::resource('compte', CompteController::class);
+// Promotion
+Route::resource('resultat', ResultatController::class);
 // Promotion
 Route::resource('promotion', PromotionController::class);
 
