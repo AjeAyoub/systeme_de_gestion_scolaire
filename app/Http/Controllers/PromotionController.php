@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Promotion;
+use App\Models\Etudiant;
+use App\Models\Niveau;
+use App\Models\Classe;
+use App\Models\Section;
+use GuzzleHttp\Handler\Proxy;
 use Illuminate\Http\Request;
 
 class PromotionController extends Controller
@@ -10,9 +15,30 @@ class PromotionController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $promotions = Promotion::all();
+        $etudiants = Etudiant::all();
+        $sections = Section::all();
+        $classes = Classe::all();
+        $niveaux = Niveau::all();
+
+        //------------searsh code--------------
+        $search = $request->query('search');
+        $promotions = Promotion::when($search, function ($query) use ($search) {
+            $query->where('etudiant_id', 'like', "%$search%")
+                ->orWhere('niveau_id', 'like', "%$search%")
+                ->orWhere('classe_id', 'like', "%$search%")
+                ->orWhere('section_id', 'like', "%$search%")
+                ->orWhere('annee_scolaire', 'like', "%$search%")
+                ->orWhere('to_niveau_id', 'like', "%$search%")
+                ->orWhere('to_classe_id', 'like', "%$search%")
+                ->orWhere('to_section_id', 'like', "%$search%")
+                ->orWhere('nouvel_an_scolaire', 'like', "%$search%");
+        })->paginate(6);
+        //-----------end searsh code------------
+
+        return view('pages.promotions', compact('promotions', 'etudiants','sections', 'niveaux', 'classes'));
     }
 
     /**
@@ -28,7 +54,9 @@ class PromotionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        Promotion::create($request->all());
+        return to_route('promotion.index')->with('succss', 'Promotion ajoutée avec succès');
     }
 
     /**
@@ -52,7 +80,8 @@ class PromotionController extends Controller
      */
     public function update(Request $request, Promotion $promotion)
     {
-        //
+        $promotion->update($request->all());
+        return to_route('promotion.index')->with('update', 'Promotion mise à jour avec succès');
     }
 
     /**
@@ -60,6 +89,7 @@ class PromotionController extends Controller
      */
     public function destroy(Promotion $promotion)
     {
-        //
+        $promotion->delete();
+        return to_route('promotion.index')->with('delete', 'Promotion supprimée avec succès');
     }
 }

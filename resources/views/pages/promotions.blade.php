@@ -106,11 +106,16 @@
             <div class="modal-body">
                 <form action="{{ route('promotion.store') }}" method="POST">
                     @csrf
+                    <div class="form-group">
+                        <label for="inputName">Etudiant(e)</label>
+                        <select class="fancyselect form-control" name="etudiant_id">
+                        <option selected>Sélectionnez Etudiant(e)</option>
+                        @foreach ($etudiants as $etudiant)
+                            <option value="{{ $etudiant->id }}">{{ $etudiant->prenom." ".$etudiant->nom }}</option>
+                        @endforeach
+                        </select>
+                    </div>
                     <div class="row">
-                        <div class="form-group">
-                            <label for="inputName">Nom</label>
-                            <input name="nom" type="text" class="form-control" id="name">
-                        </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="inputName">De Niveau</label>
@@ -139,11 +144,15 @@
                                     @endforeach
                                 </select>
                             </div>
+                            <div class="form-group">
+                                <label for="inputName">Année Scolaire</label>
+                                <input name="annee_scolaire" type="number" class="form-control" id="annee_scolaire" min="1900" max="2100">
+                            </div>                              
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="inputName">Vers Niveau</label>
-                                <select class="fancyselect form-control" name="niveau_id">
+                                <select class="fancyselect form-control" name="to_niveau_id">
                                     <option selected>Sélectionnez un Niveau</option>
                                     @foreach ($niveaux as $niveau)
                                     <option value="{{ $niveau->id }}">{{ $niveau->nom }}</option>
@@ -152,7 +161,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="inputName">Vers Classe</label>
-                                <select class="fancyselect form-control" name="classe_id">
+                                <select class="fancyselect form-control" name="to_classe_id">
                                     <option selected>Sélectionnez une Classe</option>
                                     @foreach ($classes as $classe)
                                     <option value="{{ $classe->id }}">{{ $classe->nom }}</option>
@@ -161,13 +170,18 @@
                             </div>
                             <div class="form-group">
                                 <label for="inputName">Vers Section</label>
-                                <select class="fancyselect form-control" name="section_id">
+                                <select class="fancyselect form-control" name="to_section_id">
                                     <option selected>Sélectionnez une Section</option>
                                     @foreach ($sections as $section)
                                     <option value="{{ $section->id }}">{{ $section->nom }}</option>
                                     @endforeach
                                 </select>
                             </div>
+                            <div class="form-group">
+                                <label for="inputName">Nouvel an Scolaire</label>
+                                <input name="annee_an_scolaire" type="number" class="form-control" id="annee_an_scolaire" min="1900" max="2100">
+                            </div> 
+
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -192,13 +206,15 @@
           <thead class="thead-light">
             <tr class="text-center">
               <th scope="col">id</th>
-              <th scope="col">Nom</th>
+              <th scope="col">Etudiant(e)</th>
               <th scope="col">De Niveau</th>
               <th scope="col">De classe</th>
               <th scope="col">De Section</th>
+              <th scope="col">Année Scomaire</th>
               <th scope="col">Vers Niveau</th>
               <th scope="col">Vers classe</th>
               <th scope="col">Vers Section</th>
+              <th scope="col">Nouvel an Scolaire</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
@@ -208,13 +224,15 @@
 
             <tr class="text-center">
                 <td>{{ $i }}</td>
-                <td>{{ $promotion->nom }}</td>
-                <td>{{ $promotion->de_niveau->nom }}</td>
-                <td>{{ $promotion->de_classe->nom }}</td>
-                <td>{{ $promotion->de_section->nom }}</td>
-                <td>{{ $promotion->vers_niveau->nom }}</td>
-                <td>{{ $promotion->vers_classe->nom }}</td>
-                <td>{{ $promotion->vers_section->nom }}</td>
+                <td>{{ $promotion->etudiant->nom." ".$promotion->etudiant->prenom }}</td>
+                <td>{{ $promotion->niveau->nom }}</td>
+                <td>{{ $promotion->classe->nom }}</td>
+                <td>{{ $promotion->section->nom }}</td>
+                <td>{{ $promotion->annee_scolaire }}</td>
+                <td>{{ $promotion->niveau->nom }}</td>
+                <td>{{ $promotion->classe->nom }}</td>
+                <td>{{ $promotion->section->nom }}</td>
+                <td>{{ $promotion->annee_an_scolaire}}</td>
                 <td>
                 <!-- start modal edit form -->
                 <div id="editformModal{{ $promotion->id }}" class="modal fade">
@@ -229,13 +247,20 @@
                       <div class="modal-body">
                         <form action="{{ route('promotion.update', $promotion->id) }}" method="POST">
                           @csrf
-                            <div class="row">
-                                    @method('PUT')
-                                    <div class="form-group">
-                                        <label for="inputName">Nom</label>
-                                        <input name="nom" type="text" class="form-control" id="inputName{{ $promotion->id }}" value="{{ $promotion->nom ?? '' }}">
-                                    </div>
+                          @method('PUT')
+                          <div class="form-group">
+                            <label for="inputName">etudiant</label>
+                            <select class="fancyselect form-control" name="etudiant_id">
+                            @foreach ($etudiants as $etudiant)
+                                <option value="{{ $etudiant->id }}" {{ $etudiant->id == $etudiant->prenom." ".$etudiant->nom ? 'selected' : '' }}>
+                                {{ $etudiant->prenom." ".$etudiant->nom }}
+                                </option>                             
+                            @endforeach
+                            </select>
+                        </div> 
+                          <div class="row">
                                 <div class="col-md-6">
+                                    
                                     <div class="form-group">
                                         <label for="inputName">De Niveau</label>
                                         <select class="fancyselect form-control" name="niveau_id">
@@ -266,11 +291,16 @@
                                         @endforeach
                                         </select>
                                     </div> 
+                                    <div class="form-group">
+                                        <label for="inputName">Année Scolaire</label>
+                                        <input name="annee_scolaire" type="number" class="form-control" id="annee_scolaire{{ $promotion->id }}" value="{{ $promotion->annee_scolaire ?? '' }}" min="1900" max="2100">
+                                      </div>
+                                      
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="inputName">Vers Niveau</label>
-                                        <select class="fancyselect form-control" name="niveau_id">
+                                        <select class="fancyselect form-control" name="to_niveau_id">
                                         @foreach ($niveaux as $niveau)
                                             <option value="{{ $niveau->id }}" {{ $niveau->id == $promotion->niveau_id ? 'selected' : '' }}>
                                             {{ $niveau->nom }}
@@ -280,7 +310,7 @@
                                     </div> 
                                     <div class="form-group">
                                         <label for="inputName">Vers Classe</label>
-                                        <select class="fancyselect form-control" name="classe_id">
+                                        <select class="fancyselect form-control" name="to_classe_id">
                                         @foreach ($classes as $classe)
                                             <option value="{{ $classe->id }}" {{ $classe->id == $promotion->classe_id ? 'selected' : '' }}>
                                             {{ $classe->nom }}
@@ -290,7 +320,7 @@
                                     </div> 
                                     <div class="form-group">
                                         <label for="inputName">Vers Section</label>
-                                        <select class="fancyselect form-control" name="section_id">
+                                        <select class="fancyselect form-control" name="to_section_id">
                                         @foreach ($sections as $section)
                                             <option value="{{ $section->id }}" {{ $section->id == $promotion->section_id ? 'selected' : '' }}>
                                             {{ $section->nom }}
@@ -298,6 +328,11 @@
                                         @endforeach
                                         </select>
                                     </div> 
+                                    <div class="form-group">
+                                        <label for="inputName">Nouvel an Scolaire</label>
+                                        <input name="annee_an_scolaire" type="number" class="form-control" id="annee_an_scolaire{{ $promotion->id }}" value="{{ $promotion->annee_an_scolaire ?? '' }}" min="1900" max="2100">
+                                      </div>
+                                      
                                 </div>
 
                                     <div class="modal-footer">

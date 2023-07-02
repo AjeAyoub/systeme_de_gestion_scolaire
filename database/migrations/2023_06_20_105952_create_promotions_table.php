@@ -13,10 +13,16 @@ return new class extends Migration
     {
         Schema::create('promotions', function (Blueprint $table) {
             $table->id();
-            $table->string('nom');
+            $table->integer('etudiant_id');
             $table->integer('niveau_id');
             $table->integer('classe_id');
             $table->integer('section_id');
+            $table->integer('annee_scolaire');
+            $table->integer('to_niveau_id');
+            $table->integer('to_classe_id');
+            $table->integer('to_section_id');
+            $table->integer('annee_an_scolaire');
+
             $table->timestamps();
         });
     }
