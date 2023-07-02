@@ -302,7 +302,7 @@
                                         <label for="inputName">Vers Niveau</label>
                                         <select class="fancyselect form-control" name="to_niveau_id">
                                         @foreach ($niveaux as $niveau)
-                                            <option value="{{ $niveau->id }}" {{ $niveau->id == $promotion->niveau_id ? 'selected' : '' }}>
+                                            <option value="{{ $niveau->id }}" {{ $niveau->id == $promotion->to_niveau_id ? 'selected' : '' }}>
                                             {{ $niveau->nom }}
                                             </option>                             
                                         @endforeach
@@ -312,7 +312,7 @@
                                         <label for="inputName">Vers Classe</label>
                                         <select class="fancyselect form-control" name="to_classe_id">
                                         @foreach ($classes as $classe)
-                                            <option value="{{ $classe->id }}" {{ $classe->id == $promotion->classe_id ? 'selected' : '' }}>
+                                            <option value="{{ $classe->id }}" {{ $classe->id == $promotion->to_classe_id ? 'selected' : '' }}>
                                             {{ $classe->nom }}
                                             </option>                             
                                         @endforeach
@@ -322,7 +322,7 @@
                                         <label for="inputName">Vers Section</label>
                                         <select class="fancyselect form-control" name="to_section_id">
                                         @foreach ($sections as $section)
-                                            <option value="{{ $section->id }}" {{ $section->id == $promotion->section_id ? 'selected' : '' }}>
+                                            <option value="{{ $section->id }}" {{ $section->id == $promotion->to_section_id ? 'selected' : '' }}>
                                             {{ $section->nom }}
                                             </option>                             
                                         @endforeach

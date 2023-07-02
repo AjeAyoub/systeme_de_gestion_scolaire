@@ -191,7 +191,7 @@
               <td>{{ $controle->enseignant->nom." ".$controle->enseignant->prenom }}</td>
               <td>{{ $controle->niveau->nom }}</td>
               <td>{{ $controle->classe->nom }}</td>
-              <td>{{ $controle->Section->nom }}</td>
+              <td>{{ $controle->section->nom }}</td>
               <td>
 
                 <!-- start modal edit form -->

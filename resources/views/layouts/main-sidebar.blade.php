@@ -244,6 +244,20 @@
                             <li> <a href="{{ route('note.index')  }}">Liste des Notes</a> </li>
                         </ul>
                     </li>
+
+                     <!-- Emplois-->
+
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Emplois-menu">
+                            <div class="pull-left"><i class="fas fa-calendar-alt"></i>                                <span
+                                    class="right-nav-text">Emplois</span></div>
+                            <div class="pull-right"><i class="ti-angle-down"></i></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="Emplois-menu" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="{{ route('emploi.index')  }}">Liste des Emplois</a> </li>
+                        </ul>
+                    </li>
                     <!-- Resultats-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#Resultats-menu">

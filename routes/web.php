@@ -28,6 +28,7 @@ use App\Http\Controllers\NoteController;
 use App\Http\Controllers\CompteController;
 use App\Http\Controllers\ResultatController;
 use App\Http\Controllers\PromotionController;
+use App\Http\Controllers\EmploiController;
 
 
 /*
@@ -95,6 +96,8 @@ Route::resource('compte', CompteController::class);
 Route::resource('resultat', ResultatController::class);
 // Promotion
 Route::resource('promotion', PromotionController::class);
+// Emploi
+Route::resource('emploi', EmploiController::class);
 
 
 
