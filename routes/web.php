@@ -1,16 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\NiveauController;
 use App\Http\Controllers\ClasseController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\DepartementController;
 use App\Http\Controllers\SalleController;
-use App\Http\Controllers\MatiereController;
+use App\Http\Controllers\MatiereController;                                                                                                                   
 use App\Http\Controllers\ParenttController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ComptableController;
-use App\Http\Controllers\FraisController;
 use App\Http\Controllers\CoutController;
 use App\Http\Controllers\EtudiantController;
 use App\Http\Controllers\EnseignantController;
@@ -29,6 +29,8 @@ use App\Http\Controllers\CompteController;
 use App\Http\Controllers\ResultatController;
 use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\EmploiController;
+use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\CalendarController;
 
 
 /*
@@ -42,70 +44,175 @@ use App\Http\Controllers\EmploiController;
 |
 */
 
-// Niveaux
-Route::resource('niveau', NiveauController::class);
-// Classes
-Route::resource('classe', ClasseController::class);
-// Sections
-Route::resource('section', SectionController::class);
-// Département
-Route::resource('departement', DepartementController::class);
-// Salles
-Route::resource('salle', SalleController::class);
-// Matiere
-Route::resource('matiere', MatiereController::class);
-// Parent
-Route::resource('parentt', ParenttController::class);
-// Admin
-Route::resource('admin', AdminController::class);
-// Comptable
-Route::resource('comptable', ComptableController::class);
-// Frais
-Route::resource('frais', FraisController::class);
-// couts
-Route::resource('cout', CoutController::class);
-// Etudiant
-Route::resource('etudiant', EtudiantController::class);
-// Enseignant
-Route::resource('enseignant', EnseignantController::class);
-// Evenement
-Route::resource('evenement', EvenementController::class);
-// Presence
-Route::resource('presence', PresenceController::class);
-// Facture
-Route::resource('facture', FactureController::class);
-// Cantine
-Route::resource('cantine', CantineController::class);
-// Repas
-Route::resource('repa', RepaController::class);
-// Transport
-Route::resource('transport', TransportController::class);
-// Paiement_etudiant
-Route::resource('paiement_etudiant', PaiementetudiantController::class);
-// Seance
-Route::resource('seance', SeanceController::class);
-// Examen
-Route::resource('exam', ExamController::class);
-// Controle
-Route::resource('controle', ControleController::class);
-// Note
-Route::resource('note', NoteController::class);
-// Compte
-Route::resource('compte', CompteController::class);
-// Promotion
-Route::resource('resultat', ResultatController::class);
-// Promotion
-Route::resource('promotion', PromotionController::class);
-// Emploi
-Route::resource('emploi', EmploiController::class);
-
-
 
 Route::get('/', function (){
     return view('welcome');
 });
 
+Route::get('/getevent', [CalendarController::class, 'getEvent'])->name('getevent');
 
-Route::get('/dashboard', function (){
+// en & ad 
+    // Presence
+    Route::resource('presence', PresenceController::class);
+    // Examen
+    Route::resource('exam', ExamController::class);
+    // Controle
+    Route::resource('controle', ControleController::class);
+    // Note
+    Route::resource('note', NoteController::class);
+    // Resultat
+    Route::resource('resultat', ResultatController::class); 
+
+
+Auth::routes();
+
+// Route enseignant
+Route::middleware(['auth','user-role:superadmin'])->group(function()
+{
+    
+Route::get("/dashboard",function (){
     return view('dashboard');
 })->name('dashboard');
+});
+
+Route::middleware(['auth','user-role:enseignant'])->group(function()
+{
+    Route::get("/enseignant.dashboard",function (){
+        return view('enseignantdashboard');
+    })->name('enseignant.dashboard');
+
+});
+
+
+// Route admin
+Route::middleware(['auth','user-role:admin'])->group(function()
+{
+
+
+    Route::get("/admin.dashboard",function (){
+        return view('admindashboard');
+    })->name('admin.dashboard');
+
+    // Niveaux
+    Route::resource('niveau', NiveauController::class);
+    // Classes
+    Route::resource('classe', ClasseController::class);
+    // Sections
+    Route::resource('section', SectionController::class);
+    // Département
+    Route::resource('departement', DepartementController::class);
+    // Salles
+    Route::resource('salle', SalleController::class);
+    // Matiere
+    Route::resource('matiere', MatiereController::class);
+    // Parent
+    Route::resource('parentt', ParenttController::class);
+    // Comptable
+    Route::resource('comptable', ComptableController::class);
+    // Etudiant
+    Route::resource('etudiant', EtudiantController::class);
+    // Enseignant
+    Route::resource('enseignant', EnseignantController::class);
+    // Evenement
+    Route::resource('evenement', EvenementController::class);
+    // Seance
+    Route::resource('seance', SeanceController::class);
+    // Compte
+    Route::resource('compte', CompteController::class);
+    // Promotion
+    Route::resource('promotion', PromotionController::class);
+    // Emploi
+    Route::resource('emploi', EmploiController::class);
+    //cout
+    Route::resource('cout', CoutController::class);
+
+
+    
+
+});
+
+
+
+// Route comptable
+Route::middleware(['auth','user-role:comptable'])->group(function()
+{
+    Route::get("/comptable.dashboard",function (){
+        return view('comptabledashboard');
+    })->name('comptable.dashboard');
+    // couts
+   //Route::resource('cout', CoutController::class);
+    // Evenement
+    //Route::resource('evenement', EvenementController::class);
+    // Facture
+    Route::resource('facture', FactureController::class);
+    // Paiement_etudiant
+    Route::resource('paiement_etudiant', PaiementetudiantController::class);
+});
+
+// Route etudiant
+Route::middleware(['auth','user-role:etudiant'])->group(function()
+{
+    Route::get("/etudiant.dashboard",function (){
+        return view('etudiantdashboard');
+    })->name('etudiant.dashboard');
+    Route::get('/evenements', function(){
+        return view('pages.evenement_et_pr');
+
+    })->name('evenements');
+
+/*     // Evenement
+    Route::resource('evenement', EvenementController::class);
+    // Presence
+    Route::resource('presence', PresenceController::class);
+    // Examen
+    Route::resource('exam', ExamController::class);
+    // Controle
+    Route::resource('controle', ControleController::class);
+    // Note
+    Route::resource('note', NoteController::class);
+    // Resultat
+    Route::resource('resultat', ResultatController::class);
+    // Emploi
+    Route::resource('emploi', EmploiController::class); */
+   
+});
+
+// Route parent
+Route::middleware(['auth','user-role:parent'])->group(function()
+{
+    Route::get("/parent.dashboard",function (){
+        return view('parentdashboard');
+    })->name('parent.dashboard');
+
+
+    Route::get('/evenements', function(){
+        return view('pages.evenement_et_pr');
+
+    })->name('evenements');
+/*     // couts
+   Route::resource('cout', CoutController::class);
+    // Evenement
+    Route::resource('evenement', EvenementController::class);
+    // Presence
+    Route::resource('presence', PresenceController::class);
+    // Facture
+    Route::resource('facture', FactureController::class);
+    // Paiement_etudiant
+    Route::resource('paiement_etudiant', PaiementetudiantController::class);
+    // Examen
+    Route::resource('exam', ExamController::class);
+    // Controle
+    Route::resource('controle', ControleController::class);
+    // Note
+    Route::resource('note', NoteController::class);
+    // Resultat
+    Route::resource('resultat', ResultatController::class);
+    // Emploi
+    Route::resource('emploi', EmploiController::class); */
+
+   
+});
+
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+

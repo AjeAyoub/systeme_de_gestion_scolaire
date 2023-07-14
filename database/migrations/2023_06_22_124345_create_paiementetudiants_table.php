@@ -13,13 +13,17 @@ return new class extends Migration
     {
         Schema::create('paiementetudiants', function (Blueprint $table) {
             $table->id();
-            $table->integer('etudiant_id');
-            $table->integer('cout_id');
+            $table->unsignedBigInteger('etudiant_id');
+            $table->unsignedBigInteger('cout_id');
             $table->date('date');
             $table->string('statut');
             $table->string('mode');
             $table->string('remarque');
             $table->timestamps();
+
+            $table->foreign('etudiant_id')->references('id')->on('etudiants')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('cout_id')->references('id')->on('couts')->onDelete('cascade')->onUpdate('cascade');
+
         });
     }
 

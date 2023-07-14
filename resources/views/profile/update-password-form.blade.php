@@ -25,6 +25,8 @@
             <x-input id="password_confirmation" type="password" class="mt-1 block w-full" wire:model.defer="state.password_confirmation" autocomplete="new-password" />
             <x-input-error for="password_confirmation" class="mt-2" />
         </div>
+        
+
     </x-slot>
 
     <x-slot name="actions">

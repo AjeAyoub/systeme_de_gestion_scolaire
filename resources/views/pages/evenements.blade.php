@@ -106,59 +106,17 @@
             <div class="modal-body">
                 <form action="{{ route('evenement.store') }}" method="POST">
                     @csrf
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="inputName">Nom</label>
-                                <input name="nom" type="text" class="form-control" id="name">
-                            </div>
-                            <div class="form-group">
-                                <label for="inputName">Date</label>
-                                <input name="date" type="date" class="form-control" id="inputName">
-                            </div>
-                            <div class="form-group">
-                                <label for="inputtelephone">Déscription</label>
-                                <input name="description" type="text" class="form-control" id="inputtelephone">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="inputName">Niveau</label>
-                                <select class="fancyselect form-control" name="niveau_id">
-                                    <option selected>Sélectionnez un Niveau</option>
-                                    @foreach ($niveaux as $niveau)
-                                    <option value="{{ $niveau->id }}">{{ $niveau->nom }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputName">Classe</label>
-                                <select class="fancyselect form-control" name="classe_id">
-                                    <option selected>Sélectionnez une Classe</option>
-                                    @foreach ($classes as $classe)
-                                    <option value="{{ $classe->id }}">{{ $classe->nom }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputName">Section</label>
-                                <select class="fancyselect form-control" name="section_id">
-                                    <option selected>Sélectionnez une Section</option>
-                                    @foreach ($sections as $section)
-                                    <option value="{{ $section->id }}">{{ $section->nom }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputName">Coût</label>
-                                <select class="fancyselect form-control" name="cout_id">
-                                    <option selected>Sélectionnez un Coût</option>
-                                    @foreach ($couts as $cout)
-                                    <option value="{{ $cout->id }}">{{ $cout->nom }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
+                    <div class="form-group">
+                        <label for="inputName">Nom</label>
+                        <input name="title" type="text" class="form-control" id="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName">Début</label>
+                        <input name="start" type="datetime-local" min="2023-01-01T00:00" max="2030-12-31T23:59" class="form-control" id="inputName">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName">Fin</label>
+                        <input name="end" type="datetime-local" min="2023-01-01T00:00" max="2030-12-31T23:59" class="form-control" id="inputName">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
@@ -183,12 +141,8 @@
             <tr class="text-center">
               <th scope="col">id</th>
               <th scope="col">Nom</th>
-              <th scope="col">date</th>
-              <th scope="col">Déscription</th>
-              <th scope="col">Niveau</th>
-              <th scope="col">classe</th>
-              <th scope="col">Section</th>
-              <th scope="col">Coût</th>
+              <th scope="col">Début</th>
+              <th scope="col">Fin</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
@@ -198,13 +152,9 @@
 
             <tr class="text-center">
                 <td>{{ $i }}</td>
-                <td>{{ $evenement->nom }}</td>
-                <td>{{ $evenement->date }}</td>
-                <td>{{ $evenement->description }}</td>
-                <td>{{ $evenement->niveau->nom }}</td>
-                <td>{{ $evenement->classe->nom }}</td>
-                <td>{{ $evenement->section->nom }}</td>
-                <td>{{ $evenement->cout->montant }}</td>
+                <td>{{ $evenement->title }}</td>
+                <td>{{ $evenement->start }}</td>
+                <td>{{ $evenement->end }}</td>
                 <td>
                 <!-- start modal edit form -->
                 <div id="editformModal{{ $evenement->id }}" class="modal fade">
@@ -219,68 +169,22 @@
                       <div class="modal-body">
                         <form action="{{ route('evenement.update', $evenement->id) }}" method="POST">
                           @csrf
-                            <div class="row">
-                                <div class="col-md-6">
-                                    @method('PUT')
-                                    <div class="form-group">
-                                        <label for="inputName">Nom</label>
-                                        <input name="nom" type="text" class="form-control" id="inputName{{ $evenement->id }}" value="{{ $evenement->nom ?? '' }}">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputName">Date</label>
-                                        <input name="prenom" type="date" class="form-control" id="inputName{{ $evenement->id }}" value="{{ $evenement->date ?? '' }}">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputtelephone">Déscription</label>
-                                        <input name="description" type="text" class="form-control" id="inputtelephone{{ $evenement->id }}" value="{{ $evenement->description ?? '' }}">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="inputName">Niveau</label>
-                                        <select class="fancyselect form-control" name="niveau_id">
-                                        @foreach ($niveaux as $niveau)
-                                            <option value="{{ $niveau->id }}" {{ $niveau->id == $evenement->niveau_id ? 'selected' : '' }}>
-                                            {{ $niveau->nom }}
-                                            </option>                             
-                                        @endforeach
-                                        </select>
-                                    </div> 
-                                    <div class="form-group">
-                                        <label for="inputName">Classe</label>
-                                        <select class="fancyselect form-control" name="classe_id">
-                                        @foreach ($classes as $classe)
-                                            <option value="{{ $classe->id }}" {{ $classe->id == $evenement->classe_id ? 'selected' : '' }}>
-                                            {{ $classe->nom }}
-                                            </option>                             
-                                        @endforeach
-                                        </select>
-                                    </div> 
-                                    <div class="form-group">
-                                        <label for="inputName">Section</label>
-                                        <select class="fancyselect form-control" name="section_id">
-                                        @foreach ($sections as $section)
-                                            <option value="{{ $section->id }}" {{ $section->id == $evenement->section_id ? 'selected' : '' }}>
-                                            {{ $section->nom }}
-                                            </option>                             
-                                        @endforeach
-                                        </select>
-                                    </div> 
-                                    <div class="form-group">
-                                        <label for="inputName">Coût</label>
-                                        <select class="fancyselect form-control" name="cout_id">
-                                        @foreach ($couts as $cout)
-                                            <option value="{{ $cout->id }}" {{ $cout->id == $evenement->cout_id ? 'selected' : '' }}>
-                                            {{ $cout->montant }}
-                                            </option>                             
-                                        @endforeach
-                                        </select>
-                                    </div> 
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                                        <button type="submit" class="btn btn-primary">Modifier Evénement</button>
-                                    </div>
-                                </div>
+                            @method('PUT')
+                            <div class="form-group">
+                                <label for="inputName">Nom</label>
+                                <input name="title" type="text" class="form-control" id="inputName{{ $evenement->id }}" value="{{ $evenement->title ?? '' }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputName">Début</label>
+                                <input name="start" type="datetime-local" min="2023-01-01T00:00" max="2030-12-31T23:59" class="form-control" id="inputName{{ $evenement->id }}" value="{{ $evenement->start ?? '' }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputName">Fin</label>
+                                <input name="end" type="datetime-local" min="2023-01-01T00:00" max="2030-12-31T23:59" class="form-control" id="inputName{{ $evenement->id }}" value="{{ $evenement->end ?? '' }}">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                <button type="submit" class="btn btn-primary">Modifier Evénement</button>
                             </div>
                         </form>
 

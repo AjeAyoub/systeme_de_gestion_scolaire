@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 class Etudiant extends Model
 {
@@ -42,6 +43,10 @@ class Etudiant extends Model
     public function section(){
 
         return $this->belongsTo(Section::class); 
+    }
+    public function dashboard(){
+
+        return $this->belongsTo(Dashboard::class); 
     }
 
 }

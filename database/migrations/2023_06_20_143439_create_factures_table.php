@@ -13,12 +13,16 @@ return new class extends Migration
     {
         Schema::create('factures', function (Blueprint $table) {
             $table->id();
-            $table->integer('etudiant_id');
+            $table->unsignedBigInteger('etudiant_id');
             $table->date('date');
-            $table->integer('cout_id');
+            $table->unsignedBigInteger('cout_id');
             $table->string('statut');
             $table->text('description');     
             $table->timestamps();
+
+            $table->foreign('etudiant_id')->references('id')->on('etudiants')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('cout_id')->references('id')->on('couts')->onDelete('cascade')->onUpdate('cascade');
+
         });
     }
 

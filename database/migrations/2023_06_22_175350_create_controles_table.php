@@ -13,12 +13,19 @@ return new class extends Migration
     {
         Schema::create('controles', function (Blueprint $table) {
             $table->id();
-            $table->integer('matiere_id');
-            $table->integer('enseignant_id');
-            $table->integer('niveau_id');
-            $table->integer('classe_id');
-            $table->integer('section_id');
+            $table->unsignedBigInteger('matiere_id');
+            $table->unsignedBigInteger('enseignant_id');
+            $table->unsignedBigInteger('niveau_id');
+            $table->unsignedBigInteger('classe_id');
+            $table->unsignedBigInteger('section_id');
             $table->timestamps();
+
+            $table->foreign('matiere_id')->references('id')->on('matieres')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('enseignant_id')->references('id')->on('enseignants')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('niveau_id')->references('id')->on('niveaux')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('classe_id')->references('id')->on('classes')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('section_id')->references('id')->on('sections')->onDelete('cascade')->onUpdate('cascade');
+
         });
     }
 

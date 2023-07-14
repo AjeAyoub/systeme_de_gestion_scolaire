@@ -16,10 +16,15 @@ return new class extends Migration
             $table->string('nom');
             $table->text('description');
             $table->decimal('duree',8, 2);
-            $table->integer('enseignant_id');
-            $table->integer('matiere_id');
-            $table->integer('salle_id');
+            $table->unsignedBigInteger('enseignant_id');
+            $table->unsignedBigInteger('matiere_id');
+            $table->unsignedBigInteger('salle_id');
             $table->timestamps();
+
+            $table->foreign('enseignant_id')->references('id')->on('enseignants')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('salle_id')->references('id')->on('salles')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('matiere_id')->references('id')->on('matieres')->onDelete('cascade')->onUpdate('cascade');
+
         });
     }
 

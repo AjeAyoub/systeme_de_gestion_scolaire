@@ -3,8 +3,8 @@
         <nav class="admin-header navbar navbar-default col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <!-- logo -->
             <div class="text-left navbar-brand-wrapper">
-                <a class="navbar-brand brand-logo" href="{{ route('dashboard') }}"><img src="assets/images/logo-dark.png" alt=""></a>
-                <a class="navbar-brand brand-logo-mini" href="{{ route('dashboard') }}"><img src="assets/images/logo-icon-dark.png"
+                <a class="navbar-brand brand-logo" href="#"><img src="assets/images/logo-dark.png" alt=""></a>
+                <a class="navbar-brand brand-logo-mini" href="#"><img src="assets/images/logo-icon-dark.png"
                         alt=""></a>
             </div>
             <!-- Top bar left -->
@@ -18,14 +18,17 @@
             <!-- top bar right -->
             <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item fullscreen">
-                    <a id="btnFullscreen" href="#" class="nav-link"><i class="ti-fullscreen"></i></a>
+                    <a id="btnFullscreen" href="#" class="nav-link"><i class="fas fa-expand"></i></a>
                 </li>
+
+                <!--
                 <li class="nav-item dropdown ">
                     <a class="nav-link top-nav" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                         aria-expanded="false">
                         <i class="ti-bell"></i>
                         <span class="badge badge-danger notification-status"> </span>
                     </a>
+                     
                     <div class="dropdown-menu dropdown-menu-right dropdown-big dropdown-notifications">
                         <div class="dropdown-header notifications">
                             <strong>Notifications</strong>
@@ -44,6 +47,7 @@
                                 days</small> </a>
                     </div>
                 </li>
+            
                 <li class="nav-item dropdown ">
                     <a class="nav-link top-nav" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                         aria-expanded="true"> <i class=" ti-view-grid"></i> </a>
@@ -70,17 +74,20 @@
                         </div>
                     </div>
                 </li>
+            -->
                 <li class="nav-item dropdown mr-30">
                     <a class="nav-link nav-pill user-avatar" data-toggle="dropdown" href="#" role="button"
                         aria-haspopup="true" aria-expanded="false">
-                        <img src="assets/images/profile-avatar.jpg" alt="avatar">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3607/3607444.png" alt="avatar">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <div class="dropdown-header">
                             <div class="media">
                                 <div class="media-body">
-                                    <h5 class="mt-0 mb-0">Michael Bean</h5>
-                                    <span>michael-bean@mail.com</span>
+                                    <!-- user & mail -->
+                                    {{ Auth::user()->name }} <br>
+                                    {{ Auth::user()->email }}
+                                    <!-- end  user & mail -->
                                 </div>
                             </div>
                         </div>
@@ -92,7 +99,16 @@
                                 class="badge badge-info">6</span> </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#"><i class="text-info ti-settings"></i>Settings</a>
-                        <a class="dropdown-item" href="#"><i class="text-danger ti-unlock"></i>Logout</a>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                                <i class="text-danger ti-unlock"></i>
+                                {{ __('Logout') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
                     </div>
                 </li>
             </ul>

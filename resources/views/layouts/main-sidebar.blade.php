@@ -52,20 +52,6 @@
                             <li><a href="{{ route('section.index') }}">Liste des sections</a></li>
                         </ul>
                     </li>
-
-                    <!-- admins-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#admins-menu">
-                            <div class="pull-left"><i class="fas fa-user-graduate"></i></i></i><span
-                                    class="right-nav-text">Admins</span></div>
-                            <div class="pull-right"><i class="ti-angle-down"></i></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="admins-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{ route('admin.index') }}">Liste des admins</a> </li>
-                        </ul>
-                    </li>
-
                     <!-- comptable-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#comptables-menu">
@@ -90,12 +76,13 @@
                         </a>
                         <ul id="students-menu" class="collapse" data-parent="#sidebarnav">
                             <li> <a href="{{ route('etudiant.index') }}">Liste des Etudiants</a> </li>
+                            <li> <a href="{{ route('promotion.index') }}">promouvoir les étudiants</a> </li>
                         </ul>
                     </li>
 
 
 
-                    <!-- Teachers-->
+                    <!-- Enseignant-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#Teachers-menu">
                             <div class="pull-left"><i class="fas fa-chalkboard-teacher"></i></i><span
@@ -183,43 +170,6 @@
                             <li> <a href="{{ route('facture.index') }}">Liste des Factures</a> </li>
                         </ul>
                     </li>
-                    <!-- Cantine-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#cantine-menu">
-                            <div class="pull-left"><i class="fas fa-money"></i><span
-                                    class="right-nav-text">Cantine</span></div>
-                            <div class="pull-right"><i class="ti-angle-down"></i></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="cantine-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{ route('cantine.index') }}">Liste des Factures</a> </li>
-                        </ul>
-                    </li>
-                    <!-- Repas-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#repa-menu">
-                            <div class="pull-left"><i class="fas fa-money"></i><span
-                                    class="right-nav-text">Facture</span></div>
-                            <div class="pull-right"><i class="ti-angle-down"></i></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="repa-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{ route('repa.index') }}">Liste des Repas</a> </li>
-                        </ul>
-                    </li>
-                    <!-- Présence-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#presence-menu">
-                            <div class="pull-left"><i class="fas fa-money"></i><span
-                                    class="right-nav-text">Présence</span></div>
-                            <div class="pull-right"><i class="ti-angle-down"></i></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="presence-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{ route('presence.index') }}">Liste des Présence</a> </li>
-                        </ul>
-                    </li>
-
                     <!-- Accounts-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#Accounts-menu">
@@ -270,20 +220,6 @@
                             <li> <a href="{{ route('resultat.index')  }}">Liste des Resultats</a> </li>
                         </ul>
                     </li>
-
-                    <!-- Attendance-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Attendance-icon">
-                            <div class="pull-left"><i class="fas fa-calendar-alt"></i><span class="right-nav-text">Présence</span></div>
-                            <div class="pull-right"><i class="ti-angle-down"></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="Attendance-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="fontawesome-icon.html">police génial</a> </li>
-                            <li> <a href="themify-icons.html">Thémifier les icônes</a> </li>
-                            <li> <a href="weather-icon.html">Icônes météo</a> </li>
-                        </ul>
-                    </li>
                     <!-- departement-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#library-icon">
@@ -330,17 +266,7 @@
                             <li> <a href="{{ route('matiere.index') }}">Liste des Matieres</a> </li>
                         </ul>
                     </li>
-                    <!-- Transports-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#transport-icon">
-                            <div class="pull-left"><i class="fas fa-bus"></i><span class="right-nav-text">Transports</span></div>
-                            <div class="pull-right"><i class="ti-angle-down"></i></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="transport-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{ route('transport.index') }}">Liste des Transports</a> </li>
-                        </ul>
-                    </li>
+                   
                     <!-- Paiement_etudiant-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#paiement_etudiant-icon">

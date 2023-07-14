@@ -9,7 +9,7 @@ class CompteController extends Controller
 {
     public function index(Request $request)
     {
-        $comptes = Compte::paginate(6);
+        $comptes = Compte::all();
 
         $search = $request->query('search');
         

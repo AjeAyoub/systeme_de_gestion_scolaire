@@ -14,8 +14,12 @@ return new class extends Migration
         Schema::create('salles', function (Blueprint $table) {
             $table->id();
             $table->integer('numero');
-            $table->integer('departement_id');
+            $table->unsignedBigInteger('departement_id');
             $table->timestamps();
+
+            
+            $table->foreign('departement_id')->references('id')->on('departements')->onDelete('cascade')->onUpdate('cascade');
+           
         });
     }
 

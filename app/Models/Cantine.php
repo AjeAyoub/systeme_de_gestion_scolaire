@@ -14,10 +14,11 @@ class Cantine extends Model
     public function etudiant(){
         return $this->belongsTo(Etudiant::class);
     }
-    public function cout(){
-        return $this->belongsTo(Cout::class);
-    }
     public function repa(){
         return $this->belongsTo(Repa::class);
     }
+    public function cout(){
+        return $this->belongsTo(Cout::class);
+    }
+  
 }

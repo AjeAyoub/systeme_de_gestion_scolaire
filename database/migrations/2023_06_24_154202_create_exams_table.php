@@ -13,11 +13,15 @@ return new class extends Migration
     {
         Schema::create('exams', function (Blueprint $table) {
             $table->id();
-            $table->integer('matiere_id');
-            $table->integer('salle_id');
+            $table->unsignedBigInteger('matiere_id');
+            $table->unsignedBigInteger('salle_id');
             $table->date('date');
             $table->time('heure');
             $table->timestamps();
+
+            $table->foreign('matiere_id')->references('id')->on('matieres')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('salle_id')->references('id')->on('salles')->onDelete('cascade')->onUpdate('cascade');
+
         });
     }
 

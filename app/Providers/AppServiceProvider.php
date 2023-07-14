@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
+use App\Repository\EtudiantPromotionRepository;
+use App\Repository\EtudiantPromotionRepositoryInterface;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +15,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind(
+            EtudiantPromotionRepositoryInterface::class,
+            EtudiantPromotionRepository::class
+        );
     }
 
     /**

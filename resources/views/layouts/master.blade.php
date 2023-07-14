@@ -9,6 +9,8 @@
     <meta name="author" content="potenzaglobalsolutions.com" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     @include('layouts.head')
+    <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
+
 </head>
 
 <body>
@@ -27,8 +29,18 @@
 
         @include('layouts.main-header')
 
-        @include('layouts.main-sidebar')
+        @if (auth()->user()->role == 'admin')
+            @include('layouts.admin-sidebar')
+        @elseif (auth()->user()->role == 'enseignant')
+            @include('layouts.enseignant-sidebar')
+        @elseif (auth()->user()->role == 'comptable')
+            @include('layouts.comptable-sidebar')
+        @elseif (auth()->user()->role == 'etudiant')
+            @include('layouts.etudiant-sidebar')
+        @elseif (auth()->user()->role == 'parent')
+            @include('layouts.parent-sidebar')
 
+        @endif
         <!--=================================
  Main content -->
         <!-- main-content -->
@@ -50,12 +62,14 @@
     </div>
     </div>
 
-    <!--=================================
- footer -->
- 
+    <!--=================================footer -->
+
 
     @include('layouts.footer-scripts')
 
+    <!--================================= toastr-->
+
+    <script src="{{ asset('js/toastr.min.js') }}"></script>
 
 </body>
 

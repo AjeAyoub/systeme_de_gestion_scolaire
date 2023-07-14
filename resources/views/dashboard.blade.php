@@ -46,88 +46,144 @@
             </div>
             <!-- widgets -->
             <div class="row">
-                <div class="col-xl-3 col-lg-6 col-md-6 mb-30">
+                <div class="col-xl-4 col-lg-6 col-md-6 mb-30">
                     <div class="card card-statistics h-100">
                         <div class="card-body">
                             <div class="clearfix">
                                 <div class="float-left">
                                     <span class="text-danger">
-                                        <i class="fa fa-bar-chart-o highlight-icon" aria-hidden="true"></i>
+                                        <i class="fas fa-user-graduate highlight-icon" aria-hidden="true"></i>
                                     </span>
                                 </div>
                                 <div class="float-right text-right">
-                                    <p class="card-text text-dark">Visitors</p>
-                                    <h4>65,650</h4>
+                                    <p class="card-text text-dark">Etudiants</p>
+                                    <h4>{{ App\Models\Etudiant::count() }}</h4>
                                 </div>
                             </div>
                             <p class="text-muted pt-3 mb-0 mt-2 border-top">
-                                <i class="fa fa-exclamation-circle mr-1" aria-hidden="true"></i> 81% lower
-                                growth
+                                <i class="fa fa-exclamation-circle mr-1" aria-hidden="true"></i> Nombre total d'étudiants
                             </p>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-6 col-md-6 mb-30">
+                <div class="col-xl-4 col-lg-6 col-md-6 mb-30">
                     <div class="card card-statistics h-100">
                         <div class="card-body">
                             <div class="clearfix">
                                 <div class="float-left">
                                     <span class="text-warning">
-                                        <i class="fa fa-shopping-cart highlight-icon" aria-hidden="true"></i>
+                                        <i class="fas fa-user-shield highlight-icon" aria-hidden="true"></i>
                                     </span>
                                 </div>
                                 <div class="float-right text-right">
-                                    <p class="card-text text-dark">Orders</p>
-                                    <h4>656</h4>
+                                    <p class="card-text text-dark">Admins</p>
+                                    <h4>{{ App\Models\Admin::count() }}</h4>
                                 </div>
                             </div>
                             <p class="text-muted pt-3 mb-0 mt-2 border-top">
-                                <i class="fa fa-bookmark-o mr-1" aria-hidden="true"></i> Total sales
+                                <i class="fa fa-exclamation-circle mr-1" aria-hidden="true"></i> Nombre total d'admins
                             </p>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-6 col-md-6 mb-30">
+                <div class="col-xl-4 col-lg-6 col-md-6 mb-30">
                     <div class="card card-statistics h-100">
                         <div class="card-body">
                             <div class="clearfix">
                                 <div class="float-left">
                                     <span class="text-success">
-                                        <i class="fa fa-dollar highlight-icon" aria-hidden="true"></i>
+                                        <i class="fas fa-chalkboard-teacher highlight-icon" aria-hidden="true"></i>
                                     </span>
                                 </div>
                                 <div class="float-right text-right">
-                                    <p class="card-text text-dark">Revenue</p>
-                                    <h4>$65656</h4>
+                                    <p class="card-text text-dark">Enseignant</p>
+                                    <h4>{{ App\Models\Enseignant::count() }}</h4>
                                 </div>
                             </div>
                             <p class="text-muted pt-3 mb-0 mt-2 border-top">
-                                <i class="fa fa-calendar mr-1" aria-hidden="true"></i> Sales Per Week
+                                <i class="fa fa-exclamation-circle mr-1" aria-hidden="true"></i> Nombre total d'enseignant
                             </p>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-6 col-md-6 mb-30">
+                <div class="col-xl-6 col-lg-6 col-md-6 mb-30">
+                    <div class="card card-statistics h-100">
+                        <div class="card-body">
+                            <div class="clearfix">
+                                <div class="float-left">
+                                    <span class="text-info">
+                                        <i class="fas fa-user highlight-icon" aria-hidden="true"></i>
+                                    </span>
+                                </div>
+                                <div class="float-right text-right">
+                                    <p class="card-text text-dark">Parents</p>
+                                    <h4>{{ App\Models\Parentt::count() }}</h4>
+                                </div>
+                            </div>
+                            <p class="text-muted pt-3 mb-0 mt-2 border-top">
+                                <i class="fa fa-exclamation-circle mr-1" aria-hidden="true"></i>Nombre total des parents
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 mb-30">
                     <div class="card card-statistics h-100">
                         <div class="card-body">
                             <div class="clearfix">
                                 <div class="float-left">
                                     <span class="text-primary">
-                                        <i class="fa fa-twitter highlight-icon" aria-hidden="true"></i>
+                                        <i class="fas fa-money-check-alt highlight-icon" aria-hidden="true"></i>
                                     </span>
                                 </div>
                                 <div class="float-right text-right">
-                                    <p class="card-text text-dark">Followers</p>
-                                    <h4>62,500+</h4>
+                                    <p class="card-text text-dark">Comptables</p>
+                                    <h4>{{ App\Models\Comptable::count() }}</h4>
                                 </div>
                             </div>
                             <p class="text-muted pt-3 mb-0 mt-2 border-top">
-                                <i class="fa fa-repeat mr-1" aria-hidden="true"></i> Just Updated
+                                <i class="fa fa-exclamation-circle mr-1" aria-hidden="true"></i> Nombre Total des Comptables
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Emploi du temps-->
+                <div class="container">
+                    <h1>Timetable</h1>
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Niveau</th>
+                                <th>Classe</th>
+                                <th>Section</th>
+                                <th>Enseignant</th>
+                                <th>Département</th>
+                                <th>Salle</th>
+                                <th>Jour de la semaine</th>
+                                <th>Heure de début</th>
+                                <th>Heure de fin</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                <tr>
+                                    <td>n</td>
+                                    <td>classe</td>
+                                    <td>section</td>
+                                    <td>ensei</td>
+                                    <td>n</td>
+                                    <td>classe</td>
+                                    <td>section</td>
+                                    <td>ensei</td>
+                                    <td>n</td>
+                                    <td>classe</td>
+                                    <td>section</td>
+                                    <td>ensei</td>
+                                </tr>
+                        </tbody>
+                    </table>
+                </div>
             <!-- Orders Status widgets-->
             <div class="row">
                 <div class="col-xl-4 mb-30">
@@ -584,18 +640,18 @@
                                 </a>
                                 <div id="external-events" class="m-t-20">
                                     <br>
-                                    <p class="text-muted">Drag and drop your event or click in the calendar</p>
+                                    <p class="text-muted">Faites glisser et deposez votre evenement ou cliquez dans le calendrier</p>
                                     <div class="external-event bg-success fc-event">
-                                        <i class="fa fa-circle mr-2 vertical-middle"></i>New Theme Release
+                                        <i class="fa fa-circle mr-2 vertical-middle"></i>Nouvelle version de theme
                                     </div>
                                     <div class="external-event bg-info fc-event">
-                                        <i class="fa fa-circle mr-2 vertical-middle"></i>My Event
+                                        <i class="fa fa-circle mr-2 vertical-middle"></i>Mon evenement
                                     </div>
                                     <div class="external-event bg-warning fc-event">
-                                        <i class="fa fa-circle mr-2 vertical-middle"></i>Meet manager
+                                        <i class="fa fa-circle mr-2 vertical-middle"></i>Rencontrer le directeur
                                     </div>
                                     <div class="external-event bg-danger fc-event">
-                                        <i class="fa fa-circle mr-2 vertical-middle"></i>Create New theme
+                                        <i class="fa fa-circle mr-2 vertical-middle"></i>Créer nouveau thème
                                     </div>
                                 </div>
                             </div>

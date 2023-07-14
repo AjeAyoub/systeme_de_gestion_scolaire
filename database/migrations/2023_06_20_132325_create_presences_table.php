@@ -13,9 +13,12 @@ return new class extends Migration
     {
         Schema::create('presences', function (Blueprint $table) {
             $table->id();
-            $table->integer('etudiant_id');
+            $table->unsignedBigInteger('etudiant_id');
             $table->text('raison_absence');
             $table->timestamps();
+
+            $table->foreign('etudiant_id')->references('id')->on('etudiants')->onDelete('cascade')->onUpdate('cascade');
+
         });
     }
 

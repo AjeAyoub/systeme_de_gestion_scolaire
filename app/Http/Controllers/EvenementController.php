@@ -27,13 +27,10 @@ class EvenementController extends Controller
         //------------searsh code--------------
         $search = $request->query('search');
         $evenements = Evenement::when($search, function ($query) use ($search) {
-            $query->where('nom', 'like', "%$search%")
-                ->orWhere('date', 'like', "%$search%")
-                ->orWhere('description', 'like', "%$search%")
-                ->orWhere('niveau_id', 'like', "%$search%")
-                ->orWhere('classe_id', 'like', "%$search%")
-                ->orWhere('section_id', 'like', "%$search%")
-                ->orWhere('cout_id', 'like', "%$search%");
+            $query->where('title', 'like', "%$search%")
+                ->orWhere('start', 'like', "%$search%")
+                ->orWhere('end', 'like', "%$search%");
+
         })->paginate(6);
         //-----------end searsh code------------
 

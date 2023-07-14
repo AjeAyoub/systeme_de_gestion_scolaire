@@ -13,10 +13,14 @@ return new class extends Migration
     {
         Schema::create('notes', function (Blueprint $table) {
             $table->id();
-            $table->integer('etudiant_id');
-            $table->integer('matiere_id');
+            $table->unsignedBigInteger('etudiant_id');
+            $table->unsignedBigInteger('matiere_id');
             $table->decimal('note', 8, 2);
             $table->timestamps();
+
+            $table->foreign('matiere_id')->references('id')->on('matieres')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('etudiant_id')->references('id')->on('etudiants')->onDelete('cascade')->onUpdate('cascade');
+
         });
     }
 

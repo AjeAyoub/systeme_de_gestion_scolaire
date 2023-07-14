@@ -14,8 +14,11 @@ return new class extends Migration
         Schema::create('classes', function (Blueprint $table) {
             $table->id();
             $table->string('nom');
-            $table->integer('niveau_id');
+            $table->unsignedBigInteger('niveau_id');
             $table->timestamps();
+
+            $table->foreign('niveau_id')->references('id')->on('niveaux')->onDelete('cascade')->onUpdate('cascade');
+
         });
     }
 
