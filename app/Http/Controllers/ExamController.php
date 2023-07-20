@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Exam;
 use App\Models\Matiere;
-use App\Models\Salle;
+use App\Models\Etudiant;
 use Illuminate\Http\Request;
 
 class ExamController extends Controller
@@ -16,20 +16,23 @@ class ExamController extends Controller
     {
         $exams = Exam::all();
         $matieres = Matiere::all();
-        $salles = Salle::all();
+        $etudiants = Etudiant::all();
 
 
         //------------searsh code--------------
         $search = $request->query('search');
         $exams = Exam::when($search, function ($query) use ($search) {
-            $query->where('matiere_id', 'like', "%$search%")
-                ->orWhere('salle_id', 'like', "%$search%")
-                ->orWhere('date', 'like', "%$search%")
-                ->orWhere('heure', 'like', "%$search%");
+            $query->join('etudiants', 'exams.etudiant_id', '=', 'etudiants.id')
+                  ->join('matieres', 'exams.matiere_id', '=', 'matieres.id')
+                  ->where('etudiants.nom', 'like', "%$search%")
+                  ->orWhere('matieres.nom', 'like', "%$search%")
+                  ->orWhere('note_exam', 'like', "%$search%")
+                  ->orWhere('coefficient', 'like', "%$search%")
+                  ->orWhere('remarque', 'like', "%$search%");
         })->paginate(6);
         //-----------end searsh code------------
 
-        return view('pages.exams', compact('exams', 'matieres', 'salles'));
+        return view('pages.exams', compact('exams', 'matieres', 'etudiants'));
     }
 
     /**
@@ -48,6 +51,16 @@ class ExamController extends Controller
 
         Exam::create($request->all());
         return to_route('exam.index')->with('succss', 'Exam ajoutée avec succès');
+    }
+
+
+    public function examsEtPr()
+    {
+        $exams = Exam::all();
+        $matieres = Matiere::all();
+        $etudiants = Etudiant::all();
+    
+        return view('pages.exams_et_pr', compact('exams', 'matieres', 'etudiants'));
     }
 
     /**

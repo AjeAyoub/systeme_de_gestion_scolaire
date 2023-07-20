@@ -14,10 +14,14 @@ return new class extends Migration
         Schema::create('presences', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('etudiant_id');
-            $table->text('raison_absence');
+            $table->unsignedBigInteger('matiere_id');
+            $table->dateTime('start');
+            $table->dateTime('end');
+            $table->string('raison_absence');
             $table->timestamps();
 
             $table->foreign('etudiant_id')->references('id')->on('etudiants')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('matiere_id')->references('id')->on('matieres')->onDelete('cascade')->onUpdate('cascade');
 
         });
     }

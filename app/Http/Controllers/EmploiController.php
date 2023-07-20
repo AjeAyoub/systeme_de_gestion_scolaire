@@ -6,10 +6,10 @@ use App\Models\Emploi;
 use App\Models\Niveau;
 use App\Models\Classe;
 use App\Models\Section;
-use App\Models\Enseignant;
-use App\Models\Departement;
-use App\Models\Salle;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+
 
 class EmploiController extends Controller
 {
@@ -22,27 +22,33 @@ class EmploiController extends Controller
         $niveaux = Niveau::all();
         $classes = Classe::all();
         $sections = Section::all();
-        $enseignants = Enseignant::all();
-        $departements = Departement::all();
-        $salles = Salle::all();
+
+       
 
         //------------searsh code--------------
         $search = $request->query('search');
         $emplois = Emploi::when($search, function ($query) use ($search) {
-            $query->where('departement_id', 'like', "%$search%")
-                ->orWhere('enseignant_id', 'like', "%$search%")
-                ->orWhere('niveau_id', 'like', "%$search%")
-                ->orWhere('classe_id', 'like', "%$search%")
-                ->orWhere('section_id', 'like', "%$search%")
-                ->orWhere('salle_id', 'like', "%$search%")
-                ->orWhere('jour_semaine', 'like', "%$search%")
-                ->orWhere('heure_debut', 'like', "%$search%")
-                ->orWhere('heure_fin', 'like', "%$search%");
+            $query->where('niveau_id', 'like', "%$search%")
+            ->orWhere('classe_id', 'like', "%$search%")
+            ->orWhere('section_id', 'like', "%$search%")
+            ->orWhere('file', 'like', "%$search%");
+
         })->paginate(6);
         //-----------end searsh code------------
 
-        return view('pages.emplois', compact('emplois', 'departements', 'enseignants', 'sections', 'niveaux', 'classes', 'salles'));
+        return view('pages.emplois', compact('emplois', 'sections', 'niveaux', 'classes'));
     }
+
+    public function emploisEtPr()
+    {
+        $emplois = Emploi::all();
+        $niveaux = Niveau::all();
+        $classes = Classe::all();
+        $sections = Section::all();
+    
+        return view('pages.emplois_et_pr', compact('emplois', 'niveaux', 'classes', 'sections'));
+    }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -55,12 +61,39 @@ class EmploiController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+
     public function store(Request $request)
     {
-
-        Emploi::create($request->all());
-        return to_route('emploi.index')->with('succss', 'Emploi ajoutée avec succès');
-    }
+        
+            $request->validate([
+                'niveau_id' => 'required|exists:niveaux,id',
+                'classe_id' => 'required|exists:classes,id',
+                'section_id' => 'required|exists:sections,id',
+                'file' => 'required|mimes:pdf|max:2048',
+            ]);
+        
+            if ($request->hasFile('file')) {
+                $pdfFile = $request->file('file');
+        
+                // Store the PDF file in the storage directory
+                $pdfPath = $pdfFile->store('pdf', 'public');
+        
+                // Create a new Emploi instance and set the attributes
+                $emploi = new Emploi;
+                $emploi->niveau_id = $request->niveau_id;
+                $emploi->classe_id = $request->classe_id;
+                $emploi->section_id = $request->section_id;
+                $emploi->file = $pdfPath;
+        
+                // Save the Emploi instance to the database
+                $emploi->save();
+        
+                return redirect()->back()->with('success', 'Emploi ajoutée avec succès.');
+            }
+        
+            return redirect()->back()->with('error', 'Failed to Échec du téléchargement Emploi');
+        
+    }        
 
     /**
      * Display the specified resource.

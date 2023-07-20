@@ -14,15 +14,10 @@ return new class extends Migration
         Schema::create('resultats', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('etudiant_id');
-            $table->unsignedBigInteger('matiere_id');
-            $table->decimal('note_matiere', 8, 2);
-            $table->decimal('note_examen', 8, 2);
-            $table->decimal('note_finale', 8, 2);
-            $table->string('statut');
-            $table->string('option');
+            $table->string('file')->nullable();
             $table->timestamps();
 
-            $table->foreign('matiere_id')->references('id')->on('matieres')->onDelete('cascade')->onUpdate('cascade');
+
             $table->foreign('etudiant_id')->references('id')->on('etudiants')->onDelete('cascade')->onUpdate('cascade');
 
         });

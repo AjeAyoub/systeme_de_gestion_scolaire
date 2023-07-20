@@ -23,7 +23,7 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="examens-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{ route('exam.index') }}">Liste des Examens</a> </li>
+                            <li> <a href="{{ route('exams') }}">Liste des Examens</a> </li>
                         </ul>
                     </li>
                     <!-- Controle-->
@@ -35,7 +35,7 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="controles-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{ route('controle.index') }}">Liste des Controles</a> </li>
+                            <li> <a href="{{ route('controles') }}">Liste des Controles</a> </li>
                         </ul>
                     </li>
                     <!-- Evénement-->
@@ -59,7 +59,7 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="presence-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{ route('presence.index') }}">Liste des Présence</a> </li>
+                            <li> <a href="{{ route('presences') }}">Liste des Présence</a> </li>
                         </ul>
                     </li>
                     <!-- Notes-->
@@ -85,7 +85,7 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="Emplois-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{ route('emploi.index')  }}">Liste des Emplois</a> </li>
+                            <li> <a href="{{ route('emplois')  }}">Liste des Emplois</a> </li>
                         </ul>
                     </li>
                     <!-- Resultats-->
@@ -97,7 +97,7 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="Resultats-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{ route('resultat.index')  }}">Liste des Resultats</a> </li>
+                            <li> <a href="{{ route('resultats')  }}">Liste des Resultats</a> </li>
                         </ul>
                     </li>
 

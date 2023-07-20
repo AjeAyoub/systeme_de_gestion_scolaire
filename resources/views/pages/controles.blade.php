@@ -107,6 +107,15 @@
                     <form action="{{ route('controle.store') }}" method="POST">
                       @csrf
 
+                        <div class="form-group">
+                          <label for="inputName">Etudiant</label>
+                          <select class="fancyselect form-control" name="etudiant_id">
+                            <option selected>Sélectionnez une Matière</option>
+                            @foreach ($etudiants as $etudiant)
+                                <option value="{{ $etudiant->id }}">{{ $etudiant->prenom.' '.$etudiant->nom }}</option>
+                            @endforeach
+                          </select>
+                      </div>  
                       <div class="form-group">
                           <label for="inputName">Matière</label>
                           <select class="fancyselect form-control" name="matiere_id">
@@ -115,43 +124,19 @@
                                 <option value="{{ $matiere->id }}">{{ $matiere->nom }}</option>
                             @endforeach
                           </select>
-                      </div>  
+                      </div> 
                       <div class="form-group">
-                          <label for="inputName">Enseignant</label>
-                          <select class="fancyselect form-control" name="enseignant_id">
-                            <option selected>Sélectionnez un Niveau</option>
-                            @foreach ($enseignants as $enseignant)
-                                <option value="{{ $enseignant->id }}">{{ $enseignant->nom." ".$enseignant->prenom }}</option>
-                            @endforeach
-                          </select>
-                      </div>  
+                        <label for="inputName">Note Controle</label>
+                        <input name="note_controle" type="number" step="0.25" class="form-control" id="note_controle">
+                      </div>
                       <div class="form-group">
-                          <label for="inputName">Niveau</label>
-                          <select class="fancyselect form-control" name="niveau_id">
-                            <option selected>Sélectionnez un Niveau</option>
-                            @foreach ($niveaux as $niveau)
-                                <option value="{{ $niveau->id }}">{{ $niveau->nom }}</option>
-                            @endforeach
-                          </select>
-                      </div>  
+                        <label for="inputName">Coefficient</label>
+                        <input name="coefficient" type="integer" class="form-control" id="coefficient">
+                      </div>
                       <div class="form-group">
-                          <label for="inputName">Classe</label>
-                          <select class="fancyselect form-control" name="classe_id">
-                            <option selected>Sélectionnez une Classe</option>
-                            @foreach ($classes as $classe)
-                                <option value="{{ $classe->id }}">{{ $classe->nom }}</option>
-                            @endforeach
-                          </select>
-                      </div>  
-                      <div class="form-group">
-                          <label for="inputName">Section</label>
-                          <select class="fancyselect form-control" name="section_id">
-                            <option selected>Sélectionnez une section</option>
-                            @foreach ($sections as $section)
-                                <option value="{{ $section->id }}">{{ $section->nom }}</option>
-                            @endforeach
-                          </select>
-                      </div>  
+                        <label for="inputName">Remarque</label>
+                        <input name="remarque" type="text" class="form-control" id="remarque">
+                      </div>
                       <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
                           <button type="submit" class="btn btn-primary">Ajouter Controle</button>
@@ -173,11 +158,11 @@
           <thead class="thead-light">
             <tr class="text-center">
               <th scope="col">id</th>
+              <th scope="col">Etudiant</th>
               <th scope="col">Matière</th>
-              <th scope="col">Enseignant</th>
-              <th scope="col">Niveau</th>
-              <th scope="col">Classe</th>
-              <th scope="col">Section</th>
+              <th scope="col">Note Controle</th>
+              <th scope="col">Coefficient</th>
+              <th scope="col">Remarque</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
@@ -187,11 +172,11 @@
 
             <tr class="text-center">
               <td>{{ $i }}</td>
+              <td>{{ $controle->etudiant->prenom.' '.$controle->etudiant->nom }}</td>
               <td>{{ $controle->matiere->nom }}</td>
-              <td>{{ $controle->enseignant->nom." ".$controle->enseignant->prenom }}</td>
-              <td>{{ $controle->niveau->nom }}</td>
-              <td>{{ $controle->classe->nom }}</td>
-              <td>{{ $controle->section->nom }}</td>
+              <td>{{ $controle->note_controle }}</td>
+              <td>{{ $controle->coefficient }}</td>
+              <td>{{ $controle->remarque }}</td>
               <td>
 
                 <!-- start modal edit form -->
@@ -209,6 +194,16 @@
                           @csrf
                           @method('PUT')
                           <div class="form-group">
+                            <label for="inputName">Etudiant</label>
+                            <select class="fancyselect form-control" name="etudiant_id">
+                              @foreach ($etudiants as $etudiant)
+                                <option value="{{ $etudiant->id }}" {{ $etudiant->id == $controle->etudiant_id ? 'selected' : '' }}>
+                                  {{ $etudiant->nom }}
+                                </option>                             
+                              @endforeach
+                            </select>
+                          </div> 
+                          <div class="form-group">
                             <label for="inputName">Matiere</label>
                             <select class="fancyselect form-control" name="matiere_id">
                               @foreach ($matieres as $matiere)
@@ -217,47 +212,19 @@
                                 </option>                             
                               @endforeach
                             </select>
-                          </div> 
+                          </div>  
                           <div class="form-group">
-                            <label for="inputName">Enseignant</label>
-                            <select class="fancyselect form-control" name="enseignant_id">
-                              @foreach ($enseignants as $enseignant)
-                                <option value="{{ $enseignant->id }}" {{ $enseignant->id == $controle->enseignant_id ? 'selected' : '' }}>
-                                  {{ $enseignant->nom." ".$enseignant->prenom }}
-                                </option>                             
-                              @endforeach
-                            </select>
-                          </div> 
+                            <label>Note</label>
+                            <input name="note_controle" type="number" step="0.25" class="form-control" icontrole{{ $controle->id }}" value="{{ $controle->note_controle ?? '' }}">
+                          </div>
                           <div class="form-group">
-                            <label for="inputName">Niveau</label>
-                            <select class="fancyselect form-control" name="niveau_id">
-                              @foreach ($niveaux as $niveau)
-                                <option value="{{ $niveau->id }}" {{ $niveau->id == $controle->niveau_id ? 'selected' : '' }}>
-                                  {{ $niveau->nom }}
-                                </option>                             
-                              @endforeach
-                            </select>
-                          </div> 
+                            <label>Coefficient</label>
+                            <input name="coefficient" type="integer" class="form-control" id="coefficient{{ $controle->id }}" value="{{ $controle->coefficient ?? '' }}">
+                          </div>
                           <div class="form-group">
-                            <label for="inputName">Classe</label>
-                            <select class="fancyselect form-control" name="classe_id">
-                              @foreach ($classes as $classe)
-                                <option value="{{ $classe->id }}" {{ $classe->id == $controle->classe_id ? 'selected' : '' }}>
-                                  {{ $classe->nom }}
-                                </option>                             
-                              @endforeach
-                            </select>
-                          </div> 
-                          <div class="form-group">
-                            <label for="inputName">Section</label>
-                            <select class="fancyselect form-control" name="section_id">
-                              @foreach ($sections as $section)
-                                <option value="{{ $section->id }}" {{ $section->id == $controle->section_id ? 'selected' : '' }}>
-                                  {{ $section->nom }}
-                                </option>                             
-                              @endforeach
-                            </select>
-                          </div> 
+                            <label>Remarque</label>
+                            <input name="remarque" type="text" class="form-control" id="remarque{{ $controle->id }}" value="{{ $controle->remarque ?? '' }}">
+                          </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
                             <button type="submit" class="btn btn-primary">Modifier Controle</button>

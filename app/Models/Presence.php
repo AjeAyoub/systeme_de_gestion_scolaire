@@ -9,9 +9,12 @@ class Presence extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id', 'etudiant_id', 'raison_absence'];
+    protected $fillable = ['id', 'etudiant_id','matiere_id','start','end', 'raison_absence'];
 
     public function etudiant(){
         return $this->belongsTo(Etudiant::class);
+    }
+    public function matiere(){
+        return $this->belongsTo(Matiere::class);
     }
 }

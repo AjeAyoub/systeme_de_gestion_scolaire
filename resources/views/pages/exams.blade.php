@@ -98,7 +98,7 @@
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title">Ajouter Exam</h5>
+                    <h5 class="modal-title">Ajouter les Notes d'Exam</h5>
                     <button type="button" class="close" data-dismiss="modal">
                       <span>&times;</span>
                     </button>
@@ -108,6 +108,15 @@
                       @csrf
 
                       <div class="form-group">
+                          <label for="inputName">Etudiant</label>
+                          <select class="fancyselect form-control" name="etudiant_id">
+                            <option selected>Sélectionnez une Matière</option>
+                            @foreach ($etudiants as $etudiant)
+                                <option value="{{ $etudiant->id }}">{{ $etudiant->prenom.' '.$etudiant->nom }}</option>
+                            @endforeach
+                          </select>
+                      </div>  
+                      <div class="form-group">
                           <label for="inputName">Matière</label>
                           <select class="fancyselect form-control" name="matiere_id">
                             <option selected>Sélectionnez une Matière</option>
@@ -115,24 +124,19 @@
                                 <option value="{{ $matiere->id }}">{{ $matiere->nom }}</option>
                             @endforeach
                           </select>
-                      </div>  
+                      </div> 
                       <div class="form-group">
-                          <label for="inputName">Salle</label>
-                          <select class="fancyselect form-control" name="salle_id">
-                            <option selected>Sélectionnez une Salle</option>
-                            @foreach ($salles as $salle)
-                                <option value="{{ $salle->id }}">{{ $salle->numero }}</option>
-                            @endforeach
-                          </select>
-                      </div>  
+                        <label for="inputName">Note Exam</label>
+                        <input name="note_exam" type="number" step="0.25" class="form-control" id="note_exam">
+                      </div>
                       <div class="form-group">
-                        <label for="inputName">Date</label>
-                        <input name="date" type="date" class="form-control" id="name" value="{{ date('Y-m-d') }}">
-                    </div>
-                    <div class="form-group">
-                        <label for="inputName">Heure</label>
-                        <input name="heure" type="time" class="form-control" id="name" value="{{ date('H:i') }}">
-                    </div> 
+                        <label for="inputName">Coefficient</label>
+                        <input name="coefficient" type="integer" class="form-control" id="coefficient">
+                      </div>
+                      <div class="form-group">
+                        <label for="inputName">Remarque</label>
+                        <input name="remarque" type="text" class="form-control" id="remarque">
+                      </div>
                       <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
                           <button type="submit" class="btn btn-primary">Ajouter Exam</button>
@@ -154,10 +158,11 @@
           <thead class="thead-light">
             <tr class="text-center">
               <th scope="col">id</th>
+              <th scope="col">Etudiant</th>
               <th scope="col">Matière</th>
-              <th scope="col">Salle</th>
-              <th scope="col">Date</th>
-              <th scope="col">Heure</th>
+              <th scope="col">Note Exam</th>
+              <th scope="col">Coefficient</th>
+              <th scope="col">Remarque</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
@@ -167,10 +172,11 @@
 
             <tr class="text-center">
               <td>{{ $i }}</td>
+              <td>{{ $exam->etudiant->prenom.' '.$exam->etudiant->nom }}</td>
               <td>{{ $exam->matiere->nom }}</td>
-              <td>{{ $exam->salle->numero }}</td>
-              <td>{{ $exam->date }}</td>
-              <td>{{ $exam->heure }}</td>
+              <td>{{ $exam->note_exam }}</td>
+              <td>{{ $exam->coefficient }}</td>
+              <td>{{ $exam->remarque }}</td>
               <td>
 
                 <!-- start modal edit form -->
@@ -188,6 +194,16 @@
                           @csrf
                           @method('PUT')
                           <div class="form-group">
+                            <label for="inputName">Etudiant</label>
+                            <select class="fancyselect form-control" name="etudiant_id">
+                              @foreach ($etudiants as $etudiant)
+                                <option value="{{ $etudiant->id }}" {{ $etudiant->id == $exam->etudiant_id ? 'selected' : '' }}>
+                                  {{ $etudiant->nom }}
+                                </option>                             
+                              @endforeach
+                            </select>
+                          </div> 
+                          <div class="form-group">
                             <label for="inputName">Matiere</label>
                             <select class="fancyselect form-control" name="matiere_id">
                               @foreach ($matieres as $matiere)
@@ -196,24 +212,18 @@
                                 </option>                             
                               @endforeach
                             </select>
-                          </div> 
+                          </div>  
                           <div class="form-group">
-                            <label for="inputName">Salle</label>
-                            <select class="fancyselect form-control" name="salle_id">
-                              @foreach ($salles as $salle)
-                                <option value="{{ $salle->id }}" {{ $salle->id == $salle->numero ? 'selected' : '' }}>
-                                  {{ $salle->numero }}
-                                </option>                             
-                              @endforeach
-                            </select>
-                          </div> 
-                          <div class="form-group">
-                            <label>Date</label>
-                            <input name="date" type="date" class="form-control" value="{{ $exam->id }}" {{ $exam->id == $exam->date ? 'selected' : '' }}>
+                            <label>Note</label>
+                            <input name="note_exam" type="number" step="0.25" class="form-control" id="note_exam{{ $exam->id }}" value="{{ $exam->note_exam ?? '' }}">
                           </div>
                           <div class="form-group">
-                            <label>Heure</label>
-                            <input name="heure" type="time" class="form-control" value="{{ $exam->id }}" {{ $exam->id == $exam->heure ? 'selected' : '' }}>
+                            <label>Coefficient</label>
+                            <input name="coefficient" type="integer" class="form-control" id="coefficient{{ $exam->id }}" value="{{ $exam->coefficient ?? '' }}">
+                          </div>
+                          <div class="form-group">
+                            <label>Remarque</label>
+                            <input name="remarque" type="text" class="form-control" id="remarque{{ $exam->id }}" value="{{ $exam->remarque ?? '' }}">
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>

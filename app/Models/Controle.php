@@ -9,30 +9,21 @@ class Controle extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id', 'matiere_id','enseignant_id', 'niveau_id', 'classe_id', 'section_id'];
+    protected $fillable = [
+        'etudiant_id',
+        'matiere_id',
+        'note_controle',
+        'coefficient',
+        'remarque',
+    ];
 
-    public function matiere(){
+    public function etudiant()
+    {
+        return $this->belongsTo(Etudiant::class);
+    }
 
+    public function matiere()
+    {
         return $this->belongsTo(Matiere::class);
-    }
-
-    public function enseignant(){
-
-        return $this->belongsTo(Enseignant::class); 
-    }
-    
-        public function niveau(){
-    
-            return $this->belongsTo(Niveau::class); 
-        }
-
-    public function classe(){
-
-        return $this->belongsTo(Classe::class);
-    }
-
-    public function section(){
-
-        return $this->belongsTo(Section::class);
     }
 }

@@ -73,7 +73,7 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="presence-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{ route('presence.index') }}">Liste des Présence</a> </li>
+                            <li> <a href="{{ route('presences') }}">Liste des Présence</a> </li>
                         </ul>
                     </li>
                     <!-- Notes-->
@@ -99,7 +99,7 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="Emplois-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{ route('emploi.index')  }}">Liste des Emplois</a> </li>
+                            <li> <a href="{{ route('emplois')  }}">Liste des Emplois</a> </li>
                         </ul>
                     </li>
                     <!-- Resultats-->
@@ -122,37 +122,7 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="paiement_etudiant-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{ route('paiement_etudiant.index') }}">Liste des Paiements</a> </li>
-                        </ul>
-                    </li>
-
-
-                    <!-- Onlineclasses-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Onlineclasses-icon">
-                            <div class="pull-left"><i class="fas fa-video"></i><span class="right-nav-text">Classes en ligne</span></div>
-                            <div class="pull-right"><i class="ti-angle-down"></i></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="Onlineclasses-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="fontawesome-icon.html">font Awesome</a> </li>
-                            <li> <a href="themify-icons.html">Themify icons</a> </li>
-                            <li> <a href="weather-icon.html">Weather icons</a> </li>
-                        </ul>
-                    </li>
-
-
-                    <!-- Settings-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Settings-icon">
-                            <div class="pull-left"><i class="fas fa-cogs"></i><span class="right-nav-text">Paramètres</span></div>
-                            <div class="pull-right"><i class="ti-angle-down"></i></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="Settings-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="fontawesome-icon.html">font Awesome</a> </li>
-                            <li> <a href="themify-icons.html">Themify icons</a> </li>
-                            <li> <a href="weather-icon.html">Weather icons</a> </li>
+                            <li> <a href="{{ route('paiementetudiants') }}">Liste des Paiements</a> </li>
                         </ul>
                     </li>
                 </ul>

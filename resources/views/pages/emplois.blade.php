@@ -104,87 +104,43 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    <form action="{{ route('emploi.store') }}" method="POST">
+                    <form action="{{ route('emploi.store') }}" method="POST" enctype="multipart/form-data">
                       @csrf
-                        
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="inputName">Niveau</label>
-                                    <select class="fancyselect form-control" name="niveau_id">
-                                    <option selected>Sélectionnez un Niveau</option>
-                                    @foreach ($niveaux as $niveau)
-                                        <option value="{{ $niveau->id }}">{{ $niveau->nom }}</option>
-                                    @endforeach
-                                    </select>
-                                </div>  
-                                <div class="form-group">
-                                    <label for="inputName">Classe</label>
-                                    <select class="fancyselect form-control" name="classe_id">
-                                    <option selected>Sélectionnez une Classe</option>
-                                    @foreach ($classes as $classe)
-                                        <option value="{{ $classe->id }}">{{ $classe->nom }}</option>
-                                    @endforeach
-                                    </select>
-                                </div>  
-                                <div class="form-group">
-                                    <label for="inputName">Section</label>
-                                    <select class="fancyselect form-control" name="section_id">
-                                    <option selected>Sélectionnez une section</option>
-                                    @foreach ($sections as $section)
-                                        <option value="{{ $section->id }}">{{ $section->nom }}</option>
-                                    @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="inputName">Enseignant</label>
-                                    <select class="fancyselect form-control" name="enseignant_id">
-                                    <option selected>Sélectionnez un Niveau</option>
-                                    @foreach ($enseignants as $enseignant)
-                                        <option value="{{ $enseignant->id }}">{{ $enseignant->nom." ".$enseignant->prenom }}</option>
-                                    @endforeach
-                                    </select>
-                                </div> 
-                                <div class="form-group">
-                                    <label for="inputName">Département</label>
-                                    <select class="fancyselect form-control" name="departement_id">
-                                    <option selected>Sélectionnez Département</option>
-                                    @foreach ($departements as $departement)
-                                        <option value="{{ $departement->id }}">{{ $departement->nom }}</option>
-                                    @endforeach
-                                    </select>
-                                </div>     
-                                <div class="form-group">
-                                    <label for="inputName">Salle</label>
-                                    <select class="fancyselect form-control" name="salle_id">
-                                    <option selected>Sélectionnez une Salle</option>
-                                    @foreach ($salles as $salle)
-                                        <option value="{{ $salle->id }}">{{ $salle->numero }}</option>
-                                    @endforeach
-                                    </select>
-                                </div>   
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="inputName">Jour_Semaine</label>
-                                    <input name="jour_semaine" type="text" class="form-control" id="jour_semaine">
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputName">Heure_Debut</label>
-                                    <input name="heure_debut" type="number" min="00.00" max="23.59" step="0.05" class="form-control" id="heure_debut">
-                                </div>  
-                                <div class="form-group">
-                                    <label for="inputName">Heure_Fin</label>
-                                    <input name="heure_fin" type="number" min="00.00" max="23.59" step="0.30" class="form-control" id="heure_fin">
-                                </div> 
-                            </div>
+                        <div class="form-group">
+                            <label for="inputName">Niveau</label>
+                            <select class="fancyselect form-control" name="niveau_id">
+                            <option selected>Sélectionnez un Niveau</option>
+                            @foreach ($niveaux as $niveau)
+                                <option value="{{ $niveau->id }}">{{ $niveau->nom }}</option>
+                            @endforeach
+                            </select>
                         </div>  
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                                    <button type="submit" class="btn btn-primary">Ajouter Emplois</button>
-                                </div>
+                        <div class="form-group">
+                            <label for="inputName">Classe</label>
+                            <select class="fancyselect form-control" name="classe_id">
+                            <option selected>Sélectionnez une Classe</option>
+                            @foreach ($classes as $classe)
+                                <option value="{{ $classe->id }}">{{ $classe->nom }}</option>
+                            @endforeach
+                            </select>
+                        </div>  
+                        <div class="form-group">
+                            <label for="inputName">Section</label>
+                            <select class="fancyselect form-control" name="section_id">
+                            <option selected>Sélectionnez une section</option>
+                            @foreach ($sections as $section)
+                                <option value="{{ $section->id }}">{{ $section->nom }}</option>
+                            @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                          <label for="inputName">Fichié</label>
+                          <input name="file" type="file" class="form-control" id="file">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                            <button type="submit" class="btn btn-primary">Ajouter Emplois</button>
+                        </div>
                     </form>
                   </div>
                 </div>
@@ -205,12 +161,7 @@
               <th scope="col">Niveau</th>
               <th scope="col">Classe</th>
               <th scope="col">Section</th>
-              <th scope="col">Enseignant</th>
-              <th scope="col">Département</th>
-              <th scope="col">Salle</th>
-              <th scope="col">jour_semaine</th>
-              <th scope="col">Heure_debut</th>
-              <th scope="col">Heure_Fin</th>
+              <th scope="col">Fichié</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
@@ -223,12 +174,8 @@
               <td>{{ $emploi->niveau->nom }}</td>
               <td>{{ $emploi->classe->nom }}</td>
               <td>{{ $emploi->section->nom }}</td>
-              <td>{{ $emploi->enseignant->nom." ".$emploi->enseignant->prenom }}</td>
-              <td>{{ $emploi->departement->nom }}</td>
-              <td>{{ $emploi->salle->numero }}</td>
-              <td>{{ $emploi->jour_semaine }}</td>
-              <td>{{ $emploi->heure_debut }}</td>
-              <td>{{ $emploi->heure_fin }}</td>
+              <td>{{ $emploi->file }}</td>
+
               <td>
 
                 <!-- start modal edit form -->
@@ -245,90 +192,44 @@
                         <form action="{{ route('emploi.update', $emploi->id) }}" method="POST">
                           @csrf
                           @method('PUT')
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="inputName">Niveau</label>
-                                        <select class="fancyselect form-control" name="niveau_id">
-                                        @foreach ($niveaux as $niveau)
-                                            <option value="{{ $niveau->id }}" {{ $niveau->id == $emploi->niveau_id ? 'selected' : '' }}>
-                                            {{ $niveau->nom }}
-                                            </option>                             
-                                        @endforeach
-                                        </select>
-                                    </div> 
-                                    <div class="form-group">
-                                        <label for="inputName">Classe</label>
-                                        <select class="fancyselect form-control" name="classe_id">
-                                        @foreach ($classes as $classe)
-                                            <option value="{{ $classe->id }}" {{ $classe->id == $emploi->classe_id ? 'selected' : '' }}>
-                                            {{ $classe->nom }}
-                                            </option>                             
-                                        @endforeach
-                                        </select>
-                                    </div> 
-                                    <div class="form-group">
-                                        <label for="inputName">Section</label>
-                                        <select class="fancyselect form-control" name="section_id">
-                                        @foreach ($sections as $section)
-                                            <option value="{{ $section->id }}" {{ $section->id == $emploi->section_id ? 'selected' : '' }}>
-                                            {{ $section->nom }}
-                                            </option>                             
-                                        @endforeach
-                                        </select>
-                                    </div> 
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="inputName">Enseignant</label>
-                                        <select class="fancyselect form-control" name="enseignant_id">
-                                        @foreach ($enseignants as $enseignant)
-                                            <option value="{{ $enseignant->id }}" {{ $enseignant->id == $emploi->enseignant_id ? 'selected' : '' }}>
-                                            {{ $enseignant->nom." ".$enseignant->prenom }}
-                                            </option>                             
-                                        @endforeach
-                                        </select>
-                                    </div> 
-                                    <div class="form-group">
-                                        <label for="inputName">Département</label>
-                                        <select class="fancyselect form-control" name="departement_id">
-                                        @foreach ($departements as $departement)
-                                            <option value="{{ $departement->id }}" {{ $departement->id == $emploi->departement_id ? 'selected' : '' }}>
-                                            {{ $departement->nom }}
-                                            </option>                             
-                                        @endforeach
-                                        </select>
-                                    </div> 
-                                    <div class="form-group">
-                                        <label for="inputName">Salle</label>
-                                        <select class="fancyselect form-control" name="salle_id">
-                                        @foreach ($salles as $salle)
-                                            <option value="{{ $salle->id }}" {{ $salle->id == $emploi->salle_id ? 'selected' : '' }}>
-                                            {{ $salle->nom }}
-                                            </option>                             
-                                        @endforeach
-                                        </select>
-                                    </div> 
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="inputName">Jour_Semaine</label>
-                                        <input name="jour_semaine" type="text" class="form-control" id="jour_semaine{{ $emploi->id }}" value="{{ $emploi->jour_semaine ?? '' }}">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputName">Heure_Debut</label>
-                                        <input name="heure_debut" type="number" min="00.00" max="23.59" step="0.05" class="form-control" id="heure_debut{{ $emploi->id }}" value="{{ $emploi->heure_debut ?? '' }}">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputName">Heure_Fin</label>
-                                        <input name="heure_fin" type="number" min="00.00" max="23.59" step="0.05" class="form-control" id="heure_fin{{ $emploi->id }}" value="{{ $emploi->heure_fin ?? '' }}">
-                                    </div>
-                                </div>
+                            <div class="form-group">
+                                <label for="inputName">Niveau</label>
+                                <select class="fancyselect form-control" name="niveau_id">
+                                @foreach ($niveaux as $niveau)
+                                    <option value="{{ $niveau->id }}" {{ $niveau->id == $emploi->niveau_id ? 'selected' : '' }}>
+                                    {{ $niveau->nom }}
+                                    </option>                             
+                                @endforeach
+                                </select>
+                            </div> 
+                            <div class="form-group">
+                                <label for="inputName">Classe</label>
+                                <select class="fancyselect form-control" name="classe_id">
+                                @foreach ($classes as $classe)
+                                    <option value="{{ $classe->id }}" {{ $classe->id == $emploi->classe_id ? 'selected' : '' }}>
+                                    {{ $classe->nom }}
+                                    </option>                             
+                                @endforeach
+                                </select>
+                            </div> 
+                            <div class="form-group">
+                                <label for="inputName">Section</label>
+                                <select class="fancyselect form-control" name="section_id">
+                                @foreach ($sections as $section)
+                                    <option value="{{ $section->id }}" {{ $section->id == $emploi->section_id ? 'selected' : '' }}>
+                                    {{ $section->nom }}
+                                    </option>                             
+                                @endforeach
+                                </select>
+                            </div> 
+                            <div class="form-group">
+                              <label for="inputNom">Fichié</label>
+                              <input name="file" type="file" class="form-control" id="file{{ $emploi->id }}" value="{{ $emploi->file ?? '' }}">
                             </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                                    <button type="submit" class="btn btn-primary">Modifier Emplois</button>
-                                </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                <button type="submit" class="btn btn-primary">Modifier Emplois</button>
+                            </div>
                         </form>
                       </div>
                     </div>

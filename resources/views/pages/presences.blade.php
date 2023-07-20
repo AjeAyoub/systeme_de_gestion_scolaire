@@ -114,7 +114,23 @@
                                 <option value="{{ $etudiant->id }}">{{ $etudiant->nom." ".$etudiant->prenom }}</option>
                             @endforeach
                           </select>
-                      </div>  
+                          <div class="form-group">
+                            <label for="inputName">Matiere</label>
+                            <select class="fancyselect form-control" name="matiere_id">
+                                <option selected>Sélectionnez Matière</option>
+                                @foreach ($matieres as $matiere)
+                                <option value="{{ $matiere->id }}">{{ $matiere->nom}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                      <div class="form-group">
+                          <label for="inputName">Début d'Absence</label>
+                          <input name="start" type="datetime-local" min="2023-01-01T00:00" max="2030-12-31T23:59" class="form-control" id="inputName">
+                      </div>
+                      <div class="form-group">
+                          <label for="inputName">Fin d'Absence</label>
+                          <input name="end" type="datetime-local" min="2023-01-01T00:00" max="2030-12-31T23:59" class="form-control" id="inputName">
+                      </div> 
                       <div class="form-group">
                           <label for="inputName">La Raison d'Absence</label>
                           <input name="raison_absence" type="text" class="form-control" id="name">
@@ -141,6 +157,9 @@
             <tr class="text-center">
               <th scope="col">id</th>
               <th scope="col">Nom d'Etudiant(e)</th>
+              <th scope="col">Matière</th>
+              <th scope="col">Début d'Absence</th>
+              <th scope="col">Fin d'Absence</th>
               <th scope="col">Raison d'Absence</th>
               <th scope="col">Action</th>
             </tr>
@@ -151,7 +170,10 @@
 
             <tr class="text-center">
               <td>{{ $i }}</td>
-              <td>{{ $presence->etudiant->nom }}</td>
+              <td>{{ $presence->etudiant->nom.' '.$presence->etudiant->prenom }}</td>
+              <td>{{ $presence->matiere->nom }}</td>
+              <td>{{ $presence->start}}</td>
+              <td>{{ $presence->end}}</td>
               <td>{{ $presence->raison_absence}}</td>
               <td>
 
@@ -172,12 +194,30 @@
                           <div class="form-group">
                             <label for="inputName">Nom d'Etudiant(e)</label>
                             <select class="fancyselect form-control" name="etudiant_id">
-                              @foreach ($etudiants as $etudiants)
+                              @foreach ($etudiants as $etudiant)
                                 <option value="{{ $etudiant->id }}" {{ $etudiant->id == $presence->etudiant_id ? 'selected' : '' }}>
                                   {{ $etudiant->nom." ".$etudiant->prenom }}
                                 </option>                             
                               @endforeach
                             </select>
+                          </div>
+                            <div class="form-group">
+                              <label for="inputName">Matière</label>
+                              <select class="fancyselect form-control" name="matiere_id">
+                              @foreach ($matieres as $matiere)
+                                  <option value="{{ $matiere->id }}" {{ $matiere->id == $presence->matiere_id ? 'selected' : '' }}>
+                                  {{ $matiere->nom }}
+                                  </option>                             
+                              @endforeach
+                              </select>
+                          </div> 
+                          <div class="form-group">
+                              <label for="inputName">Début d'Absence</label>
+                              <input name="start" type="datetime-local" min="2023-01-01T00:00" max="2030-12-31T23:59" class="form-control" id="inputName{{ $presence->id }}" value="{{ $presence->start ?? '' }}">
+                          </div>
+                          <div class="form-group">
+                              <label for="inputName">Fin d'Absence</label>
+                              <input name="end" type="datetime-local" min="2023-01-01T00:00" max="2030-12-31T23:59" class="form-control" id="inputName{{ $presence->id }}" value="{{ $presence->end ?? '' }}">
                           </div> 
                           <div class="form-group">
                             <label for="inputName">La Raison d'Absence</label>
@@ -193,7 +233,6 @@
                   </div>
                 </div>
                 <!-- end modal edit form -->
-
 
                 <div style="display: inline;">
                   <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#editformModal{{ $presence->id }}" title="Edit">

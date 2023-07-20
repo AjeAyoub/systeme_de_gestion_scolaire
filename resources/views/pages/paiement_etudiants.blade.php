@@ -177,12 +177,12 @@ Paiement des Etudiants
 		  <thead class="thead-light">
 			<tr class="text-center">
 			  <th scope="col">id</th>
-			  <th scope="col">Nom d'Etudiant(e)</th>
+			  <th scope="col">Etudiant(e)</th>
+			  <th scope="col">Paiement</th>
 			  <th scope="col">Cout</th>
 			  <th scope="col">Date de paiement</th>
 			  <th scope="col">Statut de paiement</th>
 			  <th scope="col">Mode de paiement</th>
-			  <th scope="col">Remarque</th>
 			  <th scope="col">Action</th>
 			</tr>
 		  </thead>
@@ -193,11 +193,11 @@ Paiement des Etudiants
 			<tr class="text-center">
 			  <td>{{ $i }}</td>
 			  <td>{{ $paiement_etudiant->etudiant->nom." ".$paiement_etudiant->etudiant->prenom }}</td>
-			  <td>{{ $paiement_etudiant->cout->montant}}</td>
+			  <td>{{ $paiement_etudiant->cout->nom}}</td>
+			  <td>{{ $paiement_etudiant->cout->montant }}dh</td>
 			  <td>{{ $paiement_etudiant->date}}</td>
 			  <td>{{ $paiement_etudiant->statut}}</td>
 			  <td>{{ $paiement_etudiant->mode}}</td>
-			  <td>{{ $paiement_etudiant->remarque}}</td>
 			  <td>
 
 				<!-- start modal edit form -->
@@ -280,19 +280,65 @@ Paiement des Etudiants
 
 
 				<div style="display: inline;">
-				  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#editformModal{{ $paiement_etudiant->id }}" title="Edit">
+				  <button type="button" class="btn btn-info btn-lg mr-1" data-toggle="modal" data-target="#editformModal{{ $paiement_etudiant->id }}" title="Edit">
 					<i class="fa fa-edit"></i>
-				  </button>
+					<!-- imprimer facture button -->
+					<button type="button" class="btn btn-warning btn-lg" title="Imprimer Facture" onclick="printInvoice({{ $paiement_etudiant->id }}, {{ $paiement_etudiant->etudiant->id }})">
+						<i class="fa fa-print"></i>
+					</button>
 				
 				  <form style="display: inline;" action="{{ route('paiement_etudiant.destroy', $paiement_etudiant->id) }}" method="POST">
 					@csrf
 					@method('DELETE')
-					<button type="submit" class="btn btn-danger btn-lg">
+					<button type="submit" class="btn btn-danger btn-lg mt-1">
 					  <i class="fa fa-trash"></i>
 					</button>
 				  </form>
 				</div>
-				
+				<!-- Facture content-->
+				<div id="{{ $paiement_etudiant->id }}" style="display: none; border: 1px solid #ccc; padding: 20px; max-width: 500px; margin: 0 auto; font-family: Arial, sans-serif;">
+					<img src="assets/images/logo-dark.png" alt="Company Logo" style="max-width: 150px; margin-bottom: 20px;">
+					<div class="container d-flex justify-content-center align-items-center vh-100">
+						<div class="invoice-container  p-4" style="max-width: 500px; font-family: Arial, sans-serif;">
+						
+							<h2 class="text-center mt-6 mb-4">Facture</h2>
+					
+							<div class="row mb-3">
+								<div class="text-center col-12">
+									<strong>Nom Et Prénom:</strong> {{ $paiement_etudiant->etudiant->nom." ".$paiement_etudiant->etudiant->prenom }}
+								</div>
+								<div class="text-center col-12">
+									<strong>Frais:</strong> {{ $paiement_etudiant->cout->nom.' : '.$paiement_etudiant->cout->montant }}
+								</div>
+							</div>
+							
+							<div class="row mb-3">
+								<div class="text-center col-12">
+									<strong>Date de paiement:</strong> {{ $paiement_etudiant->date }}
+								</div>
+								<div class="text-center col-12">
+									<strong>Statut de paiement:</strong> {{ $paiement_etudiant->statut}}
+								</div>
+							</div>
+					
+							<div class="row mb-3">
+								<div class="text-center col-12">
+									<strong>Mode de paiement:</strong> {{ $paiement_etudiant->mode}}
+								</div>
+								<div class="text-center col-12">
+									<strong>Remarque:</strong> {{ $paiement_etudiant->remarque}}
+								</div>
+							</div>
+	
+						</div>
+					</div>
+					
+					<div style="text-align: center; margin-top: 40px;">
+						<div style="border-top: 1px solid #ccc; width: 200px; margin: 0 auto;"></div>
+						<p style="margin-top: 10px; font-size: 14px;">Signature</p>
+					</div>
+				</div>
+
 			  </td>
 			</tr>
 			@endforeach
@@ -315,4 +361,20 @@ Paiement des Etudiants
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 @section('js')
+
+<!-- JavaScript code for printing the invoice -->
+<script>
+    function printInvoice(paiementEtudiantId, etudiantId) {
+        var printContents = document.getElementById(paiementEtudiantId).innerHTML;
+        var originalContents = document.body.innerHTML;
+        document.body.innerHTML = printContents;
+
+        // Now, you have the etudiant ID as 'etudiantId'. You can use it to fetch data or apply any changes related to the etudiant.
+        // For example, you can use AJAX to fetch data related to the specific etudiant using its ID.
+
+        window.print();
+        document.body.innerHTML = originalContents;
+    }
+</script>
+
 @endsection

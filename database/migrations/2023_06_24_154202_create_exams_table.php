@@ -13,14 +13,15 @@ return new class extends Migration
     {
         Schema::create('exams', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('etudiant_id');
             $table->unsignedBigInteger('matiere_id');
-            $table->unsignedBigInteger('salle_id');
-            $table->date('date');
-            $table->time('heure');
+            $table->decimal('note_exam', 8, 2);
+            $table->integer('coefficient');
+            $table->string('remarque');
             $table->timestamps();
 
+            $table->foreign('etudiant_id')->references('id')->on('etudiants')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('matiere_id')->references('id')->on('matieres')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('salle_id')->references('id')->on('salles')->onDelete('cascade')->onUpdate('cascade');
 
         });
     }

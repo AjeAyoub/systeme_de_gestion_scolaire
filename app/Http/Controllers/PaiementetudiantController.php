@@ -51,6 +51,16 @@ class PaiementetudiantController extends Controller
         Paiementetudiant::create($request->all());
         return to_route('paiement_etudiant.index')->with('success', 'Paiement_etudiant ajoutée avec succès');
     }
+
+    public function paiementetudiantsCt()
+    {
+        $paiement_etudiants = Paiementetudiant::all();
+        $etudiants = Etudiant::all();
+        $couts = cout::all();
+
+    
+        return view('pages.paiementetudiants_ct', compact('paiement_etudiants', 'etudiants', 'couts'));
+    }
     
     /**
      * Display the specified resource.

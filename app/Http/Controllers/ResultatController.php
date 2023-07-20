@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Resultat;
 use App\Models\Etudiant;
-use App\Models\Matiere;
 use Illuminate\Http\Request;
 
 class ResultatController extends Controller
@@ -15,24 +14,18 @@ class ResultatController extends Controller
     public function index(Request $request)
     {
         $resultats = Resultat::all();
-        $matieres = Matiere::all();
         $etudiants = Etudiant::all();
 
 
-        //------------searsh code--------------
-        $search = $request->query('search');
-        $resultats = Resultat::when($search, function ($query) use ($search) {
-            $query->where('matiere_id', 'like', "%$search%")
-                ->orWhere('etudiant_id', 'like', "%$search%")
-                ->orWhere('note_matiere', 'like', "%$search%")
-                ->orWhere('note_examen', 'like', "%$search%")
-                ->orWhere('note_finale', 'like', "%$search%")
-                ->orWhere('statut', 'like', "%$search%")
-                ->orWhere('option', 'like', "%$search%");
-        })->paginate(6);
-        //-----------end searsh code------------
+       //------------searsh code--------------
+       $search = $request->query('search');
+       $resultats = Resultat::when($search, function ($query) use ($search) {
+           $query->join('etudiants', 'resultats.etudiant_id', '=', 'etudiants.id')
+                 ->where('etudiants.nom', 'like', "%$search%");
+       })->paginate(6);
+       //-----------end searsh code------------
 
-        return view('pages.resultats', compact('resultats', 'matieres', 'etudiants'));
+        return view('pages.resultats', compact('resultats', 'etudiants'));
     }
 
     /**
@@ -48,10 +41,41 @@ class ResultatController extends Controller
      */
     public function store(Request $request)
     {
+        
+        $request->validate([
+            'etudiant_id' => 'required|exists:etudiants,id',
+            'file' => 'required|mimes:pdf|max:2048',
+        ]);
+    
+        if ($request->hasFile('file')) {
+            $pdfFile = $request->file('file');
+    
+            // Store the PDF file in the storage directory
+            $pdfPath = $pdfFile->store('pdf', 'public');
+    
+            // Create a new Resultat instance and set the attributes
+            $resultat = new Resultat;
+            $resultat->etudiant_id = $request->etudiant_id;
+            $resultat->file = $pdfPath;
+    
+            // Save the Resultat instance to the database
+            $resultat->save();
+    
+            return redirect()->back()->with('success', 'Resultat ajoutée avec succès.');
+        }
+    
+        return redirect()->back()->with('error', 'Failed to Échec du téléchargement Resultat');
+        
+    } 
 
-        Resultat::create($request->all());
-        return to_route('resultat.index')->with('succss', 'Resultat ajoutée avec succès');
+    public function resultatsEtPr()
+    {
+        $resultats = Resultat::all();
+        $etudiants = Etudiant::all();
+    
+        return view('pages.resultats_et_pr', compact('resultats', 'etudiants'));
     }
+
 
     /**
      * Display the specified resource.

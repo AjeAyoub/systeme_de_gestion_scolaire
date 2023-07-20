@@ -32,7 +32,6 @@ use App\Http\Controllers\EmploiController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\CalendarController;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,6 +49,19 @@ Route::get('/', function (){
 });
 
 Route::get('/getevent', [CalendarController::class, 'getEvent'])->name('getevent');
+
+Route::get('/emplois', [EmploiController::class, 'emploisEtPr'])->name('emplois');
+Route::get('/exams', [ExamController::class, 'examsEtPr'])->name('exams');
+Route::get('/controles', [ControleController::class, 'controlesEtPr'])->name('controles');
+Route::get('/resultats', [ResultatController::class, 'resultatsEtPr'])->name('resultats');
+Route::get('/presences', [PresenceController::class, 'presencesEtPr'])->name('presences');
+
+
+
+Route::get('/evenements', function(){
+    return view('pages.evenement_et_pr');
+
+})->name('evenements');
 
 // en & ad 
     // Presence
@@ -123,8 +135,6 @@ Route::middleware(['auth','user-role:admin'])->group(function()
     Route::resource('promotion', PromotionController::class);
     // Emploi
     Route::resource('emploi', EmploiController::class);
-    //cout
-    Route::resource('cout', CoutController::class);
 
 
     
@@ -140,9 +150,9 @@ Route::middleware(['auth','user-role:comptable'])->group(function()
         return view('comptabledashboard');
     })->name('comptable.dashboard');
     // couts
-   //Route::resource('cout', CoutController::class);
+   Route::resource('cout', CoutController::class);
     // Evenement
-    //Route::resource('evenement', EvenementController::class);
+   // Route::resource('evenement', EvenementController::class);
     // Facture
     Route::resource('facture', FactureController::class);
     // Paiement_etudiant
@@ -189,6 +199,10 @@ Route::middleware(['auth','user-role:parent'])->group(function()
         return view('pages.evenement_et_pr');
 
     })->name('evenements');
+
+    Route::get('/paiementetudiants', [PaiementetudiantController::class, 'paiementetudiantsCt'])->name('paiementetudiants');
+
+
 /*     // couts
    Route::resource('cout', CoutController::class);
     // Evenement

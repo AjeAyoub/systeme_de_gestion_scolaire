@@ -9,22 +9,12 @@ class Emploi extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id', 'departement_id','enseignant_id', 'niveau_id', 'classe_id', 'section_id', 'salle_id', 'jour_semaine', 'heure_debut', 'heure_fin'];
+    protected $fillable = ['id', 'niveau_id', 'classe_id', 'section_id','file'];
+ 
+    public function niveau(){
 
-    public function departement(){
-
-        return $this->belongsTo(Departement::class);
+        return $this->belongsTo(Niveau::class); 
     }
-
-    public function enseignant(){
-
-        return $this->belongsTo(Enseignant::class); 
-    }
-    
-        public function niveau(){
-    
-            return $this->belongsTo(Niveau::class); 
-        }
 
     public function classe(){
 
@@ -34,9 +24,5 @@ class Emploi extends Model
     public function section(){
 
         return $this->belongsTo(Section::class);
-    }
-    public function salle(){
-
-        return $this->belongsTo(Salle::class);
     }
 }
