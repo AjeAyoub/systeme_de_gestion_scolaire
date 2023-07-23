@@ -23,7 +23,7 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="evenement-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{ route('evenement.index') }}">Liste des Evénements</a> </li>
+                            <li> <a href="{{ route('evenements') }}">Liste des Evénements</a> </li>
                         </ul>
                     </li>
                     <!-- Exam-->
@@ -35,7 +35,7 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="examens-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{ route('exam.index') }}">Liste des Examens</a> </li>
+                            <li> <a href="{{ route('exams') }}">Liste des Examens</a> </li>
                         </ul>
                     </li>
                     <!-- Controle-->
@@ -47,45 +47,20 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="controles-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{ route('controle.index') }}">Liste des Controles</a> </li>
-                        </ul>
-                    </li>
-
-                    <!-- Couts-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Cout-menu">
-                            <div class="pull-left"><i class="fas fa-money"></i><span
-                                    class="right-nav-text">Couts</span></div>
-                            <div class="pull-right"><i class="ti-angle-down"></i></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="Cout-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{ route('cout.index') }}">Liste des Couts</a> </li>
+                            <li> <a href="{{ route('controles') }}">Liste des Controles</a> </li>
                         </ul>
                     </li>
                    
                     <!-- Présence-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#presence-menu">
-                            <div class="pull-left"><i class="fas fa-money"></i><span
+                            <div class="pull-left"><i class="fas fa-list"></i><span
                                     class="right-nav-text">Présence</span></div>
                             <div class="pull-right"><i class="ti-angle-down"></i></i></div>
                             <div class="clearfix"></div>
                         </a>
                         <ul id="presence-menu" class="collapse" data-parent="#sidebarnav">
                             <li> <a href="{{ route('presences') }}">Liste des Présence</a> </li>
-                        </ul>
-                    </li>
-                    <!-- Notes-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Notes-menu">
-                            <div class="pull-left"><i class="fas fa-check-circle"></i>                                <span
-                                    class="right-nav-text">Notes</span></div>
-                            <div class="pull-right"><i class="ti-angle-down"></i></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="Notes-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{ route('note.index')  }}">Liste des Notes</a> </li>
                         </ul>
                     </li>
 
@@ -111,7 +86,7 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="Resultats-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{ route('resultat.index')  }}">Liste des Resultats</a> </li>
+                            <li> <a href="{{ route('resultats')  }}">Liste des Resultats</a> </li>
                         </ul>
                     </li>
                     <!-- Paiement_etudiant-->

@@ -170,18 +170,6 @@
                             <li> <a href="{{ route('compte.index')  }}">Liste des Comptes</a> </li>
                         </ul>
                     </li>
-                    <!-- Notes-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Notes-menu">
-                            <div class="pull-left"><i class="fas fa-check-circle"></i>                                <span
-                                    class="right-nav-text">Note</span></div>
-                            <div class="pull-right"><i class="ti-angle-down"></i></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="Notes-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{ route('note.index')  }}">Liste des Notes</a> </li>
-                        </ul>
-                    </li>
 
                      <!-- Emplois-->
 
@@ -229,17 +217,6 @@
                         </a>
                         <ul id="salle-icon" class="collapse" data-parent="#sidebarnav">
                             <li> <a href="{{ route('salle.index') }}">Liste des Salles</a> </li>
-                        </ul>
-                    </li>
-                     <!-- Seance-->
-                     <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#seance-icon">
-                            <div class="pull-left"><i class="fas fa-chalkboard"></i><span class="right-nav-text">Seance</span></div>
-                            <div class="pull-right"><i class="ti-angle-down"></i></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="seance-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{ route('seance.index') }}">Liste des Seances</a> </li>
                         </ul>
                     </li>
 

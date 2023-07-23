@@ -6,7 +6,7 @@
                 <ul class="nav navbar-nav side-menu" id="sidebarnav" style="background-color: #0b2e63;">
                     <!-- menu item Dashboard-->
                     <li>
-                        <a href="{{ route('admin.dashboard') }}">
+                        <a href="{{ route('enseignant.dashboard') }}">
                             <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">Accueil</span>
                             </div>
                             <div class="clearfix"></div>
@@ -49,18 +49,7 @@
                             <li> <a href="{{ route('presence.index') }}">Liste des Présence</a> </li>
                         </ul>
                     </li>
-                    <!-- Notes-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Notes-menu">
-                            <div class="pull-left"><i class="fas fa-check-circle"></i>                                <span
-                                    class="right-nav-text">Notes</span></div>
-                            <div class="pull-right"><i class="ti-angle-down"></i></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="Notes-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{ route('note.index')  }}">Liste des Notes</a> </li>
-                        </ul>
-                    </li>
+                
                     <!-- Resultats-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#Resultats-menu">

@@ -242,6 +242,8 @@
                   <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#editformModal{{ $emploi->id }}" title="Edit">
                     <i class="fa fa-edit"></i>
                   </button>
+                  <button class="btn btn-success"><a href="{{ asset('storage/pdf/' . $emploi->file) }}" target="_blank">Voir Emploi</a></button>  
+
                 
                   <form style="display: inline;" action="{{ route('emploi.destroy', $emploi->id) }}" method="POST">
                     @csrf

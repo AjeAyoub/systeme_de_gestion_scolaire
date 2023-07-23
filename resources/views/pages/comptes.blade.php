@@ -220,7 +220,7 @@
 
 
                 <div style="display: inline;">
-                  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#editformModal{{ $compte->id }}" title="Edit">
+                  <button type="button" class="btn btn-info btn-lg mb-1" data-toggle="modal" data-target="#editformModal{{ $compte->id }}" title="Edit">
                     <i class="fa fa-edit"></i>
                   </button>
                 

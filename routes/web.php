@@ -9,7 +9,6 @@ use App\Http\Controllers\DepartementController;
 use App\Http\Controllers\SalleController;
 use App\Http\Controllers\MatiereController;                                                                                                                   
 use App\Http\Controllers\ParenttController;
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ComptableController;
 use App\Http\Controllers\CoutController;
 use App\Http\Controllers\EtudiantController;
@@ -17,9 +16,6 @@ use App\Http\Controllers\EnseignantController;
 use App\Http\Controllers\EvenementController;
 use App\Http\Controllers\PresenceController;
 use App\Http\Controllers\FactureController;
-use App\Http\Controllers\CantineController;
-use App\Http\Controllers\RepaController;
-use App\Http\Controllers\TransportController;
 use App\Http\Controllers\PaiementetudiantController;
 use App\Http\Controllers\SeanceController;
 use App\Http\Controllers\ExamController;
@@ -55,13 +51,11 @@ Route::get('/exams', [ExamController::class, 'examsEtPr'])->name('exams');
 Route::get('/controles', [ControleController::class, 'controlesEtPr'])->name('controles');
 Route::get('/resultats', [ResultatController::class, 'resultatsEtPr'])->name('resultats');
 Route::get('/presences', [PresenceController::class, 'presencesEtPr'])->name('presences');
-
-
-
+// Evenements
 Route::get('/evenements', function(){
     return view('pages.evenement_et_pr');
-
 })->name('evenements');
+
 
 // en & ad 
     // Presence
@@ -165,22 +159,6 @@ Route::middleware(['auth','user-role:etudiant'])->group(function()
     Route::get("/etudiant.dashboard",function (){
         return view('etudiantdashboard');
     })->name('etudiant.dashboard');
-
-
-/*     // Evenement
-    Route::resource('evenement', EvenementController::class);
-    // Presence
-    Route::resource('presence', PresenceController::class);
-    // Examen
-    Route::resource('exam', ExamController::class);
-    // Controle
-    Route::resource('controle', ControleController::class);
-    // Note
-    Route::resource('note', NoteController::class);
-    // Resultat
-    Route::resource('resultat', ResultatController::class);
-    // Emploi
-    Route::resource('emploi', EmploiController::class); */
    
 });
 
@@ -194,29 +172,6 @@ Route::middleware(['auth','user-role:parent'])->group(function()
 
     Route::get('/paiementetudiants', [PaiementetudiantController::class, 'paiementetudiantsCt'])->name('paiementetudiants');
 
-
-/*     // couts
-   Route::resource('cout', CoutController::class);
-    // Evenement
-    Route::resource('evenement', EvenementController::class);
-    // Presence
-    Route::resource('presence', PresenceController::class);
-    // Facture
-    Route::resource('facture', FactureController::class);
-    // Paiement_etudiant
-    Route::resource('paiement_etudiant', PaiementetudiantController::class);
-    // Examen
-    Route::resource('exam', ExamController::class);
-    // Controle
-    Route::resource('controle', ControleController::class);
-    // Note
-    Route::resource('note', NoteController::class);
-    // Resultat
-    Route::resource('resultat', ResultatController::class);
-    // Emploi
-    Route::resource('emploi', EmploiController::class); */
-
-   
 });
 
 
