@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->tinyInteger('role')->default(5);
             //0 = admin, 1 = enseignant, 2 = comptable,
-            // 3 = etudiant, 4 = parent, 5 = utilisateur
+            // 3 = etudiant, 4 = parent, 
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();

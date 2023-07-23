@@ -53,50 +53,34 @@ public function showLoginForm()
 
     public function login(Request $request)
     {   
-        $input = $request->all();
-     
-        $this->validate($request, [
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
-     
-        if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
-        {
-            if (auth()->user()->role == 'admin') 
-            {
-              return redirect()->route('admin.dashboard');
-            }
-            else if (auth()->user()->role == 'enseignant') 
-            {
-              return redirect()->route('enseignant.dashboard');
-            }
-            else if (auth()->user()->role == 'comptable') 
-            {
-              return redirect()->route('comptable.dashboard');
-            }
-            else if (auth()->user()->role == 'etudiant') 
-            {
-              return redirect()->route('etudiant.dashboard');
-            }
-            else if (auth()->user()->role == 'parent')
-            {
-              return redirect()->route('parent.dashboard');
-            }
-            else if (auth()->user()->role == 'utilisareur')
-            {
-              return view('welcome');
-            }
-
-            else
-            {
-                response()->json(['You do not have permission to register']);
-            }
-        }
-        else
-        {
-            return redirect()
-            ->route('login')
-            ->with('error','Incorrect email or password!.');
-        }
-    }
+      $input = $request->all();
+ 
+      $this->validate($request, [
+          'email' => 'required|email',
+          'password' => 'required',
+      ]);
+   
+      if (auth()->attempt(['email' => $input['email'], 'password' => $input['password']])) {
+          $user = auth()->user();
+          switch ($user->role) {
+              case 'admin':
+                  return redirect()->route('admin.dashboard');
+              case 'enseignant':
+                  return redirect()->route('enseignant.dashboard');
+              case 'comptable':
+                  return redirect()->route('comptable.dashboard');
+              case 'etudiant':
+                  return redirect()->route('etudiant.dashboard');
+              case 'parent':
+                  return redirect()->route('parent.dashboard');
+              case 'utilisateur':
+                  return view('welcome');
+              default:
+                  return response()->json(['You do not have permission to register']);
+          }
+      } else {
+          return redirect()->route('login')->with('error', 'Incorrect email or password!.');
+      }
+  }
 }
+

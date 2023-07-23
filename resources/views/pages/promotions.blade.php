@@ -85,8 +85,8 @@
         @csrf
         <div class="form-group">
             <label for="inputName">Etudiant(e)</label>
-            <select class="fancyselect form-control" style="padding: 10px 0;" name="etudiant_id">
-                <option  selected>Sélectionnez Etudiant(e)</option>
+            <select class="fancyselect form-control" style="padding: 10px 0;" name="etudiant_ids[]" multiple>
+                <option selected disabled>Sélectionnez Etudiant(e)</option>
                 @foreach ($etudiants as $etudiant)
                     <option value="{{ $etudiant->id }}">{{ $etudiant->prenom." ".$etudiant->nom }}</option>
                 @endforeach

@@ -9,5 +9,10 @@ class Compte extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id', 'email', 'password', 'role'];
+    protected $fillable = ['name','email','password','role'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

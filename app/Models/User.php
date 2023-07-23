@@ -9,6 +9,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use App\Models\Compte;
 
 class User extends Authenticatable
 {
@@ -21,6 +22,11 @@ class User extends Authenticatable
     // ...
 
     protected $fillable = ['name','email','password','role'];
+
+    public function compte()
+    {
+        return $this->hasOne(Compte::class);
+    }
 
     /**
      * The accessors to append to the model's array form.

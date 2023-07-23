@@ -200,6 +200,9 @@
                   <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#editformModal{{ $resultat->id }}" title="Edit">
                     <i class="fa fa-edit"></i>
                   </button>
+
+                  <button class="btn btn-success"><a href="{{ asset('storage/pdf/' . $resultat->file) }}" target="_blank">Voir Résultat</a></button>  
+
                 
                   <form style="display: inline;" action="{{ route('resultat.destroy', $resultat->id) }}" method="POST">
                     @csrf

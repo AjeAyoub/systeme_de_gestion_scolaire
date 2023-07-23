@@ -39,7 +39,6 @@
             @include('layouts.etudiant-sidebar')
         @elseif (auth()->user()->role == 'parent')
             @include('layouts.parent-sidebar')
-
         @endif
         <!--=================================
  Main content -->

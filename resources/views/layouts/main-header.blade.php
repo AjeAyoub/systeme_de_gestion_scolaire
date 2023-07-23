@@ -80,8 +80,8 @@
                         aria-haspopup="true" aria-expanded="false">
                         <img src="https://cdn-icons-png.flaticon.com/512/3607/3607444.png" alt="avatar">
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <div class="dropdown-header">
+                     <div class="dropdown-menu dropdown-menu-right">
+                     {{--   <div class="dropdown-header">
                             <div class="media">
                                 <div class="media-body">
                                     <!-- user & mail -->
@@ -90,20 +90,19 @@
                                     <!-- end  user & mail -->
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#"><i class="text-secondary ti-reload"></i>Activity</a>
-                        <a class="dropdown-item" href="#"><i class="text-success ti-email"></i>Messages</a>
-                        <a class="dropdown-item" href="#"><i class="text-warning ti-user"></i>Profile</a>
-                        <a class="dropdown-item" href="#"><i class="text-dark ti-layers-alt"></i>Projects <span
-                                class="badge badge-info">6</span> </a>
+{{--                         <a class="dropdown-item" href="#"><i class="text-secondary ti-reload"></i>Activity</a>--}}                        
+                        <a class="dropdown-item" href="#"><i class="text-warning ti-user"></i>{{ Auth::user()->name }}</a>
+                        <a class="dropdown-item" href="#"><i class="text-success ti-email"></i>{{ Auth::user()->email }}</a>
+                        <a class="dropdown-item" href="#"><i class="text-dark ti-layers-alt"></i>{{ Auth::user()->role }} <span
+                                class="badge badge-info"></span> </a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#"><i class="text-info ti-settings"></i>Settings</a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
                                 <i class="text-danger ti-unlock"></i>
-                                {{ __('Logout') }}
+                                {{ __('Déconnexion') }}
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

@@ -40,7 +40,7 @@
                     <!-- Présence-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#presence-menu">
-                            <div class="pull-left"><i class="fas fa-money"></i><span
+                            <div class="pull-left"><i class="fas fa-calendar"></i><span
                                     class="right-nav-text">Présence</span></div>
                             <div class="pull-right"><i class="ti-angle-down"></i></i></div>
                             <div class="clearfix"></div>
@@ -71,63 +71,6 @@
                         </a>
                         <ul id="Resultats-menu" class="collapse" data-parent="#sidebarnav">
                             <li> <a href="{{ route('resultat.index')  }}">Liste des Resultats</a> </li>
-                        </ul>
-                    </li>
-
-                    <!-- Settings-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Settings-icon">
-                            <div class="pull-left"><i class="fas fa-cogs"></i><span class="right-nav-text">Paramètres</span></div>
-                            <div class="pull-right"><i class="ti-angle-down"></i></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="Settings-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="fontawesome-icon.html">font Awesome</a> </li>
-                            <li> <a href="themify-icons.html">Themify icons</a> </li>
-                            <li> <a href="weather-icon.html">Weather icons</a> </li>
-                        </ul>
-                    </li>
-                    <!-- Onlineclasses-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Onlineclasses-icon">
-                            <div class="pull-left"><i class="fas fa-video"></i><span class="right-nav-text">Classes en ligne</span></div>
-                            <div class="pull-right"><i class="ti-angle-down"></i></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="Onlineclasses-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="fontawesome-icon.html">font Awesome</a> </li>
-                            <li> <a href="themify-icons.html">Themify icons</a> </li>
-                            <li> <a href="weather-icon.html">Weather icons</a> </li>
-                        </ul>
-                    </li>
-
-
-                    <!-- Settings-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Settings-icon">
-                            <div class="pull-left"><i class="fas fa-cogs"></i><span class="right-nav-text">Paramètres</span></div>
-                            <div class="pull-right"><i class="ti-angle-down"></i></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="Settings-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="fontawesome-icon.html">font Awesome</a> </li>
-                            <li> <a href="themify-icons.html">Themify icons</a> </li>
-                            <li> <a href="weather-icon.html">Weather icons</a> </li>
-                        </ul>
-                    </li>
-
-
-                    <!-- Users-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Users-icon">
-                            <div class="pull-left"><i class="fas fa-users"></i><span class="right-nav-text">Utilisateurs</span></div>
-                            <div class="pull-right"><i class="ti-angle-down"></i></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="Users-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="fontawesome-icon.html">font Awesome</a> </li>
-                            <li> <a href="themify-icons.html">Themify icons</a> </li>
-                            <li> <a href="weather-icon.html">Weather icons</a> </li>
                         </ul>
                     </li>
                 </ul>

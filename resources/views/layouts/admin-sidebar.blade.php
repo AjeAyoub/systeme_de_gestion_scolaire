@@ -16,7 +16,7 @@
                                         <!-- Users -->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#Users-menu">
-                            <div class="pull-left"><i class="fas fa-users"></i><span class="right-nav-text">Utilisateurs</span></div>
+                            <div class="pull-left"><i class="fas fa-users"></i><span class="right-nav-text">Utilisateur</span></div>
                             <div class="pull-right"><i class="ti-angle-down"></i></div>
                             <div class="clearfix"></div>
                         </a>
@@ -24,18 +24,18 @@
                             <!-- Enseignant -->
                             <li>
                                 <a href="javascript:void(0);" data-toggle="collapse" data-target="#Teachers-menu">
-                                    <div class="pull-left"><i class="fas fa-chalkboard-teacher"></i></i><span class="right-nav-text">Enseignants</span></div>
+                                    <div class="pull-left"><i class="fas fa-chalkboard-teacher"></i></i><span class="right-nav-text">Enseignant</span></div>
                                     <div class="pull-right"><i class="ti-angle-down"></i></div>
                                     <div class="clearfix"></div>
                                 </a>
                                 <ul id="Teachers-menu" class="collapse" data-parent="#Users-menu">
-                                    <li><a href="{{ route('enseignant.index') }}">Liste des Enseignants</a></li>
+                                    <li><a href="{{ route('enseignant.index') }}">Liste des Enseignant</a></li>
                                 </ul>
                             </li>
                             <!-- Comptable -->
                             <li>
                                 <a href="javascript:void(0);" data-toggle="collapse" data-target="#Comptables-menu">
-                                    <div class="pull-left"><i class="fas fa-money-check-alt"></i><span class="right-nav-text">Comptables</span></div>
+                                    <div class="pull-left"><i class="fas fa-money-check-alt"></i><span class="right-nav-text">Comptable</span></div>
                                     <div class="pull-right"><i class="ti-angle-down"></i></div>
                                     <div class="clearfix"></div>
                                 </a>
@@ -46,7 +46,7 @@
                             <!-- Parents -->
                             <li>
                                 <a href="javascript:void(0);" data-toggle="collapse" data-target="#Parents-menu">
-                                    <div class="pull-left"><i class="fas fa-user-tie"></i><span class="right-nav-text">Parents</span></div>
+                                    <div class="pull-left"><i class="fas fa-user-tie"></i><span class="right-nav-text">Parent</span></div>
                                     <div class="pull-right"><i class="ti-angle-down"></i></div>
                                     <div class="clearfix"></div>
                                 </a>
@@ -57,7 +57,7 @@
                             <!-- Etudiant -->
                             <li>
                                 <a href="javascript:void(0);" data-toggle="collapse" data-target="#Students-menu">
-                                    <div class="pull-left"><i class="fas fa-user-graduate"></i><span class="right-nav-text">Etudiants</span></div>
+                                    <div class="pull-left"><i class="fas fa-user-graduate"></i><span class="right-nav-text">Etudiant</span></div>
                                     <div class="pull-right"><i class="ti-angle-down"></i></div>
                                     <div class="clearfix"></div>
                                 </a>
@@ -74,7 +74,7 @@
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#niveaux-menu">
                             <div class="pull-left"><i class="fas fa-school"></i><span
-                                    class="right-nav-text">Niveaux</span></div>
+                                    class="right-nav-text">Niveau</span></div>
                             <div class="pull-right"><i class="ti-angle-down"></i></div>
                             <div class="clearfix"></div>
                         </a>
@@ -86,7 +86,7 @@
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#classes-menu">
                             <div class="pull-left"><i class="fa fa-building"></i><span
-                                    class="right-nav-text">classes</span></div>
+                                    class="right-nav-text">classe</span></div>
                             <div class="pull-right"><i class="ti-angle-down"></i></div>
                             <div class="clearfix"></div>
                         </a>
@@ -100,7 +100,7 @@
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#sections-menu">
                             <div class="pull-left"><i class="fas fa-chalkboard"></i></i><span
-                                    class="right-nav-text">sections</span></div>
+                                    class="right-nav-text">section</span></div>
                             <div class="pull-right"><i class="ti-angle-down"></i></div>
                             <div class="clearfix"></div>
                         </a>
@@ -112,7 +112,7 @@
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#examens-menu">
                             <div class="pull-left"><i class="fas fa-book-open"></i><span
-                                    class="right-nav-text">Examens</span></div>
+                                    class="right-nav-text">Examen</span></div>
                             <div class="pull-right"><i class="ti-angle-down"></i></i></div>
                             <div class="clearfix"></div>
                         </a>
@@ -124,7 +124,7 @@
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#controles-menu">
                             <div class="pull-left"><i class="fas fa-clipboard-check"></i><span
-                                    class="right-nav-text">Controles</span></div>
+                                    class="right-nav-text">Controle</span></div>
                             <div class="pull-right"><i class="ti-angle-down"></i></i></div>
                             <div class="clearfix"></div>
                         </a>
@@ -148,7 +148,7 @@
                     <!-- Présence-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#presence-menu">
-                            <div class="pull-left"><i class="fas fa-money"></i><span
+                            <div class="pull-left"><i class="fas fa-calendar"></i><span
                                     class="right-nav-text">Présence</span></div>
                             <div class="pull-right"><i class="ti-angle-down"></i></i></div>
                             <div class="clearfix"></div>
@@ -162,7 +162,7 @@
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#Accounts-menu">
                             <div class="pull-left"><i class="fas fa-user"></i><span
-                                    class="right-nav-text">Comptes</span></div>
+                                    class="right-nav-text">Compte</span></div>
                             <div class="pull-right"><i class="ti-angle-down"></i></i></div>
                             <div class="clearfix"></div>
                         </a>
@@ -174,7 +174,7 @@
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#Notes-menu">
                             <div class="pull-left"><i class="fas fa-check-circle"></i>                                <span
-                                    class="right-nav-text">Notes</span></div>
+                                    class="right-nav-text">Note</span></div>
                             <div class="pull-right"><i class="ti-angle-down"></i></i></div>
                             <div class="clearfix"></div>
                         </a>
@@ -188,7 +188,7 @@
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#Emplois-menu">
                             <div class="pull-left"><i class="fas fa-calendar-alt"></i>                                <span
-                                    class="right-nav-text">Emplois</span></div>
+                                    class="right-nav-text">Emploi</span></div>
                             <div class="pull-right"><i class="ti-angle-down"></i></i></div>
                             <div class="clearfix"></div>
                         </a>
@@ -200,7 +200,7 @@
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#Resultats-menu">
                             <div class="pull-left"><i class="fas fa-star"></i>                                <span
-                                    class="right-nav-text">Resultats</span></div>
+                                    class="right-nav-text">Resultat</span></div>
                             <div class="pull-right"><i class="ti-angle-down"></i></i></div>
                             <div class="clearfix"></div>
                         </a>
@@ -223,7 +223,7 @@
                      <!-- salle-->
                      <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#salle-icon">
-                            <div class="pull-left"><i class="fas fa-door-open"></i><span class="right-nav-text">Salles</span></div>
+                            <div class="pull-left"><i class="fas fa-door-open"></i><span class="right-nav-text">Salle</span></div>
                             <div class="pull-right"><i class="ti-angle-down"></i></i></div>
                             <div class="clearfix"></div>
                         </a>
@@ -234,7 +234,7 @@
                      <!-- Seance-->
                      <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#seance-icon">
-                            <div class="pull-left"><i class="fas fa-chalkboard"></i><span class="right-nav-text">Seances</span></div>
+                            <div class="pull-left"><i class="fas fa-chalkboard"></i><span class="right-nav-text">Seance</span></div>
                             <div class="pull-right"><i class="ti-angle-down"></i></i></div>
                             <div class="clearfix"></div>
                         </a>
@@ -246,40 +246,12 @@
                     <!-- matiere-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#matiere-icon">
-                            <div class="pull-left"><i class="fas fa-book"></i><span class="right-nav-text">Matieres</span></div>
+                            <div class="pull-left"><i class="fas fa-book"></i><span class="right-nav-text">Matiere</span></div>
                             <div class="pull-right"><i class="ti-angle-down"></i></i></div>
                             <div class="clearfix"></div>
                         </a>
                         <ul id="matiere-icon" class="collapse" data-parent="#sidebarnav">
                             <li> <a href="{{ route('matiere.index') }}">Liste des Matieres</a> </li>
-                        </ul>
-                    </li>
-                    <!-- Onlineclasses-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Onlineclasses-icon">
-                            <div class="pull-left"><i class="fas fa-video"></i><span class="right-nav-text">Classes en ligne</span></div>
-                            <div class="pull-right"><i class="ti-angle-down"></i></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="Onlineclasses-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="fontawesome-icon.html">font Awesome</a> </li>
-                            <li> <a href="themify-icons.html">Themify icons</a> </li>
-                            <li> <a href="weather-icon.html">Weather icons</a> </li>
-                        </ul>
-                    </li>
-
-
-                    <!-- Settings-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Settings-icon">
-                            <div class="pull-left"><i class="fas fa-cogs"></i><span class="right-nav-text">Paramètres</span></div>
-                            <div class="pull-right"><i class="ti-angle-down"></i></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="Settings-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="fontawesome-icon.html">font Awesome</a> </li>
-                            <li> <a href="themify-icons.html">Themify icons</a> </li>
-                            <li> <a href="weather-icon.html">Weather icons</a> </li>
                         </ul>
                     </li>
 

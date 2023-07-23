@@ -108,6 +108,10 @@
                     <form action="{{ route('compte.store') }}" method="POST">
                       @csrf
                       <div class="form-group">
+                          <label for="inputName">Nom</label>
+                          <input name="name" type="text" class="form-control" id="nom">
+                      </div>
+                      <div class="form-group">
                           <label for="inputName">Email</label>
                           <input name="email" type="email" class="form-control" id="email">
                       </div>
@@ -119,7 +123,6 @@
                         <label for="inputName">Role</label>
                         <select name="role" class="form-control" id="role">
                             <option selected>Role</option>
-                            <option value="Super Admin">Super Admin</option>
                             <option value="Admin">Admin</option>
                             <option value="Enseignant">Enseignant</option>
                             <option value="Comptable">Comptable</option>
@@ -148,6 +151,7 @@
           <thead class="thead-light">
             <tr class="text-center">
               <th scope="col">id</th>
+              <th scope="col">Nom</th>
               <th scope="col">Email</th>
               <th scope="col">Password</th>
               <th scope="col">Role</th>
@@ -160,6 +164,7 @@
 
             <tr class="text-center">
               <td>{{ $i }}</td>
+              <td>{{ $compte->name }}</td>
               <td>{{ $compte->email }}</td>
               <td>{{ $compte->password }}</td>
               <td>{{ $compte->role }}</td>
@@ -179,6 +184,10 @@
                         <form action="{{ route('compte.update', $compte->id) }}" method="POST">
                           @csrf
                           @method('PUT')
+                          <div class="form-group">
+                            <label for="inputNom">Nom</label>
+                            <input name="name" type="text" class="form-control" id="name{{ $compte->id }}" value="{{ $compte->name ?? '' }}">
+                          </div>
                           <div class="form-group">
                             <label for="inputNom">Email</label>
                             <input name="email" type="email" class="form-control" id="email{{ $compte->id }}" value="{{ $compte->email ?? '' }}">

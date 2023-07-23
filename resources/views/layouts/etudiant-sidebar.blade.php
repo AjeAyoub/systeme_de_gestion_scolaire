@@ -18,7 +18,7 @@
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#examens-menu">
                             <div class="pull-left"><i class="fas fa-book-open"></i><span
-                                    class="right-nav-text">Examens</span></div>
+                                    class="right-nav-text">Examen</span></div>
                             <div class="pull-right"><i class="ti-angle-down"></i></i></div>
                             <div class="clearfix"></div>
                         </a>
@@ -30,7 +30,7 @@
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#controles-menu">
                             <div class="pull-left"><i class="fas fa-clipboard-check"></i><span
-                                    class="right-nav-text">Controles</span></div>
+                                    class="right-nav-text">Controle</span></div>
                             <div class="pull-right"><i class="ti-angle-down"></i></i></div>
                             <div class="clearfix"></div>
                         </a>
@@ -42,7 +42,7 @@
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#evenement-menu">
                             <div class="pull-left"><i class="far fa-calendar-alt"></i><span
-                                    class="right-nav-text">Evénements</span></div>
+                                    class="right-nav-text">Evénement</span></div>
                             <div class="pull-right"><i class="ti-angle-down"></i></i></div>
                             <div class="clearfix"></div>
                         </a>
@@ -53,7 +53,7 @@
                     <!-- Présence-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#presence-menu">
-                            <div class="pull-left"><i class="fas fa-money"></i><span
+                            <div class="pull-left"><i class="fas fa-eye"></i><span
                                     class="right-nav-text">Présence</span></div>
                             <div class="pull-right"><i class="ti-angle-down"></i></i></div>
                             <div class="clearfix"></div>
@@ -62,25 +62,13 @@
                             <li> <a href="{{ route('presences') }}">Liste des Présence</a> </li>
                         </ul>
                     </li>
-                    <!-- Notes-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Notes-menu">
-                            <div class="pull-left"><i class="fas fa-check-circle"></i>                                <span
-                                    class="right-nav-text">Notes</span></div>
-                            <div class="pull-right"><i class="ti-angle-down"></i></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="Notes-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{ route('note.index')  }}">Liste des Notes</a> </li>
-                        </ul>
-                    </li>
 
                      <!-- Emplois-->
 
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#Emplois-menu">
                             <div class="pull-left"><i class="fas fa-calendar-alt"></i>                                <span
-                                    class="right-nav-text">Emplois</span></div>
+                                    class="right-nav-text">Emploi</span></div>
                             <div class="pull-right"><i class="ti-angle-down"></i></i></div>
                             <div class="clearfix"></div>
                         </a>
@@ -92,7 +80,7 @@
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#Resultats-menu">
                             <div class="pull-left"><i class="fas fa-star"></i>                                <span
-                                    class="right-nav-text">Resultats</span></div>
+                                    class="right-nav-text">Resultat</span></div>
                             <div class="pull-right"><i class="ti-angle-down"></i></i></div>
                             <div class="clearfix"></div>
                         </a>
@@ -101,34 +89,7 @@
                         </ul>
                     </li>
 
-                    <!-- Onlineclasses-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Onlineclasses-icon">
-                            <div class="pull-left"><i class="fas fa-video"></i><span class="right-nav-text">Classes en ligne</span></div>
-                            <div class="pull-right"><i class="ti-angle-down"></i></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="Onlineclasses-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="fontawesome-icon.html">font Awesome</a> </li>
-                            <li> <a href="themify-icons.html">Themify icons</a> </li>
-                            <li> <a href="weather-icon.html">Weather icons</a> </li>
-                        </ul>
-                    </li>
-
-
-                    <!-- Settings-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Settings-icon">
-                            <div class="pull-left"><i class="fas fa-cogs"></i><span class="right-nav-text">Paramètres</span></div>
-                            <div class="pull-right"><i class="ti-angle-down"></i></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="Settings-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="fontawesome-icon.html">font Awesome</a> </li>
-                            <li> <a href="themify-icons.html">Themify icons</a> </li>
-                            <li> <a href="weather-icon.html">Weather icons</a> </li>
-                        </ul>
-                    </li>
+                   
                 </ul>
             </div>
         </div>

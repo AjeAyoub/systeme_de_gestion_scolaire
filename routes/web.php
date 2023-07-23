@@ -165,10 +165,7 @@ Route::middleware(['auth','user-role:etudiant'])->group(function()
     Route::get("/etudiant.dashboard",function (){
         return view('etudiantdashboard');
     })->name('etudiant.dashboard');
-    Route::get('/evenements', function(){
-        return view('pages.evenement_et_pr');
 
-    })->name('evenements');
 
 /*     // Evenement
     Route::resource('evenement', EvenementController::class);
@@ -194,11 +191,6 @@ Route::middleware(['auth','user-role:parent'])->group(function()
         return view('parentdashboard');
     })->name('parent.dashboard');
 
-
-    Route::get('/evenements', function(){
-        return view('pages.evenement_et_pr');
-
-    })->name('evenements');
 
     Route::get('/paiementetudiants', [PaiementetudiantController::class, 'paiementetudiantsCt'])->name('paiementetudiants');
 
