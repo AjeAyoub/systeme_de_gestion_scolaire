@@ -84,13 +84,11 @@ class CompteController extends Controller
     {
         $compte->update($request->all());
         return to_route('compte.index')->with('update', 'Compte mise à jour avec succès');
-
     }
 
     public function destroy(Compte $compte)
     {
         $compte->delete();
         return to_route('compte.index')->with('delete', 'Compte supprimée avec succès');
-
     }
 }

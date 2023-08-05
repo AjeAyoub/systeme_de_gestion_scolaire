@@ -37,6 +37,7 @@ class DepartementController extends Controller
      */
     public function store(Request $request)
     {
+
         Departement::create($request->all());
         return to_route('departement.index')->with('success', 'Departement ajoutée avec succès');
 

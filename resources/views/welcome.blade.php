@@ -15,7 +15,7 @@
  style="background-image: url('https://cdn.literacytrust.org.uk/media/images/IMG_9369_f6jZAdK.2e16d0ba.fill-1200x630.jpg')">
  <h1
      class="font-mono text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 to-yellow-200 md:text-center sm:leading-none lg:text-5xl">
-     <span class="inline md:block">N o t r e __ É c o l e</span>
+     <span class="inline md:block">Systeme de Gestion Scolaire</span>
     </h1>
  <div class="mx-auto mt-2 text-white md:text-center lg:text-lg">
      
@@ -49,17 +49,17 @@
                                 </svg>
                             </a>
                         </div>
-                 <h3 class="text-xl">NOTRE HISTOIRE
-                 </h3>
-                 <h2 class="text-4xl text-pink-600">Welcome</h2>
+                 <h2 class="text-4xl text-pink-600">bienvenue</h2>
                  <!-- </h1> -->
                  <p class="mx-auto text-base text-gray-500 sm:max-w-md lg:text-xl md:max-w-3xl">
-                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus nemo incidunt
-                     praesentium, ipsum
-                     culpa minus eveniet, id nesciunt excepturi sit voluptate repudiandae. Explicabo, incidunt
-                     quia.
-                     Repellendus mollitia quaerat est voluptas!
-                 </p>
+                    Bienvenue dans notre école dynamique et inspirante !
+
+                    Nous sommes enchantés de vous ouvrir les portes de notre établissement où chaque journée est une opportunité de grandir, d'apprendre et de s'épanouir. Ici, nous croyons que chaque élève est unique et possède un potentiel extraordinaire à développer.
+                    
+                    Notre corps enseignant dévoué est animé par la passion de transmettre le savoir et de guider nos étudiants vers l'excellence académique. En plus d'un enseignement de qualité, nous mettons l'accent sur l'épanouissement personnel, encourageant les talents artistiques, sportifs et créatifs de chacun.
+                    
+                    Au-delà des salles de classe, notre école est un lieu de rencontre, d'amitié et d'échange, où les liens sociaux se tissent et les souvenirs se créent.
+                  </p>
              </div>
          </div>
          <div class="w-full md:w-1/2">
@@ -76,15 +76,10 @@
          <div class="order-1 w-full px-3 lg:w-1/2 lg:order-0">
              <div class="w-full lg:max-w-md">
                  <h2 class="mb-4 text-2xl font-bold">À propos de nous</h2>
-                 <h2
+                 <p class="mb-4 font-medium tracking-tight text-gray-400 xl:mb-6"> Une école engagée à cultiver le potentiel unique de chaque élève, en offrant un environnement d'apprentissage inclusif et stimulant. Notre mission est de former des esprits curieux, créatifs et confiants pour affronter les défis de demain.</p>
+                     <h2
                      class="mb-4 text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-pink-500">
                      POURQUOI NOUS CHOISIR?</h2>
-
-                 <p class="mb-4 font-medium tracking-tight text-gray-400 xl:mb-6">Lorem ipsum dolor sit amet
-                     consectetur
-                     adipisicing elit. Natus hic atque magni minus aliquam, eos quam incidunt nam iusto sunt
-                     voluptates
-                     inventore a veritatis doloremque corrupti. Veritatis est expedita cupiditate!</p>
                  <ul>
                      <li class="flex items-center py-2 space-x-4 xl:py-3">
                          <svg class="w-8 h-8 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"

@@ -174,7 +174,7 @@
               <td>{{ $emploi->niveau->nom }}</td>
               <td>{{ $emploi->classe->nom }}</td>
               <td>{{ $emploi->section->nom }}</td>
-              <td>{{ $emploi->file }}</td>
+              <td>{{ 'PDF' }}</td>
 
               <td>
 

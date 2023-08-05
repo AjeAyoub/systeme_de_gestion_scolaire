@@ -79,7 +79,7 @@ public function showLoginForm()
                   return response()->json(['You do not have permission to register']);
           }
       } else {
-          return redirect()->route('login')->with('error', 'Incorrect email or password!.');
+          return redirect()->route('login')->with('error', 'Incorrect email ou Mot de passe!.');
       }
   }
 }

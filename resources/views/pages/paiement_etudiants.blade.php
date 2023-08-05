@@ -180,9 +180,10 @@ Paiement des Etudiants
 			  <th scope="col">Etudiant(e)</th>
 			  <th scope="col">Paiement</th>
 			  <th scope="col">Cout</th>
-			  <th scope="col">Date de paiement</th>
-			  <th scope="col">Statut de paiement</th>
-			  <th scope="col">Mode de paiement</th>
+			  <th scope="col">Date de P</th>
+			  <th scope="col">Statut de P</th>
+			  <th scope="col">Mode de P</th>
+			  <th scope="col">RMQ</th>
 			  <th scope="col">Action</th>
 			</tr>
 		  </thead>
@@ -198,6 +199,7 @@ Paiement des Etudiants
 			  <td>{{ $paiement_etudiant->date}}</td>
 			  <td>{{ $paiement_etudiant->statut}}</td>
 			  <td>{{ $paiement_etudiant->mode}}</td>
+			  <td>{{ $paiement_etudiant->remarque}}</td>
 			  <td>
 
 				<!-- start modal edit form -->

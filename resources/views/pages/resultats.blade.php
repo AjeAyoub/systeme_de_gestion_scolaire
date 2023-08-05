@@ -152,7 +152,7 @@
             <tr class="text-center">
               <td>{{ $i }}</td>
               <td>{{ $resultat->etudiant->prenom.' '.$resultat->etudiant->nom }}</td>
-              <td>{{ $resultat->file }}</td>
+              <td>{{ 'PDF' }}</td>
 
               <td>
 

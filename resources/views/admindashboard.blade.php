@@ -95,7 +95,7 @@
                                 </div>
                                 <div class="float-right text-right">
                                     <p class="card-text text-dark">Admins</p>
-                                    <h4>{{ $totalCountAdmin }}</h4>
+                                    <h4>1</h4>
                                 </div>
                             </div>
                             <p class="text-muted pt-3 mb-0 mt-2 border-top">
